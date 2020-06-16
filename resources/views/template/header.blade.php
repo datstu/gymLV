@@ -52,10 +52,13 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 					<div class="login-box">
+                        <form action="{{url('user')}}">
 						<select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
 							<option>Register Here</option>
 							<option>Sign In</option>
 						</select>
+
+                        </form>
 					</div>
                     <div class="text-slid-box">
                         <div id="offer-box" class="carouselTicker">
@@ -111,9 +114,9 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Thư Viện Bài Tập</a>
+                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện Bài Tập</a>
                             <ul class="dropdown-menu">
 								<li><a href="shop.html">Tập Ngực</a></li>
 								<li><a href="shop-detail.html">Tập Vai</a></li>
@@ -125,7 +128,7 @@
                             </ul>
                         </li>
                          <li class="dropdown">
-                            <a href="SHOP" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <a href="SHOP" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
                                 <li><a href="shop.html">TPBS</a></li>
                                 <li><a href="shop-detail.html">Phụ Kiện</a></li>
@@ -133,6 +136,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Kết Quả</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">Hồ Sơ Của Bạn</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

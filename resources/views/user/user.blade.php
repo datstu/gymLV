@@ -20,47 +20,134 @@
 		        		<!-- SECTION 1 -->
 			            <h2>
 			            	<p class="step-icon"><span>01</span></p>
-			            	<span class="step-text">Peronal Infomation</span>
+			            	<span class="step-text">Thông tin cá nhân</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Peronal Infomation</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your accounts.  </p>
+									<h3 class="heading">Thông tin cá nhân</h3>
+									<p>Vui lòng nhập thông tin của bạn và tiến hành bước tiếp theo để chúng tôi có thể xây dựng tài khoản của bạn.</p>
 								</div>
 								<div class="form-row">
 									<div class="form-holder">
 										<fieldset>
-											<legend>First Name</legend>
-											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name" required>
+											<legend>Họ</legend>
+											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="Nguyễn" required>
 										</fieldset>
 									</div>
 									<div class="form-holder">
 										<fieldset>
-											<legend>Last Name</legend>
-											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name" required>
+											<legend>Tên</legend>
+											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Văn Tèo" required>
+										</fieldset>
+									</div>
+								</div>
+								
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Số điện thoại</legend>
+											<input type="text" class="form-control" id="phone" name="phone" placeholder="+84 973 409 613" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row ">
+									<div class="form-holder form-holder-2">
+										<label class="special-label">Giới tính:</label>
+										<select name="sex"  style="background: none;">
+											
+											<option value="">Nam</option>
+											<option value="">Nữ</option>
+											
+										</select>
+										
+									</div>
+								</div>
+								
+								<div class="form-row ">
+									<div class="form-holder form-holder-2" >
+										<label class="special-label">Địa chỉ:</label>
+										
+										<select  name="" id="" style="background: none;margin-bottom:30px">
+											<option value="MM" disabled selected>Tỉnh/Thành Phố</option>
+											<option value="16">Hồ Chí Minh</option>
+											<option value="17">Hà Nội</option>
+											<option value="18">Đà Nẵng</option>
+											
+										</select>
+										<select name="year" id="" style="background: none;margin-bottom: 30px">
+											<option value="YYYY" disabled selected>Quận/Huyện</option>
+											<option value="2017">Quận 1</option>
+											<option value="2016">Quận 8</option>
+											<option value="2015">Quận 12</option>
+											<option value="2014">Quận Cầu Giấy</option>
+											<option value="2013">Quận Gò Vấp</option>
+										</select>
+										<select name="year" id="" style="background: none;margin-bottom: 30px">
+											<option value="YYYY" disabled selected>Phường/xã</option>
+											<option value="2017">Phường 4</option>
+											<option value="2016">Phường 2</option>
+											<option value="2015">Phường 3</option>
+											<option value="2014">Phường 1</option>
+											<option value="2013">Phường 5</option>
+										</select>
+									<div class="form-holder form-holder-2">
+										<fieldset style="margin-left: -10px;" >
+										<input style="margin-left: -10px;" border=1 type="text" class="form-control" id="phone" name="phone" placeholder="180 Cao Lỗ" >
+									</fieldset>
+									</div>
+									</div>
+								</div>
+								<div class="form-row">{{-- 
+									<div class="form-holder form-holder-2">
+										<input type="text" class="form-control input-border" id="ssn" name="ssn" placeholder="SSN" required>
+									</div>
+								 --}}</div>
+							</div>
+			            </section>
+						<!-- SECTION 2 -->
+			            
+			            <!-- SECTION 3 -->
+			            <h2>
+			            	<p class="step-icon"><span>02</span></p>
+			            	<span class="step-text">Hoàn Thành Tài Khoản</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="wizard-header">
+									<h3 class="heading">Hoàn Thành Tài Khoản</h3>
+									
+								</div>
+								
+								
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Email của bạn</legend>
+											<input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="vanteo@email.com" required>
 										</fieldset>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>Your Email</legend>
-											<input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required>
+											<legend>Mật Khẩu</legend>
+											<input type="password" class="form-control"  required>
 										</fieldset>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<fieldset>
-											<legend>Phone Number</legend>
-											<input type="text" class="form-control" id="phone" name="phone" placeholder="+1 888-999-7777" required>
+											<legend>Nhập lại mật khẩu</legend>
+											<input type="password" class="form-control"  required>
 										</fieldset>
 									</div>
 								</div>
+								
 								<div class="form-row form-row-date">
 									<div class="form-holder form-holder-2">
-										<label class="special-label">Birth Date:</label>
+										<label class="special-label">Ngày sinh:</label>
 										<select name="month" id="month">
 											<option value="MM" disabled selected>MM</option>
 											<option value="16">16</option>
@@ -85,29 +172,41 @@
 										</select>
 									</div>
 								</div>
-								<div class="form-row">
+								<div class="form-row">{{-- 
 									<div class="form-holder form-holder-2">
 										<input type="text" class="form-control input-border" id="ssn" name="ssn" placeholder="SSN" required>
 									</div>
-								</div>
+								 --}}</div>
 							</div>
 			            </section>
-						<!-- SECTION 2 -->
-			            <h2>
-			            	<p class="step-icon"><span>02</span></p>
-			            	<span class="step-text">Connect Bank Account</span>
+
+<h2>
+			            	<p class="step-icon"><span>03</span></p>
+			            	<span class="step-text">Liên kết ngân hàng</span>
 			            </h2>
 			            <section>
 			                <div class="inner">
 			                	<div class="wizard-header">
-									<h3 class="heading">Connect Bank Account</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
+									<h3 class="heading">Liên kết ngân hàng</h3>
+									<p>Vui lòng nhập thông tin của bạn và tiến hành bước tiếp theo để chúng tôi có thể xây dựng tài khoản của bạn.</p>
 								</div>
+								<div style="color: #666;font-size: 14px;font-weight: 600;">
+			                			<input type="radio" class="radio" id='rad'  value="bank-1" >
+			                			<label class="" for="rad"> Chưa có tài khoản</label>
+		                		</div>
+		                		<br>
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
-										<input type="text" name="find_bank" id="find_bank" placeholder="Find Your Bank" class="form-control" required>
+										<input type="text" name="find_bank" id="find_bank" placeholder="Tìm kiếm Ngân Hàng " class="form-control" required>
 									</div>
+									
 								</div>
+							
+								
+							
+
+
+
 								<div class="form-row-total">
 									<div class="form-row">
 				                		<div class="form-holder form-holder-2 form-holder-3">
@@ -144,47 +243,22 @@
 								</div>
 							</div>
 			            </section>
-			            <!-- SECTION 3 -->
-			            <h2>
-			            	<p class="step-icon"><span>03</span></p>
-			            	<span class="step-text">Set Financial Goals</span>
-			            </h2>
-			            <section>
-			                <div class="inner">
-			                	<div class="wizard-header">
-									<h3 class="heading">Set Financial Goals</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
-								</div>
-								<div class="form-row">
-			                		<div class="form-holder form-holder-2">
-			                			<input type="radio" class="radio" name="radio1" id="plan-1" value="plan-1">
-			                			<label class="plan-icon plan-1-label" for="plan-1">
-		                					<img src="{{ url('public/user_config/images/form-v1-icon-2.png')}}" alt="pay-1">
-			                			</label>
-			                			<div class="plan-total">
-		                					<span class="plan-title">Specific Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-			                			<input type="radio" class="radio" name="radio1" id="plan-2" value="plan-2">
-			                			<label class="plan-icon plan-2-label" for="plan-2">
-			                					<img src="{{ url('public/user_config/images/form-v1-icon-2.png')}}" alt="pay-1">
-			                			</label>
-			                			<div class="plan-total">
-		                					<span class="plan-title">Medium Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-										<input type="radio" class="radio" name="radio1" id="plan-3" value="plan-3" checked>
-										<label class="plan-icon plan-3-label" for="plan-3">
-		                					<img src="{{ url('public/user_config/images/form-v1-icon-3.png')}}" alt="pay-2">
-										</label>
-										<div class="plan-total">
-		                					<span class="plan-title">Special Plan</span>
-		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
-		                				</div>
-			                		</div>
-			                	</div>
-							</div>
-			            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		        	</div>
 		        </form>
 			</div>
