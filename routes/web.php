@@ -25,3 +25,5 @@ Route::get('/SHOP', function () {
 Route::get('/PHONG-GYM', function () {
     return view('index.PhongGym');
 });
+Route::get('/admin','AdminController@index');
+
