@@ -100,7 +100,7 @@
 		</form> -->
 		<ul class="nav menu">
 			<li class="active"><a href="{{url('/admin')}}"><em class="fa fa-dashboard">&nbsp;</em> Trang chủ</a></li>
-			<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Quản Lý Khách hàng</a></li>
+			<li><a href="{{url('quan-ly-khach-hang')}}"><em class="fa fa-calendar">&nbsp;</em> Quản Lý Khách hàng</a></li>
 			<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> QL Huấn luận viên</a></li>
 			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý Phòng Gym</a></li>
 			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> QL Thời Khóa Biểu</a></li>
@@ -132,7 +132,7 @@
 		@yield('content')
 	</div>	<!--/.main-->
 	
-	<script src="{{asset('public/lumino/js/jquery-1.11.1.min.js')}}"></script>
+
 	<script src="{{asset('public/lumino/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('public/lumino/js/chart.min.js')}}"></script>
 	<script src="{{asset('public/lumino/js/chart-data.js')}}"></script>
@@ -150,7 +150,12 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
+
+
+
+
+
 	</script>
-		
+	
 </body>
 </html>
