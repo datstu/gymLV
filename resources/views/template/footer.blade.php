@@ -1,4 +1,20 @@
   <!-- Start Footer  -->
+   <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            @for( $i=1; $i<=10;$i++)
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="{{ url('public/user/images/instagram-img-0'.$i.'.jpg')}}" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            @endfor
+        </div>
+    </div>
+   
     <footer>
         <div class="footer-main">
             <div class="container">
@@ -7,7 +23,7 @@
 						<div class="footer-top-box">
 							<h3>Business Time</h3>
 							<ul class="list-time">
-								<li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+								<li>Monday - Friday: 08.00am to 10.00pm</li> <li>Saturday: 10.00am to 10.00pm</li> <li>Sunday: <span>Closed</span></li>
 							</ul>
 						</div>
 					</div>
@@ -50,14 +66,10 @@
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-link">
-                            <h4>Information</h4>
+                            <h4>Location</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="#">phong gym Q1</a></li>
+                                <li><a href="#">phong gym Q2</a></li>
                             </ul>
                         </div>
                     </div>

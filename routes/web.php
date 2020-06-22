@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('index.home');
 });
 Route::get('user', function () {
@@ -23,5 +23,15 @@ Route::get('/SHOP', function () {
     return view('index.shop');
 });
 Route::get('/PHONG-GYM', function () {
-    return view('index.PhongGym');
+    return view('index.Gymlist');
 });
+Route::get('/BAI-VIET', function () {
+    return view('index.baiviet');
+});
+Route::get('/Bv', function () {
+    return view('index.baiviet_detail');
+});
+Route::get('/ABOUT', function () {
+    return view('index.about');
+});
+
