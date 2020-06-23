@@ -26,7 +26,11 @@ Route::get('/PHONG-GYM', function () {
     return view('index.PhongGym');
 });
 Route::get('/admin','AdminController@index');
+
 Route::get('/quan-ly-khach-hang','CustomerController@listCustomer');
 Route::get('/them-khach-hang','CustomerController@addCustomer');
 Route::get('/addUser','CustomerController@saveAddCustomer');
-Route::get('/delUser','CustomerController@delCustomer');
+Route::get('/delUser/{id}','CustomerController@delCustomer');
+Route::get('/updateUser/{id}','CustomerController@updateCustomer');
+Route::get('/saveEditUser','CustomerController@saveEditCustomer');
+

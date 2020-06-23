@@ -96,22 +96,24 @@
               
                     <td>{{$user->name_level }}</td>
                     <td>
-                        <div class="table-data-feature">
-                            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        
+                            <a href="{{url('/updateUser/'.$user->id_user)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </td>            
                           
                             {{-- <button class="item " data-toggle="tooltip" data-placement="top"  title="Delete" onclick="return confirm('Bạn có chắc muốn XOÁ sản phẩm này?')" >
                                 <i class="fa fa-trash" aria-hidden="true" style="border: none;"></i>
                             </button> --}}
+                            
                             <td>
                             
                           
                     <div class ="delUser"> 
-                            <input type="hidden" id="delUserValue"  name="id_user_del" value="{{$user->id_user }}">
+                            <a href="{{url('/delUser/'.$user->id_user)}}" onclick="return confirm('Bạn có chắc muốn XOÁ hội viên này?')">
                                 <i class="fa fa-trash" aria-hidden="true" style="border: none;"></i>
+                                </a>
                     </div>
                              
-                        </div>
+                       
                     </td>
                 </tr>
                 <tr class="spacer"></tr>
@@ -123,7 +125,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
+	/*$(document).ready(function(){
         $('.delUser').on('click', function(event){
             // alert("hi");
             $.ajax({
@@ -144,7 +146,7 @@
             $("form#frmAddUser").trigger("reset");
 
         });
-    });
+    });*/
 
 </script>
 @endsection
