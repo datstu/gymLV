@@ -122,8 +122,8 @@
                          <li class="dropdown">
                             <a href="SHOP" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
-                                <li><a href="shop.html">TPBS</a></li>
-                                <li><a href="shop-detail.html">Phụ Kiện</a></li>
+                                <li><a href="GOI-TAP">Gói tập</a></li>
+                                <li><a href="PHU-KIEN">Phụ Kiện</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
@@ -135,7 +135,7 @@
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav">
                     <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        
                         <li class="side-menu">
 							<a href="#">
 								<i class="fa fa-shopping-bag"></i>
@@ -179,15 +179,4 @@
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
     <!-- End Top Search -->

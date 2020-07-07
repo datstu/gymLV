@@ -51,29 +51,17 @@
     <div class="categories-shop">
         <div class="container">
              <div class="title-all text-center">
-                        <h1>GÓI TẬP</h1>
+                        <h1>TƯ VẤN</h1>
                     </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_04.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói Tháng</a>
+                        <img class="img-fluid" src="{{ url('public/user/images/tuvan.png')}}" alt="" />
+                        <a class="btn hvr-hover" href="TU-VAN">TƯ VẤN MIỄN PHÍ CHO NGƯỜI MỚI</a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_07.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói V.I.P</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_08.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói Sinh Viên</a>
-                    </div>
+                
                 </div>
             </div>
-        </div>
     </div>
     <!-- End Categories -->
 	

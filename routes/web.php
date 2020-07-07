@@ -13,25 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/index', function () {
-    return view('index.home');
-});
+
+Route::get('/index','HomeController@index' );
 Route::get('user', function () {
     return view('user.user');
 });
-Route::get('/SHOP', function () {
-    return view('index.shop');
-});
-Route::get('/PHONG-GYM', function () {
-    return view('index.Gymlist');
-});
+Route::get('PHU-KIEN','HomeController@shop_pk' );
+Route::get('GOI-TAP','HomeController@shop_gt' );
+Route::get('PHONG-GYM','HomeController@phonggym' );
+Route::get('SEARCH-GT','HomeController@searchgt' );
+Route::get('SEARCH-PK','HomeController@searchpk' );
+Route::get('ABOUT','HomeController@about' );
+
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });
 Route::get('/Bv', function () {
     return view('index.baiviet_detail');
 });
-Route::get('/ABOUT', function () {
-    return view('index.about');
+
+Route::get('TU-VAN', function () {
+    return view('index.checkout');
+});
+Route::get('Thongtin', function () {
+    return view('index.tuvan');
 });
 

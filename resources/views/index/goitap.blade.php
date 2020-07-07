@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Shop</h2>
+                    <h2>Gói tập</h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index">Home</a></li>
-                        <li class="breadcrumb-item active">Shop</li>
+                        <li class="breadcrumb-item active">Gói tập</li>
                     </ul>
                 </div>
             </div>
@@ -17,11 +17,11 @@
     </div>
     <!-- End All Title Box -->
 
-    <!-- Start Shop Page  -->
+    <!-- Start GOI-TAP Page  -->
     <div class="shop-box-inner">
         <div class="container">
             <div class="row">
-                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 GOI-TAP-content-right">
                     <div class="right-product-box">
                         <div class="product-item-filter row">
                             <div class="col-12 col-sm-8 text-center text-sm-left">
@@ -61,16 +61,16 @@
                                                     <div class="mask-icon">
                                                          <ul class="nav nav-tabs ml-auto">
                                                             <li>
-                                                                 <a class="nav-link" href="#list{{$sp->id_product}}" data-toggle="tab" data-placement="right" title="View"> <i class="fas fa-eye"></i></a>
+                                                                 <a class="nav-link" href="#list{{$sp->id_combo}}" data-toggle="tab" data-placement="right" title="View"> <i class="fas fa-eye"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <a class="cart" href="#list-view">Add to Cart</a>
+                                                        <a class="cart" href="#list-view">Đăng ký</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
                                                     <ul class="nav nav-tabs ml-auto">
                                                       <li>
-                                                          <a class="nav-link" href="#list{{$sp->id_product}}" data-toggle="tab"><h4>{{$sp->ten}}</h4> </a>
+                                                          <a class="nav-link" href="#list{{$sp->id_combo}}" data-toggle="tab"><h4>{{$sp->name}}</h4> </a>
                                                       </li>
                                                     </ul>
                                                       </a>
@@ -92,7 +92,7 @@
                                                                  <a class="nav-link" href="#list-view2" data-toggle="tab" data-placement="right" title="View"> <i class="fas fa-eye"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <a class="cart" href="#">Add to Cart</a>
+                                                        <a class="cart" href="#">Đăng ký</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 @foreach($product as $sp)
-                                <div role="tabpanel" class="tab-pane fade" id="list{{$sp->id_product}}">
+                                <div role="tabpanel" class="tab-pane fade" id="list{{$sp->id_combo}}">
                                     <div class="list-view-box">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
@@ -129,13 +129,11 @@
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                                 <div class="why-text full-width">
-                                                    <h4>{{$sp->ten}}</h4>
+                                                    <h4>{{$sp->name}}</h4>
                                                     <h5> {{$sp->price}}</h5>
-                                                    <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                        sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                        Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                    <a class="btn hvr-hover" href="SHOP">Back</a>
+                                                    <p>{{$sp->description}}</p>
+                                                    <a class="btn hvr-hover" href="#">Đăng ký</a>
+                                                    <a class="btn hvr-hover" href="GOI-TAP">Back</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,8 +170,8 @@
                                                     <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
                                                         sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
                                                         Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                    <a class="btn hvr-hover" href="SHOP">Back</a>
+                                                    <a class="btn hvr-hover" href="#">Đăng ký</a>
+                                                    <a class="btn hvr-hover" href="GOI-TAP">Back</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,10 +183,10 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+				<div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-GOI-TAP-left">
                     <div class="product-categori">
                         <div class="search-product">
-                            <form action="{{URL::to('/searchpk')}}" >
+                            <form action="{{URL::to('/searchgt')}}" >
                                 <input class="form-control" name="keywords_submit" placeholder="Search here..." type="text">
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
@@ -245,7 +243,7 @@
             </div>
         </div>
     </div>
-    <!-- End Shop Page -->
+    <!-- End GOI-TAP Page -->
 
 
 @stop
