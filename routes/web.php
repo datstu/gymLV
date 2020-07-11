@@ -35,7 +35,5 @@ Route::get('/Bv', function () {
 Route::get('TU-VAN', function () {
     return view('index.checkout');
 });
-Route::get('Thongtin', function () {
-    return view('index.tuvan');
-});
+Route::get('Thongtin','HomeController@tuvan' );
 
