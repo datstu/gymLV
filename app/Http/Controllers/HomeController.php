@@ -21,7 +21,7 @@ class HomeController extends Controller
         return view('index.home',compact('phukien','tpbs'));
     }
     public function shop_pk(){
-        //$banner = Banner::orderby('banner_id','DESC')->where('banner_status','1')->take(3)->get();  
+        
         $loai='shop';
       $product = DB::table('tbl_product')->orderby('id_product','desc')->get(); 
        //var_dump($product);
@@ -32,10 +32,13 @@ class HomeController extends Controller
          return view('index.shop',compact('product','loai','active3','active2','active1'));
     }
     public function shop_gt(){ 
-
+        $loai='shop';
       $product = DB::table('tbl_combo_package')->orderby('id_combo','desc')->get(); 
        //var_dump($product);
-        return view('index.goitap')->with('product',$product);
+       $active3='';
+      $active1='';
+      $active2='';
+         return view('index.goitap',compact('product','loai','active3','active2','active1'));
     }
     public function phonggym(){
           
@@ -45,13 +48,32 @@ class HomeController extends Controller
         return view('index.Gymlist')->with('gym',$gym);
     }
     public function searchgt(Request $request){
-
-        $keywords = $request->keywords_submit;
-        $product = DB::table('tbl_combo_package')->where('ten','like','%'.$keywords.'%')->get(); 
- //var_dump($product);
-        return view('index.goitap')->with('product',$product)->with('keywords',$keywords);
+            $active1='';
+            $active2='';
+            $active3='';
+            $loai=''; 
+            if (isset($request->loai)) {
+            $loai=$request->loai;
+            if ($loai=='hlv') {
+                $product = DB::table('tbl_combo_package')->where('HLV','=','1')->get();
+                return view('index.goitap',compact('product','loai','active3','active2','active1'));
+            }else
+            {
+                $product = DB::table('tbl_combo_package')->where('name','like','%VIP%')->get();
+                return view('index.goitap',compact('product','loai','active3','active2','active1'));
+            }
+        }elseif (isset($request->keywords_submit)) {
+             $keywords = $request->keywords_submit;
+        $product = DB::table('tbl_combo_package')->where('name','like','%'.$keywords.'%')->get(); 
+        return view('index.goitap',compact('product','loai','active3','active2','active1'));
+        }
+       
     }
     public function searchpk(Request $request){
+            $active1='';
+            $active2='';
+            $active3='';
+            $loai=''; 
         if (isset($request->loai)) {
             $active1='';
             $active2='';
@@ -62,7 +84,7 @@ class HomeController extends Controller
         }elseif (isset($request->keywords_submit)) {
             $keywords = $request->keywords_submit;
             $product = DB::table('tbl_product')->where('ten','like','%'.$keywords.'%')->get();
-            return view('index.shop')->with('product',$product);
+            return view('index.shop',compact('product','loai','active3','active2','active1'));
         }
          
          
@@ -86,6 +108,11 @@ $Cannang = isset($request->cn) ? $request->cn : '0';
 $Dotuoi = isset($request->dt) ? $request->dt : '0';
 $Nghenghiep = isset($request->nn) ? $request->nn : '0';
 $Muctieu = isset($request->muctieu) ? $request->muctieu : '0';
+$dd1 = isset($request->dd1) ? $request->dd1 : '';
+$dd2 = isset($request->dd2) ? $request->dd2 : '';
+$dd3 = isset($request->dd3) ? $request->dd3 : '';
+$ch1 = isset($request->ch1) ? $request->ch1 : '';
+$ch2 = isset($request->ch2) ? $request->ch2 : '';
 $Chieucao=$Chieucao*0.01;
 
   function checkstatus($a,$advice,$b)
@@ -97,6 +124,29 @@ $Chieucao=$Chieucao*0.01;
         }
     }  
 }
+//dinh duong
+function check_health($dd1,$dd2,$dd3)
+{
+    if ($dd1==1&&$dd2==1&&$dd3==1) {   
+        # song lanh manh
+    }elseif ($dd1==1||$dd2==1) {
+        # tam ly k tot
+    }elseif ($dd1==0&&$dd2==0&&$dd3==0) {
+        # song khong lanh manh
+    }
+}
+//muc tieu tap luyen
+function check_customer($ch1,$ch2)
+{
+    if ($ch1==1&&$ch2==1) {   
+        # custom loai I
+    }elseif ($ch1==1||$ch2==1) {
+        # custom loai II
+    }elseif ($ch1==0&&$ch2==0) {
+        # custom loai III
+    }
+}
+//loi khuyen
 $BMI = round($Cannang/($Chieucao*$Chieucao), 1);
 if($Gioitinh == 'nu'){
     $Gioitinh= "nữ";
