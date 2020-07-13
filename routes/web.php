@@ -13,18 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index.home');
-});
+
+Route::get('/index','HomeController@index' );
+Route::get('/','HomeController@index' );
 Route::get('user', function () {
     return view('user.user');
 });
-Route::get('/SHOP', function () {
-    return view('index.shop');
+Route::get('PHU-KIEN','HomeController@shop_pk' );
+Route::get('GOI-TAP','HomeController@shop_gt' );
+Route::get('PHONG-GYM','HomeController@phonggym' );
+Route::get('SEARCH-GT','HomeController@searchgt' );
+Route::get('SEARCH-PK','HomeController@searchpk' );
+Route::get('ABOUT','HomeController@about' );
+Route::get('/BOOK', function () {
+    return view('index.book');
 });
-Route::get('/PHONG-GYM', function () {
-    return view('index.PhongGym');
+Route::get('/BAI-VIET', function () {
+    return view('index.baiviet');
 });
+Route::get('/Bv', function () {
+    return view('index.baiviet_detail');
+});
+
+
+Route::get('TU-VAN', function () {
+    return view('index.checkout');
+});
+Route::get('Thongtin','HomeController@tuvan' );
+
+
 Route::get('/admin','AdminController@index');
 
 Route::get('/tat-thong-bao/{mess}','CustomerController@hiddenMessage');
@@ -65,3 +82,6 @@ Route::post('/cap-nhat-san-pham','ProductController@saveEditPD');
 Route::get('/cap-nhat-san-pham/{id}','ProductController@updatePD');
 Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
+
+
+

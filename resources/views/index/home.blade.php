@@ -8,9 +8,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> Gym H&D</strong></h1>
+                            <p class="m-b-40">Hệ thống phòng gym hiện đại, đạt tiêu chuẩn Châu Âu.</p>
+                            <p><a class="btn hvr-hover" href="#">ĐĂNG KÍ NGAY</a></p>
                         </div>
                     </div>
                 </div>
@@ -20,9 +20,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Cam Kết</strong></h1>
+                            <p class="m-b-40">Dịch vụ tốt nhất, hoàn hảo nhất, luôn đồng hành với các bạn trong hành trình thay đổi bản thân, thay đổi cuộc sống.</p>
+                             <p><a class="btn hvr-hover" href="#">ĐĂNG KÍ NGAY</a></p>
                         </div>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong><br>Chăm chỉ - Thành công</strong></h1>
+                            <p class="m-b-40">Chúng tôi luôn nỗ lực thay đôi, phát triễn để cung cấp đến bạn những kiến thức đúng và chuẩn nhất, bạn chỉ cần chăm chỉ luyện tập và thành công.</p>
+                             <p><a class="btn hvr-hover" href="#">ĐĂNG KÍ NGAY</a></p>
                         </div>
                     </div>
                 </div>
@@ -51,29 +51,17 @@
     <div class="categories-shop">
         <div class="container">
              <div class="title-all text-center">
-                        <h1>GÓI TẬP</h1>
+                        <h1>TƯ VẤN</h1>
                     </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_01.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói Tháng</a>
+                        <img class="img-fluid" src="{{ url('public/user/images/tuvan.png')}}" alt="" />
+                        <a class="btn hvr-hover" href="TU-VAN">TƯ VẤN MIỄN PHÍ CHO NGƯỜI MỚI</a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_02.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói V.I.P</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="{{ url('public/user/images/categories_img_03.jpg')}}" alt="" />
-                        <a class="btn hvr-hover" href="#">Gói Sinh Viên</a>
-                    </div>
+                
                 </div>
             </div>
-        </div>
     </div>
     <!-- End Categories -->
 	
@@ -82,12 +70,12 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div class="offer-box-products">
-						<img class="img-fluid" src="{{ url('public/user/images/add-img-01.jpg')}}" alt="" />
+						<img class="img-fluid" src="{{ url('public/user/images/add-img-03.jpg')}}" alt="" />
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<div class="offer-box-products">
-						<img class="img-fluid" src="{{ url('public/user/images/add-img-02.jpg')}}" alt="" />
+						<img class="img-fluid" src="{{ url('public/user/images/add-img-05.jpg')}}" alt="" />
 					</div>
 				</div>
 			</div>
@@ -100,7 +88,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>TPBS & Thiết bị</h1>
+                        <h1>TPBS & Phụ kiện</h1>
                         <p>Chúng tôi cam kết cung cấp các sản phẩm chất lượng nhất và an toàn nhất cho người sử dụng</p>
                     </div>
                 </div>
@@ -110,21 +98,22 @@
                     <div class="special-menu text-center">
                         <div class="button-group filter-button-group">
                             <button class="active" data-filter="*">All</button>
-                            <button data-filter=".top-featured">Top featured</button>
-                            <button data-filter=".best-seller">Best seller</button>
+                            <button data-filter=".top-featured">TPBS</button>
+                            <button data-filter=".best-seller">Phụ kiện</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="row special-list">
+                @foreach($phukien as $sp)
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
                             <div class="type-lb">
-                                <p class="sale">Sale</p>
+                                <p class="sale">HOT</p>
                             </div>
-                            <img src="{{ url('public/user/images/img-pro-01.jpg')}}" class="img-fluid" alt="Image">
+                            <img src="{{url('public/user/images/'.$sp->img)}}" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -135,19 +124,20 @@
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $7.79</h5>
+                            <h4>{{$sp->ten}}</h4>
+                            <h5> {{$sp->price}}</h5>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
+@endforeach
+@foreach($tpbs as $sp)            
+    <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
                             <div class="type-lb">
-                                <p class="new">New</p>
+                                <p class="new">HOT</p>
                             </div>
-                            <img src="{{ url('public/user/images/img-pro-02.jpg')}}" class="img-fluid" alt="Image">
+                            <img src="{{url('public/uploads/product/'.$sp->img)}}" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -158,57 +148,12 @@
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $9.79</h5>
+                            <h4>{{$sp->ten}}</h4>
+                            <h5> {{$sp->price}}</h5>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="{{ url('public/user/images/img-pro-03.jpg')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $10.79</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="{{ url('public/user/images/img-pro-04.jpg')}}" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $15.79</h5>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -286,91 +231,7 @@
     <!-- End Blog  -->
 
 
-    <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-01.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-02.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-03.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-04.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-05.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-06.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-07.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-08.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-09.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ url('public/user/images/instagram-img-05.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     @stop
     <!-- End Instagram Feed  -->
 

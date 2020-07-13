@@ -64,7 +64,7 @@
                         <div id="offer-box" class="carouselTicker">
                             <ul class="offer-box">
                                 <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
+                                    <i class="fab fa-opencart"></i> Giảm giá 20% đối với Sinh Viên
                                 </li>
                                 <li>
                                     <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
@@ -106,37 +106,40 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="{{ url('public/user/images/logo.png')}}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index"><img src="{{ url('public/user/images/logo2.png')}}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        
+
+                      
+
+                        <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ABOUT">Giới thiệu</a></li>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện Bài Tập</a>
+                            <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
+
                             <ul class="dropdown-menu">
-								<li><a href="shop.html">Tập Ngực</a></li>
-								<li><a href="shop-detail.html">Tập Vai</a></li>
-                                <li><a href="cart.html">Tập Lưng</a></li>
-                                <li><a href="checkout.html">Tập Bụng</a></li>
-                                <li><a href="my-account.html">Tập Mông</a></li>
-                                <li><a href="wishlist.html">Tập Chân</a></li>
-                                <li><a href="wishlist.html">Tập Tay</a></li>
+								<li><a href="shop.html">Bài Tập</a></li>
+                                <li><a href="wishlist.html">Dinh Dưỡng</a></li>
                             </ul>
                         </li>
                          <li class="dropdown">
                             <a href="SHOP" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
-                                <li><a href="shop.html">TPBS</a></li>
-                                <li><a href="shop-detail.html">Phụ Kiện</a></li>
+                                <li><a href="GOI-TAP">Gói tập</a></li>
+                                <li><a href="PHU-KIEN">Phụ Kiện</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Kết Quả</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">Hồ Sơ Của Bạn</a></li>
+
+                      
+                      
+
+                        <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -144,7 +147,7 @@
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav">
                     <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        
                         <li class="side-menu">
 							<a href="#">
 								<i class="fa fa-shopping-bag"></i>
@@ -188,15 +191,4 @@
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
     <!-- End Top Search -->

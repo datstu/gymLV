@@ -87,8 +87,8 @@
                         </label>
                     </td> --}}
                     <td>{{$user->id_product }}</td>
-                    <td>{{$user->name    }}</td>
-                    <td><img src="{{asset('public/uploads/product/'.$user->image )}}" width="100px"></td>
+                    <td>{{$user->ten    }}</td>
+                    <td><img src="{{asset('public/uploads/product/'.$user->img )}}" width="100px"></td>
                     <td>{{$user->description }}</td>
                     <td>{{number_format($user->price) }}</td>
                    
