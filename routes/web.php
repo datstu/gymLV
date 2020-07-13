@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/index','HomeController@index' );
+Route::get('/','HomeController@index' );
 Route::get('user', function () {
     return view('user.user');
 });
