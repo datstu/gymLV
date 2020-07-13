@@ -113,7 +113,7 @@
                             <div class="type-lb">
                                 <p class="sale">HOT</p>
                             </div>
-                            <img src="<?php echo e(url('public/uploads/produc/'.$sp->img)); ?>" class="img-fluid" alt="Image">
+                            <img src="<?php echo e(url('public/uploads/product/'.$sp->img)); ?>" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
