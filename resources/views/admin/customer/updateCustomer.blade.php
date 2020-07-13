@@ -6,13 +6,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Thêm Hội Viên</li>
+				<li class="active">Cập nhật thông tin Hội Viên</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thêm Hội Viên</h1>
+				<h1 class="page-header">Cập nhật thông tin Hội Viên</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -26,7 +26,36 @@
                 <div class="panel panel-default">
                     
                     <div class="panel-body">
-                        <form class="form-horizontal" id="frmAddUser"  method="get" >
+                        @if(count($errors) > 0)
+                           
+                          
+                           <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$errors->first()}}<a href="" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                            
+                           
+                    
+                        @endif
+                        <?php 
+
+                            $success = Session::get('success');
+                            $err = Session::get('error');
+                            Session::put('id',null);
+
+
+                        ?>
+                       @if($success)
+                       <?php  $str = 'success'; ?>
+                       <div class="alert bg-teal" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> 
+                        {{$success}} <a href="{{url('/tat-thong-bao/'.$str)}}" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                        <?php Session::put('success',null); ?>
+                       @endif
+
+                    @if($err)
+                       <?php  $str = 'error'; ?>
+                     <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$err}}<a href="{{url('/tat-thong-bao/'.$str)}}" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                       <?php Session::put('success',null); ?>     
+                    @endif
+
+                        <form class="form-horizontal" action="{{url('/cap-nhat-hoi-vien')}}" id="frmAddUser"  method="post" >
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">
@@ -35,6 +64,7 @@
                                         <input id="iduser" name="iduser" type="text" placeholder="Nhập họ và tên của bạn..." class="form-control">
                                     </div>
                                 </div> --}}
+                                @csrf
                                  <div class="form-group">
                                     <label class="col-md-2 control-label" for="name">Họ và tên</label>
                                     <div class="col-md-9">
@@ -68,23 +98,14 @@
                                         <input type="hidden" name="id_user" value="{{$users->id_user}}">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                        <label class="col-md-2 control-label">Kinh Nghiệm</label>
-                                        <div class="col-md-3">
-                                        <select class="form-control" name="id_level">
-                                            @foreach($level as $val)
-                                            <option value="{{$val->id_level}}">{{$val->name_level}}</option>
-                                            @endforeach
-                                        </select>
-                                        </div>
-                                    </div>
+                               
                                 
                               
                                 
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-4 widget-right">
-                                        <input type="button" id="btnEditUser"class="btn btn-default btn-md pull-right" name="" value="Cập nhật">
+                                        <input type="submit" id="btnEditUser"class="btn btn-default btn-md pull-right" name="" value="Cập nhật">
                                         
                                     </div>
                                 </div>
@@ -95,39 +116,7 @@
                
 
             </div><!--/.col-->
-            <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-default articles">
-                    <div class="panel-heading">
-                        Ghi chú
-                        
-                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body articles-container">
-                        @foreach($level as $val)
-                        <div class="article border-bottom">
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-2 col-md-2 date">
-                                        <div class="large">{{$val->id_level}}</div>
-                                        
-                                    </div>
-                                    <div class="col-xs-10 col-md-10">
-                                        <h4><a href="#">{{$val->name_level}}</a></h4>
-                                        <p>{{$val->description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clear"></div>
-                        </div><!--End .article-->
-                        @endforeach
-                        
-                        
-                        
-                    </div>
-                </div><!--End .articles-->
-                </div>
-              
-            </div><!--/.col-->
+            <div class="row"></div><!--/.col-->
             
            
         
@@ -138,27 +127,27 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-        $('#btnEditUser').on('click', function(event){
-            //alert("hi");
-            $.ajax({
-                                 url:'{{url('/saveEditUser')}}',
+	// $(document).ready(function(){
+ //        $('#btnEditUser').on('click', function(event){
+ //            //alert("hi");
+ //            $.ajax({
+ //                                 url:'{{url('/saveEditUser')}}',
 
-                                 type:'GET',
-                                 data: $('form#frmAddUser').serializeArray(),
-                                 success:function(s)
-                                 {
+ //                                 type:'GET',
+ //                                 data: $('form#frmAddUser').serializeArray(),
+ //                                 success:function(s)
+ //                                 {
 
-                                     alert(s);
+ //                                     alert(s);
                                     
-                                    //console.log("sads");
+ //                                    //console.log("sads");
                                
-                                 }
+ //                                 }
                         
-                });
-            $("form#frmAddUser").trigger("reset");
+ //                });
+ //            $("form#frmAddUser").trigger("reset");
 
-        });
-    });
+ //        });
+ //    });
 </script>
 @endsection

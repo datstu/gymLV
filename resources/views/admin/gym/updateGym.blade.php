@@ -6,13 +6,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Thêm Hội Viên</li>
+				<li class="active">Cập nhật thông tin Phòng gym</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thêm Hội Viên</h1>
+				<h1 class="page-header">Cập nhật thông tin Phòng gym</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -29,29 +29,33 @@
                         @if(count($errors) > 0)
                            
                           
-                           <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$errors->first()}}<a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                           <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$errors->first()}}<a href="" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                             
                            
                     
                         @endif
                         <?php 
+
                             $success = Session::get('success');
                             $err = Session::get('error');
+                            Session::put('id',null);
+
 
                         ?>
-                       @if($success) <?php  $str = 'success'; ?>
+                       @if($success)
+                       <?php  $str = 'success'; ?>
                        <div class="alert bg-teal" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> 
                         {{$success}} <a href="{{url('/tat-thong-bao/'.$str)}}" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                         <?php Session::put('success',null); ?>
                        @endif
 
-                    @if($err) <?php  $str = 'error'; ?>
+                    @if($err)
+                       <?php  $str = 'error'; ?>
                      <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$err}}<a href="{{url('/tat-thong-bao/'.$str)}}" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                        <?php Session::put('error',null); ?>     
                     @endif
 
-
-                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-khach-hang')}}" method="post" >
+                        <form class="form-horizontal" action="{{url('/cap-nhat-phong-tap')}}" id="frmAddUser"  method="post" >
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">
@@ -64,43 +68,33 @@
                                  <div class="form-group">
                                     <label class="col-md-2 control-label" for="name">Họ và tên</label>
                                     <div class="col-md-9">
-                                        <input id="name" name="name" type="text" placeholder="Nhập họ và tên của bạn..." class="form-control">
+                                        <input id="name" name="name" type="text" value="{{$gym->name}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="address">Địa chỉ</label>
                                     <div class="col-md-9">
-                                        <input id="address" name="address" type="text" placeholder="Nhập địa chỉ của bạn..." class="form-control">
+                                        <input id="address" name="address" type="text" value="{{$gym->address}}" class="form-control">
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" for="phone">Số điện thoại</label>
-                                    <div class="col-md-9">
-                                        <input id="phone" name="phone" type="text" placeholder="Nhập số điện thoại của bạn..." class="form-control" >
+                                   
+                                        <input id="phone" name="id_pt" type="hidden" value="{{$gym->id_gym }}" class="form-control" >
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="email" >Email</label>
-                                    <div class="col-md-9">
-                                        <input id="email" name="email" type="text"  placeholder="Nhập email của bạn..." class="form-control" >
-                                    </div>
-                                </div>
+                                
                             
                                 <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="pass">Mật khẩu</label>
-                                    <div class="col-md-9">
-                                        <input id="pass" name="pass" placeholder="*******" type="password"  class="form-control" autocomplete="new-password">
-                                    </div>
-                                </div>
-                           
+                               
+                               
                                 
                               
                                 
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-4 widget-right">
-                                        <input type="submit" id="btnAddUser"class="btn btn-default btn-md pull-right" name="" value="Thêm">
+                                        <input type="submit" id="btnEditUser"class="btn btn-default btn-md pull-right" name="" value="Cập nhật">
                                         
                                     </div>
                                 </div>
@@ -122,27 +116,27 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 <script type="text/javascript">
-	/*$(document).ready(function(){
-        $('#btnAddUser').on('click', function(event){
-            //alert("hi");
-            $.ajax({
-                                 url:'',
+	// $(document).ready(function(){
+ //        $('#btnEditUser').on('click', function(event){
+ //            //alert("hi");
+ //            $.ajax({
+ //                                 url:'{{url('/saveEditUser')}}',
 
-                                 type:'GET',
-                                 data: $('form#frmAddUser').serializeArray(),
-                                 success:function(s)
-                                 {
+ //                                 type:'GET',
+ //                                 data: $('form#frmAddUser').serializeArray(),
+ //                                 success:function(s)
+ //                                 {
 
-                                     alert(s);
+ //                                     alert(s);
                                     
-                                    //console.log("sads");
+ //                                    //console.log("sads");
                                
-                                 }
+ //                                 }
                         
-                });
-            $("form#frmAddUser").trigger("reset");
+ //                });
+ //            $("form#frmAddUser").trigger("reset");
 
-        });
-    });*/
+ //        });
+ //    });
 </script>
 @endsection

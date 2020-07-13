@@ -29,12 +29,12 @@
                         @if(count($errors) > 0)
                            
                           
-                           <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$errors->first()}}<a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
+                           <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em>{{$errors->first()}}<a href="#" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
                             
                            
                     
                         @endif
-                        <?php 
+                         <?php 
                             $success = Session::get('success');
                             $err = Session::get('error');
 
@@ -47,11 +47,11 @@
 
                     @if($err) <?php  $str = 'error'; ?>
                      <div class="alert bg-danger" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em> {{$err}}<a href="{{url('/tat-thong-bao/'.$str)}}" class="pull-right"><em class="fa fa-lg fa-close"></em></a></div>
-                       <?php Session::put('error',null); ?>     
+                       <?php Session::put('success',null); ?>     
                     @endif
+                       
 
-
-                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-khach-hang')}}" method="post" >
+                        <form class="form-horizontal" id="frmAddUser"  action="{{url('/them-huan-luan-vien')}}" method="post" >
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">
@@ -79,21 +79,11 @@
                                         <input id="phone" name="phone" type="text" placeholder="Nhập số điện thoại của bạn..." class="form-control" >
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="email" >Email</label>
-                                    <div class="col-md-9">
-                                        <input id="email" name="email" type="text"  placeholder="Nhập email của bạn..." class="form-control" >
-                                    </div>
-                                </div>
+                                <div class="form-group"></div>
                             
                                 <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="pass">Mật khẩu</label>
-                                    <div class="col-md-9">
-                                        <input id="pass" name="pass" placeholder="*******" type="password"  class="form-control" autocomplete="new-password">
-                                    </div>
-                                </div>
-                           
+                                <div class="form-group"></div>
+                                <div class="form-group"></div>
                                 
                               
                                 
@@ -126,7 +116,7 @@
         $('#btnAddUser').on('click', function(event){
             //alert("hi");
             $.ajax({
-                                 url:'',
+                                 url:'{{url('/addPT')}}',
 
                                  type:'GET',
                                  data: $('form#frmAddUser').serializeArray(),

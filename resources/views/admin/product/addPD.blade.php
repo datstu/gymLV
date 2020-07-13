@@ -6,13 +6,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Thêm Hội Viên</li>
+				<li class="active">Thêm sản phẩm mới</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thêm Hội Viên</h1>
+				<h1 class="page-header">Thêm sản phẩm mới</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -51,7 +51,7 @@
                     @endif
 
 
-                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-khach-hang')}}" method="post" >
+                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-san-pham')}}" method="post" enctype="multipart/form-data">
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">
@@ -62,37 +62,34 @@
                                 </div> --}}
                                 @csrf
                                  <div class="form-group">
-                                    <label class="col-md-2 control-label" for="name">Họ và tên</label>
+                                    <label class="col-md-2 control-label" for="name">Tên sản phẩm</label>
                                     <div class="col-md-9">
-                                        <input id="name" name="name" type="text" placeholder="Nhập họ và tên của bạn..." class="form-control">
+                                        <input id="name" name="name" type="text" placeholder="Nhập tên gói..." class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" for="address">Địa chỉ</label>
+                                    <label class="col-md-2 control-label" for="name">Mô tả</label>
                                     <div class="col-md-9">
-                                        <input id="address" name="address" type="text" placeholder="Nhập địa chỉ của bạn..." class="form-control">
+                                        <textarea rows="4"  id="name" name="descript" type="text"  class="form-control"></textarea>
+
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Giá</label>
+                                    <div class="col-md-9">
+                                        <input id="name" name="price" type="text" placeholder="100,000" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label" for="phone">Số điện thoại</label>
+                                    <label class="col-md-2 control-label" for="exampleInputEmail1">Hình ảnh </label>
                                     <div class="col-md-9">
-                                        <input id="phone" name="phone" type="text" placeholder="Nhập số điện thoại của bạn..." class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="email" >Email</label>
+                                    <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
                                     <div class="col-md-9">
-                                        <input id="email" name="email" type="text"  placeholder="Nhập email của bạn..." class="form-control" >
-                                    </div>
                                 </div>
+                               
+                                
                             
-                                <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="pass">Mật khẩu</label>
-                                    <div class="col-md-9">
-                                        <input id="pass" name="pass" placeholder="*******" type="password"  class="form-control" autocomplete="new-password">
-                                    </div>
-                                </div>
+                                
                            
                                 
                               

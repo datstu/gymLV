@@ -1,4 +1,4 @@
- @extends('admin.index')
+@extends('admin.index')
 @section('content')
 
 		<div class="row">
@@ -6,13 +6,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Quản lý khách hàng</li>
+				<li class="active">Quản lý phòng tập</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Quản lý khách hàng</h1>
+				<h1 class="page-header">Quản lý Phòng tập</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -27,9 +27,9 @@
 						<div class="col-md-9">
 							
 							
-							<a href="{{url('/them-khach-hang')}}"><button type="button" id="btn-add-customer" class="btn btn-md btn-primary">
+							<a href="{{url('/them-phong-tap')}}"><button type="button" id="btn-add-customer" class="btn btn-md btn-primary">
 							
-              				 <i class="zmdi zmdi-plus"></i>+ Thêm Hội Viên</button></a>
+              				 <i class="zmdi zmdi-plus"></i>+ Thêm Phòng</button></a>
 							
 							<br />
 							
@@ -68,16 +68,13 @@
                     <th>ID</th>
                     <th>Tên khách hàng</th>
                     <th>Địa Chỉ</th>
-                    <th>Số điện thoại</th>
                     
-                    <th>Email</th>
-                 
-                    <th>Kinh Nghiệm</th>
+                    
+                                      <th></th>
                     <th></th>
-                  
                 </tr>
             </thead>
-              @foreach($users as $user) 
+              @foreach($listGym as $user) 
             <tbody>
                 <tr class="tr-shadow">
                     {{-- <td>
@@ -86,18 +83,18 @@
                             <span class="au-checkmark"></span>
                         </label>
                     </td> --}}
-                    <td>{{$user->id_user }}</td>
+                    <td>{{$user->id_gym   }}</td>
                     <td>{{$user->name }}</td>
                     <td>{{$user->address }}</td>
                     <!-- <td class="desc">Samsung S8 Black</td> -->
-                    <td>{{$user->phone }}</td>
-                    <td>{{$user->email }}</td>
+                    
+                   
                     
               
-              
+                   
                     <td>
                         
-                            <a href="{{url('/cap-nhat-hoi-vien/'.$user->id_user)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{{url('/cap-nhat-phong-tap/'.$user->id_gym)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </td>            
                           
                             {{-- <button class="item " data-toggle="tooltip" data-placement="top"  title="Delete" onclick="return confirm('Bạn có chắc muốn XOÁ sản phẩm này?')" >
@@ -108,7 +105,7 @@
                             
                           
                     <div class ="delUser"> 
-                            <a href="{{url('/delUser/'.$user->id_user)}}" onclick="return confirm('Bạn có chắc muốn XOÁ hội viên này?')">
+                            <a href="{{url('/delGym/'.$user->id_gym )}}" onclick="return confirm('Bạn có chắc muốn XOÁ phòng này?')">
                                 <i class="fa fa-trash" aria-hidden="true" style="border: none;"></i>
                                 </a>
                     </div>

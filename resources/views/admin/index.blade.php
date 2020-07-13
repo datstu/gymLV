@@ -101,14 +101,15 @@
 		<ul class="nav menu">
 			<li class="active"><a href="{{url('/admin')}}"><em class="fa fa-dashboard">&nbsp;</em> Trang chủ</a></li>
 			<li><a href="{{url('quan-ly-khach-hang')}}"><em class="fa fa-calendar">&nbsp;</em> Quản Lý Khách hàng</a></li>
-			<li><a href=""><em class="fa fa-bar-chart">&nbsp;</em> QL Huấn luận viên</a></li>
-			<li><a href=""><em class="fa fa-toggle-off">&nbsp;</em> Quản lý Phòng Gym</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Thời Khóa Biểu</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Gói Tập</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Sản phẩm</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> Level Khách Hàng</a></li>
+			<li><a href="{{url('quan-ly-huan-luan-vien')}}"><em class="fa fa-bar-chart">&nbsp;</em> QL Huấn luận viên</a></li>
+			<li><a href="{{url('quan-ly-phong-tap')}}"><em class="fa fa-toggle-off">&nbsp;</em> Quản lý Phòng Gym</a></li>
+			
+			<li><a href="{{url('quan-ly-goi-tap')}}"><em class="fa fa-clone">&nbsp;</em> QL Gói Tập</a></li>
+			<li><a href="{{url('quan-ly-san-pham')}}"><em class="fa fa-clone">&nbsp;</em> QL Sản phẩm</a></li>
+			
 			<li><a href=""><em class="fa fa-clone">&nbsp;</em> Hóa Đơn</a></li>
-				<li><a href=""><em class="fa fa-clone">&nbsp;</em> Trạng thái</a></li>
+			<li><a href=""><em class="fa fa-clone">&nbsp;</em> Trạng thái</a></li>
+			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Thời Khóa Biểu</a></li>
 			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>

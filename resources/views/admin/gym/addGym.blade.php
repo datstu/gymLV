@@ -6,13 +6,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Thêm Hội Viên</li>
+				<li class="active">Thêm Phòng tập mới</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thêm Hội Viên</h1>
+				<h1 class="page-header">Thêm Phòng tập mới</h1>
 			</div>
 		</div><!--/.row-->
 		
@@ -51,7 +51,7 @@
                     @endif
 
 
-                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-khach-hang')}}" method="post" >
+                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-phong-tap')}}" method="post" >
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">
@@ -62,7 +62,7 @@
                                 </div> --}}
                                 @csrf
                                  <div class="form-group">
-                                    <label class="col-md-2 control-label" for="name">Họ và tên</label>
+                                    <label class="col-md-2 control-label" for="name">Tên phòng</label>
                                     <div class="col-md-9">
                                         <input id="name" name="name" type="text" placeholder="Nhập họ và tên của bạn..." class="form-control">
                                     </div>
@@ -73,26 +73,10 @@
                                         <input id="address" name="address" type="text" placeholder="Nhập địa chỉ của bạn..." class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="phone">Số điện thoại</label>
-                                    <div class="col-md-9">
-                                        <input id="phone" name="phone" type="text" placeholder="Nhập số điện thoại của bạn..." class="form-control" >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="email" >Email</label>
-                                    <div class="col-md-9">
-                                        <input id="email" name="email" type="text"  placeholder="Nhập email của bạn..." class="form-control" >
-                                    </div>
-                                </div>
+                               
+                                
                             
-                                <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label" for="pass">Mật khẩu</label>
-                                    <div class="col-md-9">
-                                        <input id="pass" name="pass" placeholder="*******" type="password"  class="form-control" autocomplete="new-password">
-                                    </div>
-                                </div>
+                                
                            
                                 
                               
