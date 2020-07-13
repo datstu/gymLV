@@ -166,15 +166,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Gói Tập 
-								<small class="text-muted">(50)</small>
-								</a>
-                                    <div class="collapse" id="sub-men2" data-parent="#list-group-men">
+                               <div class="list-group-collapse sub-men">
+                                    <a class="list-group-item list-group-item-action " href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men1" >Gói tập <small class="text-muted">(100)</small>
+                                </a>
+                                    <div class="collapse " id="sub-men2" data-parent="#list-group-men">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 1 <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 2 <small class="text-muted">(20)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 3 <small class="text-muted">(20)</small></a>
+                                            <a href="{{URL::to('/SEARCH-GT?loai=hlv')}}" class="list-group-item ist-group-item-action {{$active2}}">Có HLV <small class="text-muted">(50)</small></a>
+                                            <a href="{{URL::to('/SEARCH-GT?loai=vip')}}" class="list-group-item list-group-item-action {{$active1}}">Gói VIP <small class="text-muted">(10)</small></a>
+                                            
                                         </div>
                                     </div>
                                 </div>

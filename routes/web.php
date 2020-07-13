@@ -24,7 +24,9 @@ Route::get('PHONG-GYM','HomeController@phonggym' );
 Route::get('SEARCH-GT','HomeController@searchgt' );
 Route::get('SEARCH-PK','HomeController@searchpk' );
 Route::get('ABOUT','HomeController@about' );
-
+Route::get('/BOOK', function () {
+    return view('index.book');
+});
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });

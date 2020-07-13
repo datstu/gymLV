@@ -127,7 +127,7 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Kết Quả</a></li>
+                        <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
