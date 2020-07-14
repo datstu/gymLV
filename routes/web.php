@@ -25,9 +25,7 @@ Route::get('PHONG-GYM','HomeController@phonggym' );
 Route::get('SEARCH-GT','HomeController@searchgt' );
 Route::get('SEARCH-PK','HomeController@searchpk' );
 Route::get('ABOUT','HomeController@about' );
-Route::get('/BOOK', function () {
-    return view('index.book');
-});
+
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });
@@ -82,6 +80,10 @@ Route::post('/cap-nhat-san-pham','ProductController@saveEditPD');
 Route::get('/cap-nhat-san-pham/{id}','ProductController@updatePD');
 Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
+
+Route::get('/BOOK', 'ScheduleController@homeSchedule');
+Route::get('/dat-lich','ScheduleController@bookSchedule');
+
 
 
 
