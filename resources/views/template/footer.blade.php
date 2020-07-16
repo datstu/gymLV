@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+        <a href="#" id="back-to-top" title="Back to top" style="display: none;padding-top: 9px;">&uarr;</a>
     </footer>
     <!-- End Footer  -->
      <!-- ALL JS FILES -->

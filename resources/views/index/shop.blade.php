@@ -70,7 +70,7 @@
                                                                  <a class="nav-link" href="#list{{$sp->id_product}}" data-toggle="tab" data-placement="right" title="View"> <i class="fas fa-eye"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <a class="cart" href="#list-view">Add to Cart</a>
+                                                        <a class="cart" href="{{ route('themgiohang',$sp->id_product) }}">Add to Cart</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
@@ -117,8 +117,13 @@
                                                     <h4>{{$sp->ten}}</h4>
                                                     <h5> {{$sp->price}}</h5>
                                                     <p>{{$sp->description}}</p>
-                                                    <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                                    <a class="btn hvr-hover" href="#" onclick="getback()">Back</a>
+                                                    <form action="{{ route('themgiohang',$sp->id_product) }}" method="GET">
+                                                    <div class="quantity-box"><input type="number" name="sl" size="4" value="1" min="0" step="1" ></div>
+                                                   <br>
+                                                    <button type="submit" class="btn hvr-hover">Add to cart</button>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                     <button class="btn hvr-hover" href="#" onclick="getback()">Back</button>
+                                    </form>
                                                 </div>
                                             </div>
                                         </div>

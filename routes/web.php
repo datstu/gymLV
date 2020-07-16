@@ -30,12 +30,65 @@ Route::get('/BOOK', function () {
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });
+
 Route::get('/Bv', function () {
     return view('index.baiviet_detail');
 });
-
+//cart
+Route::get('add-to-cart/{id}','HomeController@getAddtoCart')->name('themgiohang');
+Route::get('del-cart/{id}','HomeController@getDelItemCart')->name('xoagiohang');
+Route::get('del-all-cart','HomeController@delAll')->name('resetgiohang');
+Route::get('/CART-DETAIL', function () {
+    return view('index.cart');
+});
+Route::get('search', 'HomeController@ajax')->name('search');
 Route::get('TU-VAN', function () {
     return view('index.checkout');
 });
 Route::get('Thongtin','HomeController@tuvan' );
+
+
+
+Route::get('/admin','AdminController@index');
+
+Route::get('/tat-thong-bao/{mess}','CustomerController@hiddenMessage');
+
+Route::get('/quan-ly-khach-hang','CustomerController@listCustomer');
+Route::get('/them-khach-hang','CustomerController@addCustomer');
+Route::post('/them-khach-hang','CustomerController@saveAddCustomer');
+Route::get('/delUser/{id}','CustomerController@delCustomer');
+Route::get('/cap-nhat-hoi-vien/{id}','CustomerController@updateCustomer');
+Route::post('/cap-nhat-hoi-vien','CustomerController@saveEditCustomer');
+
+
+Route::get('/quan-ly-huan-luan-vien','PersonTrainerController@listPT');
+Route::get('/them-huan-luan-vien','PersonTrainerController@addPT');
+Route::post('/them-huan-luan-vien','PersonTrainerController@saveAddPT');
+Route::get('/cap-nhat-huan-luan-vien/{id}','PersonTrainerController@updatePT');
+Route::post('/cap-nhat-PT','PersonTrainerController@saveEditPT');
+Route::get('/delPT/{id}','PersonTrainerController@delPT');
+
+Route::get('/quan-ly-phong-tap','GymController@listGym');
+Route::get('/them-phong-tap','GymController@addGym');
+Route::post('/them-phong-tap','GymController@saveAddGym');
+Route::post('/cap-nhat-phong-tap','GymController@saveEditGym');
+Route::get('/cap-nhat-phong-tap/{id}','GymController@updateGym');
+Route::get('/delGym/{id}','GymController@delGym');
+
+Route::get('/quan-ly-goi-tap','ComboGymController@listCB');
+Route::get('/them-goi-tap','ComboGymController@addCB');
+Route::post('/them-goi-tap','ComboGymController@saveAddCB');
+Route::post('/cap-nhat-goi-tap','ComboGymController@saveEditCB');
+Route::get('/cap-nhat-goi-tap/{id}','ComboGymController@updateCB');
+Route::get('/delCB/{id}','ComboGymController@delCB');
+
+Route::get('/quan-ly-san-pham','ProductController@listPD');
+Route::get('/them-san-pham','ProductController@addPD');
+Route::post('/them-san-pham','ProductController@saveAddPD');
+Route::post('/cap-nhat-san-pham','ProductController@saveEditPD');
+Route::get('/cap-nhat-san-pham/{id}','ProductController@updatePD');
+Route::get('/delPD/{id}','ProductController@delPD');
+Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
+
+
 
