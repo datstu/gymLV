@@ -43,6 +43,7 @@ Route::get('/CART-DETAIL', function () {
     return view('index.cart');
 });
 Route::get('search', 'HomeController@ajax')->name('search');
+Route::get('updateCart', 'HomeController@ajaxUpdate')->name('updatecart');
 Route::get('TU-VAN', function () {
     return view('index.checkout');
 });

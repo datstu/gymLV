@@ -189,7 +189,7 @@ use App\Cart;
                             <p>Vui lòng chọn sản phẩm cần mua <span class="price"></span></p>
                         </li>
                          <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <a href="CART-DETAIL" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
                             <span class="float-right"><strong>Total</strong>: 0</span>
                         </li>
                         @endif

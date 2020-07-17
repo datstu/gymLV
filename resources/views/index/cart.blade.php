@@ -93,14 +93,15 @@ function F2(sl,id)
                                     <td class="price-pr">
                                         <p>${{number_format($prod['product']->price)}}</p>
                                     </td>
-                                    <td class="quantity-box"><input type="number" size="4" value="{{$prod['soluong']}}" min="0" step="1" onchange ="F2(this.value,{{$prod['product']->id_product}})" class="c-input-text qty text"></td>
+                                    <td class="quantity-box"><input type="number" name="sl" size="4" value="{{$prod['soluong']}}" min="0" step="1" onchange ="F2(this.value,{{$prod['product']->id_product}})" class="c-input-text qty text"></td>
                                     <td class="total-pr" id="price{{$prod['product']->id_product}}">
-                                        <p>${{number_format($prod['product']->price*$prod['soluong'])}}</p>
+                                        <p>${{number_format($prod['price'])}}</p>
                                     </td>
                                     <td class="remove-pr">
                                         <a href="{{ route('xoagiohang',$prod['product']->id_product) }}">
 									<i class="fas fa-times"></i>
 								</a>
+                                 
                                     </td>
                                 </tr>
                                 @endforeach

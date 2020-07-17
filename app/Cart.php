@@ -16,32 +16,45 @@ class Cart
 		}
 	}
 
-	public function add($product, $sl,$id){	
+	public function add($product, $sl,$id,$active){	
 	$gia = $product->price;
-	
-	//echo $product['id_product'];
-		
 		if($this->items){
 			if(array_key_exists($id, $this->items)){
 				$giohang = $this->items[$id];
-				$giohang['soluong'] += $sl;
-				$giohang['price'] = $gia * $sl;
+				if ($giohang['soluong']>=$sl ) {
+					if ($active=='update') {
+						$temp=$giohang['soluong'] - $sl;
+						$giohang['soluong'] = $sl;
+						$this->totalPrice -= ($giohang['price']*$temp);
+					}else{
+						$giohang['soluong'] += $sl;
+						$giohang['price'] = $gia * $giohang['soluong'];
+						$giachenhlech= $sl * $gia;
+						$this->totalPrice += $giachenhlech;
+					}				
+				}else{
+					$giohang['soluong'] = $sl;
+					$giohang['price'] = $gia * $sl;
+					$temp=$giohang['soluong'] - $sl;
+					$this->totalPrice -= ($giohang['price']*$temp);
+					}
 			}else
 				{
 					$giohang = ['soluong'=>$sl, 'price' => $gia, 'product' => $product];
 					$this->totalQty++;
 					$giohang['price'] = $gia * $giohang['soluong'];
+					$this->totalPrice += $giohang['price'];
 				}
 		}else
 		{
 			$giohang = ['soluong'=>$sl, 'price' => $gia, 'product' => $product];
-			$this->totalQty=$sl;
+			$this->totalQty++;
 			$giohang['price'] = $gia * $giohang['soluong'];
+			$this->totalPrice += $giohang['price'];
 		}
-		//var_dump($this->items);
-		
+		//var_dump($this->items);	
 		$this->items[$id] = $giohang;		
-		$this->totalPrice += $giohang['price'];
+		
 		
 	}
 	//xóa 1
@@ -49,7 +62,7 @@ class Cart
 		//$this->items[$id]['soluong']--;
 		//$this->items[$id]['price'] -= $this->items[$id]['product']['price'];
 		$this->totalQty--;
-		$this->totalPrice -= $this->items[$id]['product']->price;
+		$this->totalPrice -= $this->items[$id]['price'];
 		//if($this->items[$id]['soluong']<=0){
 			unset($this->items[$id]);
 		//}

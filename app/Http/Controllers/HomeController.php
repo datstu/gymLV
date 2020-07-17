@@ -197,9 +197,10 @@ if($Gioitinh == 'nu'){
         $sl = (isset($req->sl)) ? $req->sl : 1 ;
         $product = DB::table('tbl_product')->where('id_product','=',$id)->first();
         //var_dump($product);
+        $active = 'add';
         $oldCart = Session('cart')?Session::get('cart'):null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$sl,$id);
+        $cart->add($product,$sl,$id,$active);
         $req->session()->put('cart',$cart);
         return redirect()->back();
     }
@@ -229,7 +230,12 @@ if($Gioitinh == 'nu'){
             $product = DB::table('tbl_product')->where('id_product','=',$id)->first();
             $price = $product->price;
             $totalPrice=$sl*$price;
+            $active = 'update';
             //var_dump($price);
+            $oldCart = Session('cart')?Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+            $cart->add($product,$sl,$id,$active);
+            $req->session()->put('cart',$cart);
             echo $totalPrice;
         }
     }
