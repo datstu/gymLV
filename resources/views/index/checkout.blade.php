@@ -20,14 +20,14 @@
     <!-- Start Cart  -->
     <div class="cart-box-main">
         <div class="container">
-            <div class="row new-account-login">
+           
             <div class="row">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="checkout-address">
                         <div class="title-left">
                             <h3>Thông tin bản thân</h3>
                         </div>
-                        <form class="needs-validation" action="Thongtin" >
+                        <form class="needs-validation" action="Thongtin" method="POST">
                             
                                  <div class="title"> <span>Giới tính</span> </div>
                             <div class="d-block my-3">                            
@@ -130,25 +130,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <input type="submit" class="ml-auto btn hvr-hover" value="Hoàn tất" > </div>
+                       
                         
                         
                        
                     </div>
                 </div>
             </div>
+            <div class="row">
                 <div class="col-sm-6 col-lg-6 mb-3">
                     <div class="mt-3 collapse review-form-box" id="formLogin">
-                        <div class="form-row">
-                            <div class="mb-4">
-                                <label for="zip">Bạn muốn thân hình:</label>
+                        <div class="row">
+                        <div class="col-md-12 col-lg-12" >
+                            <div class="shipping-method-box">
+                        
+                                <div class="mb-4">
+                                <label for="zip">Bạn có thật sự nghiêm túc với GYM?:</label>
                                     <div class="custom-control custom-radio">
                                         <input id="nam1" name="ch1" class="custom-control-input"  type="radio" value="1">
-                                        <label class="custom-control-label" for="nam1">Cơ bắp</label>  </div>
+                                        <label class="custom-control-label" for="nam1">Phải, tôi rất quyết tâm</label>  </div>
                                    
                                     <div class="custom-control custom-radio">
                                         <input id="nam2" name="ch1" class="custom-control-input" type="radio" value="0">
-                                        <label class="custom-control-label" for="nam2">khỏe khoắn</label>  </div>
+                                        <label class="custom-control-label" for="nam2">Tôi tập khi rãnh và để giải trí</label>  </div>
                     
                                 </div>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -163,35 +167,39 @@
                                         <label class="custom-control-label" for="nam4">Không thể</label>  </div>
                     
                                 </div>
-                                <div class="mb-4">
+                            <div class="mb-4">
                                     <label for="zip"><strong>MỤC TIÊU</strong></label>
+                                <div class="nav nav-tabs ml-auto">
+                                    <a class="nav-link active" href="#grid-view" data-toggle="tab">
                                     <div class="custom-control custom-radio">
                                         <input id="shippingOption1" name="muctieu" class="custom-control-input" checked="checked" type="radio" value="nhom1">
-                                        <label class="custom-control-label" for="shippingOption1">Giảm cân</label>  </div>
-                                    <div class="ml-4 mb-2 small">Dành cho người thừa cân muốn có vóc dáng thon gọn</div>
-                                    <div class="custom-control custom-radio">
+                                        <label class="custom-control-label" for="shippingOption1">Rèn luyện sức khỏe</label>  </div>
+                                    <div class="ml-4 mb-2 small">Dành cho nam giới muốn tập luyện thể chất, tăng cường sức khỏe bản thân</div></a>
+                                    <a class="nav-link" href="#list-view" data-toggle="tab"><div class="custom-control custom-radio">
                                         <input id="shippingOption2" name="muctieu" class="custom-control-input" type="radio" value="nhom2">
                                         <label class="custom-control-label" for="shippingOption2">Giảm mỡ-tăng cơ</label>  </div>
-                                    <div class="ml-4 mb-2 small">Dành cho nam giới muốn giảm mỡ, phát triển cơ bắp</div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="muctieu" class="custom-control-input" type="radio" value="nhom3">
-                                        <label class="custom-control-label" for="shippingOption3">Tăng cường sức khỏe</label></div>
-                                        <div class="ml-4 mb-2 small">Tập để nâng cao thể lực, sức khỏe</div>
+                                    <div class="ml-4 mb-2 small">Dành cho nam giới muốn giảm mỡ, phát triển cơ bắp</div></a>
                                 </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
                     </div>
                
                     <div class="mt-3 collapse review-form-box" id="formRegister">
-                        <div class="form-row">
+                        <div class="row">
+                        <div class="col-md-12 col-lg-12" >
+                            <div class="shipping-method-box">
+                        
                             <div class="mb-4">
-                                <label for="zip">Bạn muốn thân hình:</label>
+                                <label for="zip">Bạn có cảm thấy ngại khi tập tại phòng GYM</label>
                                     <div class="custom-control custom-radio">
                                         <input id="nam1" name="ch1" class="custom-control-input"  type="radio" value="1">
-                                        <label class="custom-control-label" for="nam1">Nơ nan hơn</label>  </div>
+                                        <label class="custom-control-label" for="nam1">Tôi cảm thấy đây là chuyện bình thường</label>  </div>
                                    
                                     <div class="custom-control custom-radio">
                                         <input id="nam2" name="ch1" class="custom-control-input" type="radio" value="0">
-                                        <label class="custom-control-label" for="nam2">thon gọn</label>  </div>
+                                        <label class="custom-control-label" for="nam2">Tôi hơi e ngại khi tập ở nơi đông người</label>  </div>
                     
                                 </div>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -211,22 +219,77 @@
                                     <div class="custom-control custom-radio">
                                         <input id="shippingOption1" name="muctieu" class="custom-control-input" checked="checked" type="radio" value="nhom1">
                                         <label class="custom-control-label" for="shippingOption1">Giảm cân</label>  </div>
-                                    <div class="ml-4 mb-2 small">Dành cho người thừa cân muốn giảm cân để có vóc dáng thon gọn</div>
+                                    <div class="ml-4 mb-2 small">Dành cho các bạn nữ muốn giảm cân, có một cơ thể thon gọn hơn</div>
                                     <div class="custom-control custom-radio">
                                         <input id="shippingOption2" name="muctieu" class="custom-control-input" type="radio" value="nhom2">
-                                        <label class="custom-control-label" for="shippingOption2">Giảm mỡ-săn chắc</label>  </div>
+                                        <label class="custom-control-label" for="shippingOption2">Tăng cân-Săn chắc</label>  </div>
                                     <div class="ml-4 mb-2 small">Dành cho bạn nữ muốn có vóc dáng nở nan, cơ thể săn chắc</div>
-                                    <div class="custom-control custom-radio">
-                                        <input id="shippingOption3" name="muctieu" class="custom-control-input" type="radio" value="nhom3">
-                                        <label class="custom-control-label" for="shippingOption3">Tăng cường sức khỏe</label></div>
-                                        <div class="ml-4 mb-2 small">Tập để nâng cao thể lực, sức khỏe</div>
                                 </div>
                         </div>
-                        
+                        </div>
                     </div>
-                    </form>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade " id="grid-view">
+                            <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="shipping-method-box">
+                                <div class="title-left">
+                                    <h3>Dinh dưỡng</h3>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="state">Bạn có ngủ đủ giấc?</label>
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q0" name="dd1" class="custom-control-input" type="radio" value="1">
+                                        <label class="custom-control-label" for="Q0">Có</label>  </div>
+                                    
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q1" name="dd1" class="custom-control-input" type="radio" value="0">
+                                        <label class="custom-control-label" for="Q1">Không</label>  </div>                                  
+                                </div>
+                               
+                                <div class="mb-4">
+                                    <label for="state">Bạn có đang ăn đủ bữa trong ngày (3 bữa hoặc hơn )</label>
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q2" name="dd2" class="custom-control-input" type="radio" value="1">
+                                        <label class="custom-control-label" for="Q2">Có</label>  </div>
+                                    
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q3" name="dd2" class="custom-control-input" type="radio" value="0">
+                                        <label class="custom-control-label" for="Q3">Không</label>  </div>
+                                    
+                                    
+                                </div>
+                               
+                                <div class="mb-4">
+                                    <label for="state">Tâm trạng của bạn có đang thoải mái?</label>
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q4" name="dd3" class="custom-control-input" type="radio" value="1">
+                                        <label class="custom-control-label" for="Q4">Có</label>  </div>
+                                    
+                                    <div class="custom-control custom-radio">
+                                        <input id="Q5" name="dd3" class="custom-control-input" type="radio" value="0">
+                                        <label class="custom-control-label" for="Q5">Không</label>  </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex shopping-box"> <input type="submit" class="ml-auto btn hvr-hover" value="Hoàn tất"> </div>
+                        
+                        
+                       
+                    </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="list-view"></div>
+                    </div>
                 </div>
             </div>
+                </form>
+            
         </div>
     </div>
     <!-- End Cart -->

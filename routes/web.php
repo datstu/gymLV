@@ -19,35 +19,37 @@ Route::get('/','HomeController@index' );
 Route::get('user', function () {
     return view('user.user');
 });
-Route::get('PHU-KIEN','HomeController@shop_pk' );
-Route::get('GOI-TAP','HomeController@shop_gt' );
-Route::get('PHONG-GYM','HomeController@phonggym' );
-Route::get('SEARCH-GT','HomeController@searchgt' );
-Route::get('SEARCH-PK','HomeController@searchpk' );
 Route::get('ABOUT','HomeController@about' );
+//shop
+Route::get('PHU-KIEN','ShopController@shop_pk' );
+Route::get('GOI-TAP','ShopController@shop_gt' );
+Route::get('SEARCH-GT','ShopController@searchgt' );
+Route::get('SEARCH-PK','ShopController@searchpk' );
+
 Route::get('/BOOK', function () {
     return view('index.book');
 });
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });
-
+Route::get('PHONG-GYM','HomeController@phonggym' );
 Route::get('/Bv', function () {
     return view('index.baiviet_detail');
 });
 //cart
-Route::get('add-to-cart/{id}','HomeController@getAddtoCart')->name('themgiohang');
-Route::get('del-cart/{id}','HomeController@getDelItemCart')->name('xoagiohang');
-Route::get('del-all-cart','HomeController@delAll')->name('resetgiohang');
+Route::get('add-to-cart/{id}','CartController@getAddtoCart')->name('themgiohang');
+Route::get('del-cart/{id}','CartController@getDelItemCart')->name('xoagiohang');
+Route::get('del-all-cart','CartController@delAll')->name('resetgiohang');
 Route::get('/CART-DETAIL', function () {
     return view('index.cart');
 });
-Route::get('search', 'HomeController@ajax')->name('search');
-Route::get('updateCart', 'HomeController@ajaxUpdate')->name('updatecart');
+Route::get('search', 'CartController@ajax')->name('search');
+Route::get('updateCart', 'CartController@ajaxUpdate')->name('updatecart');
+//
 Route::get('TU-VAN', function () {
     return view('index.checkout');
 });
-Route::get('Thongtin','HomeController@tuvan' );
+Route::post('Thongtin','TuvanController@tuvan' );
 
 
 
