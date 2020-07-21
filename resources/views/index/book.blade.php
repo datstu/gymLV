@@ -37,9 +37,9 @@
                     </div>
                 </div>
            
-    <script type="text/javascript">
+    
         
-    </script>
+ 
     </div> <?php 
     $mess  = Session::get('message');
     if($mess) {
@@ -64,27 +64,33 @@
                             </th>
                             <th>
                                 <label for="ca2_null">Thứ 3</label>
-                                <input style="display: none;" type="radio" checked name="t3" id="ca2_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="t3" id="ca2_null" value="null">
                             </th>
                             <th>
                                 <label for="ca3_null">Thứ 4</label>
-                                <input style="display: none;" type="radio" checked name="t4" id="ca3_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="t4" id="ca3_null" value="null">
                             </th>
                             <th>
                                 <label for="ca4_null">Thứ 5</label>
-                                <input style="display: none;" type="radio" checked name="t5" id="ca4_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="t5" id="ca4_null" value="null">
                             </th>
                             <th>
                                 <label for="ca5_null">Thứ 6</label>
-                                <input style="display: none;" type="radio" checked name="t6" id="ca5_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="t6" id="ca5_null" value="null">
                             </th>
                             <th>
                                 <label for="ca6_null">Thứ 7</label>
-                                <input style="display: none;" type="radio" checked name="t7" id="ca6_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="t7" id="ca6_null" value="null">
                             </th>
                             <th>
                                 <label for="ca7_null">Chủ nhật</label>
-                                <input style="display: none;" type="radio" checked name="cn" id="ca7_null" value="null">
+                                <input style="display: none;" type="radio" checked 
+                                name="cn" id="ca7_null" value="null">
                             </th>
                         </tr>
                             </thead>
@@ -92,7 +98,7 @@
                         <tr>
                             <td>Ca 1</td>
                             <td>
-                                <input type="radio" name="t2" id="ca1_t2" checked value="ca1">
+                                <input type="radio" name="t2" id="ca1_t2"  value="ca1">
                                 <label for="ca1_t2">Chọn</label>
                             </td>
                             <td>
