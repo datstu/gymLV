@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2020 at 08:23 AM
+-- Generation Time: Jul 21, 2020 at 07:12 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -208,16 +208,17 @@ CREATE TABLE `tbl_personal_trainer` (
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
-  `img` varchar(30) DEFAULT NULL
+  `img` varchar(30) DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_personal_trainer`
 --
 
-INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`, `img`) VALUES
-(1, 'Huy 6 múi', '180 cao lỗ', '0909012345', NULL),
-(2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613', NULL);
+INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`, `img`, `status`) VALUES
+(1, 'Huy 6 múi', '180 cao lỗ', '0909012345', NULL, 0),
+(2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -257,7 +258,6 @@ CREATE TABLE `tbl_schedule` (
   `id_schedule` int(10) NOT NULL,
   `id_users` int(10) NOT NULL,
   `id_gym` int(10) NOT NULL,
-  `id_pt` int(10) NOT NULL,
   `thu2` varchar(10) NOT NULL,
   `thu3` varchar(10) NOT NULL,
   `thu4` varchar(10) NOT NULL,
@@ -271,16 +271,33 @@ CREATE TABLE `tbl_schedule` (
 -- Dumping data for table `tbl_schedule`
 --
 
-INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `id_pt`, `thu2`, `thu3`, `thu4`, `thu5`, `thu6`, `thu7`, `chunhat`) VALUES
-(1, 1, 2, 2, '', '', '', '', '', '', ''),
-(3, 1, 1, 1, '', '', '', '', '', '', ''),
-(4, 1, 1, 1, '', '', '', '', '', '', ''),
-(5, 1, 1, 1, 'ca1', 'ca2', 'ca3', 'ca2', 'ca1', 'ca2', 'ca3'),
-(6, 1, 1, 1, 'ca2', 'ca1', 'on', 'ca2', 'ca3', 'ca2', 'on'),
-(7, 1, 1, 1, 'ca2', 'ca1', 'on', 'ca2', 'ca3', 'ca2', 'on'),
-(8, 1, 1, 1, 'ca1', 'null', 'null', 'null', 'null', 'null', 'null'),
-(9, 1, 1, 1, 'ca2', 'ca1', 'ca1', 'null', 'null', 'ca2', 'null'),
-(10, 1, 1, 1, 'ca2', 'null', 'null', 'null', 'ca3', 'null', 'ca2');
+INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `thu2`, `thu3`, `thu4`, `thu5`, `thu6`, `thu7`, `chunhat`) VALUES
+(40, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1'),
+(41, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_schedule_pt`
+--
+
+CREATE TABLE `tbl_schedule_pt` (
+  `id` int(11) NOT NULL,
+  `ca` varchar(11) NOT NULL,
+  `thu` int(11) NOT NULL,
+  `id_pt` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_schedule_pt`
+--
+
+INSERT INTO `tbl_schedule_pt` (`id`, `ca`, `thu`, `id_pt`) VALUES
+(85, 'ca3', 2, 1),
+(86, 'ca3', 3, 1),
+(87, 'ca3', 4, 1),
+(88, 'ca1', 7, 1),
+(89, 'ca1', 8, 1);
 
 -- --------------------------------------------------------
 
@@ -401,10 +418,16 @@ ALTER TABLE `tbl_product`
 -- Indexes for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
-  ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`,`id_pt`),
+  ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`) USING BTREE,
   ADD KEY `schedule_ibfk1` (`id_gym`),
-  ADD KEY `schedule_ibfk2` (`id_pt`),
   ADD KEY `schedule_ibfk3` (`id_users`);
+
+--
+-- Indexes for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk1` (`id_pt`);
 
 --
 -- Indexes for table `tbl_status`
@@ -475,7 +498,13 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
-  MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
@@ -519,8 +548,13 @@ ALTER TABLE `tbl_order_detail_combo`
 --
 ALTER TABLE `tbl_schedule`
   ADD CONSTRAINT `schedule_ibfk1` FOREIGN KEY (`id_gym`) REFERENCES `tbl_gym` (`id_gym`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedule_ibfk2` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schedule_ibfk3` FOREIGN KEY (`id_users`) REFERENCES `tbl_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_users`
