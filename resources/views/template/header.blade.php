@@ -11,7 +11,6 @@ use App\Cart;
                 //Session::flush();
                 //$product_cart=(array)$product_cart;
             }
-
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +59,15 @@ use App\Cart;
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i>Mua hàng</a></li>
+                            @if(Session::has('User'))
+                            <li><a href="{{route('my-account')}}"><i class="fa fa-user s_color"></i>{{Session('User')->name}} </a></li>
+                            <li><a href="{{route('dangxuat')}}"><i class="fas fa-location-arrow"></i>Logout</a></li>
+                            @else  
+                            <li><a href="{{route('viewlogin')}}"><i class="fa fa-user s_color"></i> Đăng nhập</a>
+                            </li>
+                             <li><a href="{{route('viewregister')}}"><i class="fa fa-user s_color"></i> Đăng kí</a>
+                            </li>
+                           @endif
                         </ul>
                     </div>
                 </div>
@@ -121,15 +127,15 @@ use App\Cart;
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index"><img src="{{ url('public/user/images/logo2.png')}}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="{{route('index')}}"><img src="{{ url('public/user/images/logo2.png')}}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">                   
-                        <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="ABOUT">Giới thiệu</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{route('index')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
                             <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
                             <ul class="dropdown-menu">
@@ -140,11 +146,11 @@ use App\Cart;
                          <li class="dropdown">
                             <a href="SHOP" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
-                                <li><a href="GOI-TAP">Gói tập</a></li>
-                                <li><a href="PHU-KIEN">Phụ Kiện</a></li>
+                                <li><a href="{{route('goitap')}}">Gói tập</a></li>
+                                <li><a href="{{route('phukien')}}">Phụ Kiện</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('phonggym')}}">Phòng Gym</a></li>
                         <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
                     </ul>
                 </div>

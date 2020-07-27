@@ -68,13 +68,13 @@
                                                                  <a class="nav-link" href="#list{{$sp->id_combo}}" data-toggle="tab" data-placement="right" title="View"> <i class="fas fa-eye"></i></a>
                                                             </li>
                                                         </ul>
-                                                        <a class="cart" href="#list-view">Đăng ký</a>
+                                                        <a class="cart" href="{{ route('thanhtoanGT',$sp->id_combo) }}">Đăng ký</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
                                                     <ul class="nav nav-tabs ml-auto">
                                                       <li>
-                                                          <a class="nav-link" href="#list{{$sp->id_combo}}" data-toggle="tab"><h4>{{$sp->name}}</h4> </a>
+                                                          <a class="nav-link" href="#list{{$sp->id_combo}}" data-toggle="tab"><h4>{{$sp->ten}}</h4> </a>
                                                       </li>
                                                     </ul>
                                                       </a>
@@ -111,10 +111,10 @@
                                             </div>
                                             <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                                 <div class="why-text full-width">
-                                                    <h4>{{$sp->name}}</h4>
+                                                    <h4>{{$sp->ten}}</h4>
                                                     <h5> {{$sp->price}}</h5>
                                                     <p>{{$sp->description}}</p>
-                                                    <a class="btn hvr-hover" href="#">Đăng ký</a>
+                                                    <a class="btn hvr-hover" href="{{ route('thanhtoanGT',$sp->id_combo) }}">Đăng ký</a>
                                                     <a class="btn hvr-hover" href="#" onclick="getback()">Back</a>
                                                 </div>
                                             </div>

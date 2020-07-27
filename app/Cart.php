@@ -33,10 +33,10 @@ class Cart
 						$this->totalPrice += $giachenhlech;
 					}				
 				}else{
+					$temp=$sl-$giohang['soluong']  ;
 					$giohang['soluong'] = $sl;
-					$giohang['price'] = $gia * $sl;
-					$temp=$giohang['soluong'] - $sl;
-					$this->totalPrice -= ($giohang['price']*$temp);
+					$giohang['price'] = $gia * $sl;					
+					$this->totalPrice += ($gia*$temp);
 					}
 			}else
 				{
