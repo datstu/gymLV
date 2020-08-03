@@ -1,3 +1,17 @@
+<?php
+use App\Cart;
+ if(Session('cart')){
+                $oldCart = Session::get('cart');
+                $carts = new Cart($oldCart);
+                $cart=$oldCart;
+                $product_cart=$carts->items;
+                $totalPrice=$carts->totalPrice;
+                $totalQty=$carts->totalQty;
+                //var_dump($product_cart);
+                //Session::flush();
+                //$product_cart=(array)$product_cart;
+            }
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -45,8 +59,15 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i>Mua hàng</a></li>
+                            @if(Session::has('User'))
+                            <li><a href="{{route('my-account')}}"><i class="fa fa-user s_color"></i>{{Session('User')->name}} </a></li>
+                            <li><a href="{{route('dangxuat')}}"><i class="fas fa-location-arrow"></i>Logout</a></li>
+                            @else  
+                            <li><a href="{{route('viewlogin')}}"><i class="fa fa-user s_color"></i> Đăng nhập</a>
+                            </li>
+                             <li><a href="{{route('viewregister')}}"><i class="fa fa-user s_color"></i> Đăng kí</a>
+                            </li>
+                           @endif
                         </ul>
                     </div>
                 </div>
@@ -106,18 +127,18 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index"><img src="{{ url('public/user/images/logo2.png')}}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="{{route('index')}}"><img src="{{ url('public/user/images/logo2.png')}}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 
-                        <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="ABOUT">About Us</a></li>
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">                   
+                        <li class="nav-item active"><a class="nav-link" href="{{route('index')}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Giới thiệu</a></li>
                         <li class="dropdown">
-                            <a href="BAI-VIET" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Thư Viện </a>
+                            <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
 
                             <ul class="dropdown-menu">
 								<li><a href="shop.html">Bài Tập</a></li>
@@ -127,18 +148,13 @@
                          <li class="dropdown">
                             <a href="SHOP" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
-                                <li><a href="GOI-TAP">Gói tập</a></li>
-                                <li><a href="PHU-KIEN">Phụ Kiện</a></li>
+                                <li><a href="{{route('goitap')}}">Gói tập</a></li>
+                                <li><a href="{{route('phukien')}}">Phụ Kiện</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
 
-
-                      
-                      
-
+                        <li class="nav-item"><a class="nav-link" href="{{route('phonggym')}}">Phòng Gym</a></li>
                         <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
-
 
                     </ul>
                 </div>
@@ -151,7 +167,7 @@
                         <li class="side-menu">
 							<a href="#">
 								<i class="fa fa-shopping-bag"></i>
-								<span class="badge">3</span>
+								<span class="badge">@if(Session::has('cart')){{Session('cart')->totalQty}}@else 0 @endif</span>
 								<p>My Cart</p>
 							</a>
 						</li>
@@ -164,25 +180,29 @@
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <li class="cart-box">
                     <ul class="cart-list">
+                        @if(Session::has('cart'))
+                            @foreach($product_cart as $prod)
                         <li>
-                            <a href="#" class="photo"><img src="{{ url('public/user/images/img-pro-01.jpg')}}" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
+                            <a href="#" class="photo"><img src="{{url('public/uploads/product/'.$prod['product']->img)}}" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">{{$prod['product']->ten}}</a></h6>
+                            <p>{{$prod['soluong']}}x - <span class="price">${{number_format($prod['product']->price)}}</span></p>
                         </li>
-                        <li>
-                            <a href="#" class="photo"><img src="{{ url('public/user/images/img-pro-02.jpg')}}" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="{{ url('public/user/images/img-pro-03.jpg')}}" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+                        @endforeach
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            <a href="CART-DETAIL" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $@if(Session::has('cart')){{number_format($totalPrice)}} @else 0 @endif</span>
                         </li>
+                        @else
+                        <li>
+                            
+                            <h6><a href="#">Trống</a></h6>
+                            <p>Vui lòng chọn sản phẩm cần mua <span class="price"></span></p>
+                        </li>
+                         <li class="total">
+                            <a href="CART-DETAIL" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: 0</span>
+                        </li>
+                        @endif
                     </ul>
                 </li>
             </div>

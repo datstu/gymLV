@@ -50,7 +50,7 @@
                                     <td class="price-pr">
                                         <p>{{$gym->slot_now}}/{{$gym->MAX}}</p>
                                     </td>
-                                    <td class="quantity-box">{{$gym->address}}</td>
+                                    <td class="quantity-box">{{$gym->address_gym}}</td>
                                    
                                 </tr>
                                 @endforeach

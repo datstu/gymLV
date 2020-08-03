@@ -114,7 +114,8 @@
                                 <p class="sale">HOT</p>
                             </div>
 
-                            <img src="<?php echo e(url('public/user/images/'.$sp->img)); ?>" class="img-fluid" alt="Image">
+
+                            <img src="<?php echo e(url('public/uploads/product/'.$sp->img)); ?>" class="img-fluid" alt="Image">
 
                             <div class="mask-icon">
                                 <ul>
@@ -122,7 +123,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="<?php echo e(route('themgiohang',$sp->id_product)); ?>">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -140,7 +141,7 @@
                                 <p class="new">HOT</p>
                             </div>
 
-                            <img src="<?php echo e(url('public/user/images/'.$sp->img)); ?>" class="img-fluid" alt="Image">
+                            <img src="<?php echo e(url('public/uploads/product/'.$sp->img)); ?>" class="img-fluid" alt="Image">
 
                             <div class="mask-icon">
                                 <ul>
@@ -148,7 +149,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="<?php echo e(route('themgiohang',$sp->id_product)); ?>">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
