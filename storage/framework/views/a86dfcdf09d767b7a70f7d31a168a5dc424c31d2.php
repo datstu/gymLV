@@ -120,11 +120,11 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="<?php echo e(route('themgiohang',$sp->id_product)); ?>">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
-                            <h4><?php echo e($sp->ten); ?></h4>
+                            <a class="nav-link" href="#list<?php echo e($sp->id_product); ?>"><h4><?php echo e($sp->ten); ?></h4></a>
                             <h5> <?php echo e($sp->price); ?></h5>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="<?php echo e(route('themgiohang',$sp->id_product)); ?>">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
