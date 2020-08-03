@@ -52,7 +52,7 @@ class UserController extends Controller
     public function logout()
     {
         Session::forget('User');
-        return redirect()->back();
+        return Redirect::to('index');
     }
     public function login(){
             $ac1='show';
@@ -109,6 +109,43 @@ class UserController extends Controller
             $combo= DB::table('tbl_order_detail_combo')
             ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->join('tbl_gym', 'tbl_order_detail_combo.id_gym', '=', 'tbl_gym.id_gym')->join('tbl_order', 'tbl_order_detail_combo.id_order', '=', 'tbl_order.id_order')->get();
              return view('index.my-account',compact('order','combo','user'));
+        }
+        public function update(Request $request){
+            $id = $request->id;
+            $data['email']=$request->email;
+            $data['phone']=$request->phone;
+            $data['name']=$request->name;
+            $data['address']=$request->address;
+             $result = DB::table('users')
+            ->where('id_user',$id)
+            ->update($data);
+           
+       // $result = DB::table('tbl_users')->get();
+            $new_user = User::where([['id_user','=',$id]])->first();
+            Session::forget('User');
+            $request->session()->put('User',$new_user);
+            $success = "Thêm hội viên mới thành công.";
+            Session::put('mess',$success);
+            return Redirect::to(route('my-account'));
+        }
+        public function update_password(Request $request){
+            $id = $request->id;
+            $old_pass = $request->pass_old;
+            $new_pass = $request->pass_new;
+            $user = User::where('id_user','=',$id)->first();
+            if (Hash::check($old_pass,$user['pass'] )) {
+                $data['pass']=bcrypt($new_pass);
+                 $result = DB::table('users')
+                ->where('id_user',$id)
+                 ->update($data);
+                 $success = "Cập nhật mật khẩu thành công.";
+                Session::put('mess',$success);
+            }else
+            {
+                $success = "Mẫu khẩu không chính xác.";
+                Session::put('mess',$success);
+            }
+            return Redirect::to(route('my-account'));
         }
         
    

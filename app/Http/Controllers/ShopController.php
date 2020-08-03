@@ -44,12 +44,12 @@ class ShopController extends Controller
                 return view('index.goitap',compact('product','loai','active3','active2','active1'));
             }else
             {
-                $product = DB::table('tbl_combo_package')->where('name','like','%VIP%')->get();
+                $product = DB::table('tbl_combo_package')->where('ten','like','%VIP%')->get();
                 return view('index.goitap',compact('product','loai','active3','active2','active1'));
             }
         }elseif (isset($request->keywords_submit)) {
              $keywords = $request->keywords_submit;
-        $product = DB::table('tbl_combo_package')->where('name','like','%'.$keywords.'%')->get(); 
+        $product = DB::table('tbl_combo_package')->where('ten','like','%'.$keywords.'%')->get(); 
         return view('index.goitap',compact('product','loai','active3','active2','active1'));
         }
        

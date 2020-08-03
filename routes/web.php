@@ -51,6 +51,8 @@ Route::get('ODER_GT','checkoutController@inhoadonGT')->name('inhoadonGT');
 Route::get('CHECKOUT','checkoutController@thanhtoan')->name('thanhtoan');
 Route::get('ODER','checkoutController@inhoadon')->name('inhoadon');
 Route::get('/MY-ACCOUNT','UserController@myaccount')->name('my-account');
+Route::get('/MY-ACCOUNT/UPDATE','UserController@update')->name('updateAccount');
+Route::post('/MY-ACCOUNT/UPDATE_PASSWORD','UserController@update_password')->name('updateAccount_pass');
 
 
 Route::get('TU-VAN', function () {
@@ -66,7 +68,7 @@ Route::get('ACCOUNT/add','UserController@adduser' );
 Route::post('ACCOUNT/checklogin','UserController@checklogin')->name('dangnhap');
 Route::get('ACCOUNT/logout','UserController@logout')->name('dangxuat');
 
-Route::post('Thongtin','TuvanController@tuvan' );
+Route::post('Thongtin','TuvanController@tuvan' )->name('tuvan');
 
 
 

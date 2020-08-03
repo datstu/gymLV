@@ -76,7 +76,8 @@ class checkoutController extends Controller
                  $result2 = DB::table('tbl_order_detail')->insert($order_detail);
             }
             Session::forget('cart');
-         return view('index.order',compact('order','product_cart'));
+            $switch = '';
+         return view('index.order',compact('order','product_cart','switch'));
         
         
     }
