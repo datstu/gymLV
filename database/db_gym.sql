@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jun 23, 2020 at 08:50 AM
+=======
+-- Generation Time: Jul 21, 2020 at 07:12 AM
+>>>>>>> dat
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -44,6 +48,36 @@ INSERT INTO `tbl_admin` (`id_admin`, `name`, `pass`, `username`) VALUES
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
+=======
+-- Table structure for table `tbl_advice`
+--
+
+CREATE TABLE `tbl_advice` (
+  `id` int(11) NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sex` int(11) NOT NULL,
+  `status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_advice`
+--
+
+INSERT INTO `tbl_advice` (`id`, `content`, `sex`, `status`) VALUES
+(1, 'tập luyện thêm để giữ dáng cũng như cho cơ thể săng chắc hơn ', 0, 'bình thường'),
+(2, 'nên giảm cân kết hợp luyện tập thể chất để cơ thể thon thả hơn', 0, 'thừa cân'),
+(3, 'có nguy cơ bệnh cao nên tập trung giảm cân để bảo vệ sức khỏe cũng như có cơ thể thon thả hơn', 0, 'quá cân'),
+(4, 'tập luyện cơ bắp, giữ dáng và duy trì chế độ ăn uống hiện tại', 1, 'bình thường'),
+(5, 'cần tăng cân để nâng cao thể lực và cơ bắp', 1, 'gầy'),
+(6, 'cần tăng cân', 0, 'gầy'),
+(7, 'nên giảm cân cùng với tăng cơ cho cơ thể rắn chắc hơn', 1, 'thừa cân'),
+(8, 'nên giảm cân ngay, tập luyện các bài tập nhẹ và thường xuyên vận động để có sức khỏe tốt', 1, 'quá cân');
+
+-- --------------------------------------------------------
+
+--
+>>>>>>> dat
 -- Table structure for table `tbl_combo_package`
 --
 
@@ -52,19 +86,35 @@ CREATE TABLE `tbl_combo_package` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` float NOT NULL,
+<<<<<<< HEAD
   `date` varchar(255) NOT NULL
+=======
+  `date` int(11) NOT NULL,
+  `HLV` int(11) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_combo_package`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_combo_package` (`id_combo`, `name`, `description`, `price`, `date`) VALUES
 (1, 'gói cơ bản', 'Sử dụng toàn bộ máy tập và có người hướng dẫn khi muốn sử dụng máy-bài tập.\r\nTập luyện bất kỳ lúc nào không hạn chế thời gian khi phòng tập mở cửa.\r\nKhông có huấn luyện viên cá nhân\r\n', 300000, '0000-00-00 00:00:00'),
 (2, 'gói cơ bản', 'Sử dụng tất cả các máy, được yêu cầu hướng dẫn máy tập - bài tập.\r\nKhông hạn chế thời gian bắt đầu kết thúc trong 1 buổi tập.\r\n', 300000, '1 tháng'),
 (3, 'gói cơ bản nâng cấp', 'thừa hưởng gói cb được có thêm huấn luyện viên cá nhân chỉ dạy theo phương pháp/muc tiêu mà bạn hướng đến', 500000, '1 tháng'),
 (4, 'gói 3 tháng', 'giống gói cb 1 yêu cầu đăng ký 3 tháng', 750000, ''),
 (5, '3 tháng nâng cấp', 'giống gói cb 3 tháng thường có thêm hlv cn', 1200000, '3 tháng');
+=======
+INSERT INTO `tbl_combo_package` (`id_combo`, `name`, `description`, `price`, `date`, `HLV`) VALUES
+(1, 'gói NORMAL', 'Sử dụng toàn bộ máy tập.\r\nTập luyện bất kỳ lúc nào không hạn chế thời gian khi phòng tập mở cửa.\r\nSử dụng các dịch vụ co bản tại phòng gym.\r\n\r\n', 900000, 3, 0),
+(2, 'gói NEWBIE', 'Dành cho người mới tập.\r\nSử dụng tất cả các máy, được yêu cầu HLV hướng dẫn máy tập - bài tập trong 1 tuần đầu tiên.\r\nĐược sử dụng các dịch vụ cơ bản tại phòng.\r\n', 1499000, 3, 0),
+(3, 'gói NEWBIE-VIP', 'Dành cho người mới tập.\r\nĐược sử dụng tất cả dịch vụ cũng như trang thiết bị tại phòng gym.\r\nĐược tặng một áo gym cao cấp.\r\nCó HLV riêng.', 2990000, 6, 1),
+(4, 'gói SUPERIOR-VIP', 'Gói cao cấp nhất, đắt đỏ nhất và chất lượng nhất.\r\nĐược sử dụng tất cả dịch vụ cũng như trang thiết bị tại phòng gym.\r\nĐược tặng trọn bộ phụ kiện GYM trị giá 5 triệu đồng.\r\nCó HLV riêng.\r\nVà được trải nghiệm các sự kiện, hội thảo, tour du lịch thể thao đặ', 32000000, 24, 1),
+(5, 'Gói COUPLE', 'Được sử dụng một số dịch vụ và thiết bị tại phòng GYM.\r\nĐược mang theo một người cùng tập', 1999000, 4, 0),
+(6, 'Gói BUSINESS-CLASS', 'Gói dành cho người ít có thời gian rãnh.\r\nMỗi lần đến phòng tập sẽ được tính 1 ngày, đủ 40 ngày hoặc hết 3 tháng gói sẽ hết hiệu lực.', 1199000, 3, 0),
+(7, 'Gói OLD', 'Dành cho người cao tuổi muốn giữ gìn sức khỏe.\r\nCó HLV riêng.\r\nĐược sử dụng các dịch vụ đặc biệt dành riêng cho người cao tuổi.\r\n', 990000, 2, 1);
+>>>>>>> dat
 
 -- --------------------------------------------------------
 
@@ -75,16 +125,28 @@ INSERT INTO `tbl_combo_package` (`id_combo`, `name`, `description`, `price`, `da
 CREATE TABLE `tbl_gym` (
   `id_gym` int(10) NOT NULL,
   `address` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `name` varchar(255) NOT NULL
+=======
+  `name` varchar(255) NOT NULL,
+  `MAX` int(11) NOT NULL,
+  `slot_now` int(11) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_gym`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_gym` (`id_gym`, `address`, `name`) VALUES
 (1, '180 cao lỗ hcm', 'chi nhanh cao lo'),
 (2, '43 trần quốc thảo', 'chi nhánh trân quốc thảo');
+=======
+INSERT INTO `tbl_gym` (`id_gym`, `address`, `name`, `MAX`, `slot_now`) VALUES
+(1, '180 cao lỗ hcm', 'chi nhanh cao lo', 32, 0),
+(2, '43 trần quốc thảo', 'chi nhánh trân quốc thảo', 24, 0);
+>>>>>>> dat
 
 -- --------------------------------------------------------
 
@@ -145,6 +207,7 @@ CREATE TABLE `tbl_order_detail` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `tbl_order_detail`
 --
@@ -153,6 +216,8 @@ INSERT INTO `tbl_order_detail` (`id_order`, `id_product`, `quantity`, `price`) V
 (1, 1, 2, 2000000),
 (1, 2, 1, 300);
 
+=======
+>>>>>>> dat
 -- --------------------------------------------------------
 
 --
@@ -183,16 +248,28 @@ CREATE TABLE `tbl_personal_trainer` (
   `id_pt` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `phone` varchar(10) NOT NULL
+=======
+  `phone` varchar(10) NOT NULL,
+  `img` varchar(30) DEFAULT NULL,
+  `status` int(11) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_personal_trainer`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`) VALUES
 (1, 'Huy 6 múi', '180 cao lỗ', '0909012345'),
 (2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613');
+=======
+INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`, `img`, `status`) VALUES
+(1, 'Huy 6 múi', '180 cao lỗ', '0909012345', NULL, 0),
+(2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613', NULL, 0);
+>>>>>>> dat
 
 -- --------------------------------------------------------
 
@@ -202,18 +279,37 @@ INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`) VALUES
 
 CREATE TABLE `tbl_product` (
   `id_product` int(10) NOT NULL,
+<<<<<<< HEAD
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` float NOT NULL
+=======
+  `ten` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `price` float NOT NULL,
+  `img` varchar(30) DEFAULT NULL,
+  `hot` int(11) NOT NULL,
+  `loaiSP` varchar(30) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_product`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_product` (`id_product`, `name`, `description`, `price`) VALUES
 (1, 'sp1', 'Đây là mô tả cho sp1', 1000000),
 (2, 'sp2', 'mô tả sp 2', 300000);
+=======
+INSERT INTO `tbl_product` (`id_product`, `ten`, `description`, `price`, `img`, `hot`, `loaiSP`) VALUES
+(3, 'đai lưng', 'đai lưng giúp bảo vệ phần lưng và tăng cường sức mạnh cho người sử dụng', 135000, 'dailung.jpg', 1, 'phukien'),
+(4, 'Dây kéo lưng tập Gym', 'Dây kéo giúp giữ cho thanh tạ được chắc hơn, bảo vệ cổ tay, tăng cường sức kéo, giảm đau bàn tay', 87000, 'daykeo.png', 1, 'phukien'),
+(5, 'DÂY QUẤN CỔ TAY HARBINGER REDLINE', 'Dây quấn cổ tay giúp giảm chấn thương cổ tay, tăng lực kéo, đẩy khi tập nặng', 142000, 'quancotay.png', 1, 'phukien'),
+(6, 'Găng tay dành cho Nữ', 'găng tay xinh đẹp cho nữ giới, bao ngầu, bao cool, giữ cho phái nữ một đôi tay xinh đẹp ngay cả khi tập tạ', 155000, 'gangtay.png', 0, 'phukien'),
+(7, 'Protein COMBAT-Whey Protein 2lbs', 'Whey protein chiếm gần 20% protein trong sữa. Nó có giá trị dinh dưỡng cao và rất dễ tiêu hóa. Whey proteinnhanh chóng đi vào cơ thể để cung cấp các thiết yếu, các axit amin quan trọng cần thiết để nuôi dưỡng cơ và các mô. Whey protein có giá trị dinh dưỡ', 1080000, 'COMBAT-Whey.jpg', 1, 'tpbs'),
+(8, '100% ISOLATE PROTEIN CHOCOLATE MELT 5.16LBS-2.3kg', '100% Isolate protein\r\nHấp thụ nhanh chóng\r\nHàm lượng fat và đường rất thấp\r\nNói không với amino spiking, chất độn, chất cấm', 1150000, 'isolate.png', 1, 'tpbs');
+>>>>>>> dat
 
 -- --------------------------------------------------------
 
@@ -225,17 +321,57 @@ CREATE TABLE `tbl_schedule` (
   `id_schedule` int(10) NOT NULL,
   `id_users` int(10) NOT NULL,
   `id_gym` int(10) NOT NULL,
+<<<<<<< HEAD
   `id_pt` int(10) NOT NULL,
   `date` datetime NOT NULL
+=======
+  `thu2` varchar(10) NOT NULL,
+  `thu3` varchar(10) NOT NULL,
+  `thu4` varchar(10) NOT NULL,
+  `thu5` varchar(10) NOT NULL,
+  `thu6` varchar(10) NOT NULL,
+  `thu7` varchar(10) NOT NULL,
+  `chunhat` varchar(10) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_schedule`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `id_pt`, `date`) VALUES
 (1, 1, 2, 2, '2020-06-10 11:28:30'),
 (2, 1, 2, 1, '2020-06-10 11:28:30');
+=======
+INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `thu2`, `thu3`, `thu4`, `thu5`, `thu6`, `thu7`, `chunhat`) VALUES
+(40, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1'),
+(41, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_schedule_pt`
+--
+
+CREATE TABLE `tbl_schedule_pt` (
+  `id` int(11) NOT NULL,
+  `ca` varchar(11) NOT NULL,
+  `thu` int(11) NOT NULL,
+  `id_pt` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_schedule_pt`
+--
+
+INSERT INTO `tbl_schedule_pt` (`id`, `ca`, `thu`, `id_pt`) VALUES
+(85, 'ca3', 2, 1),
+(86, 'ca3', 3, 1),
+(87, 'ca3', 4, 1),
+(88, 'ca1', 7, 1),
+(89, 'ca1', 8, 1);
+>>>>>>> dat
 
 -- --------------------------------------------------------
 
@@ -272,16 +408,27 @@ CREATE TABLE `tbl_users` (
   `phone` varchar(10) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `id_level` int(10) NOT NULL
+=======
+  `id_level` int(10) NOT NULL,
+  `BMI` int(11) NOT NULL
+>>>>>>> dat
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
+<<<<<<< HEAD
 INSERT INTO `tbl_users` (`id_user`, `email`, `pass`, `phone`, `name`, `address`, `id_level`) VALUES
 (1, 'teo@gmail.com', 'e827aa1ed78e96a113182dce12143f9f', '090912345', 'tèo', '180 cao lỗ', 2),
 (2, 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 'Nguyễn văn tý 2', '181 Cao lỗ p4 q8 hcm', 4);
+=======
+INSERT INTO `tbl_users` (`id_user`, `email`, `pass`, `phone`, `name`, `address`, `id_level`, `BMI`) VALUES
+(1, 'teo@gmail.com', 'e827aa1ed78e96a113182dce12143f9f', '090912345', 'tèo', '180 cao lỗ', 2, 0),
+(2, 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 'Nguyễn văn tý 2', '181 Cao lỗ p4 q8 hcm', 4, 0);
+>>>>>>> dat
 
 --
 -- Indexes for dumped tables
@@ -294,6 +441,15 @@ ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
+<<<<<<< HEAD
+=======
+-- Indexes for table `tbl_advice`
+--
+ALTER TABLE `tbl_advice`
+  ADD PRIMARY KEY (`id`);
+
+--
+>>>>>>> dat
 -- Indexes for table `tbl_combo_package`
 --
 ALTER TABLE `tbl_combo_package`
@@ -349,12 +505,27 @@ ALTER TABLE `tbl_product`
 -- Indexes for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
+<<<<<<< HEAD
   ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`,`id_pt`),
   ADD KEY `schedule_ibfk1` (`id_gym`),
   ADD KEY `schedule_ibfk2` (`id_pt`),
   ADD KEY `schedule_ibfk3` (`id_users`);
 
 --
+=======
+  ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`) USING BTREE,
+  ADD KEY `schedule_ibfk1` (`id_gym`),
+  ADD KEY `schedule_ibfk3` (`id_users`);
+
+--
+-- Indexes for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk1` (`id_pt`);
+
+--
+>>>>>>> dat
 -- Indexes for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
@@ -378,10 +549,23 @@ ALTER TABLE `tbl_admin`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `tbl_combo_package`
 --
 ALTER TABLE `tbl_combo_package`
   MODIFY `id_combo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+-- AUTO_INCREMENT for table `tbl_advice`
+--
+ALTER TABLE `tbl_advice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_combo_package`
+--
+ALTER TABLE `tbl_combo_package`
+  MODIFY `id_combo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+>>>>>>> dat
 
 --
 -- AUTO_INCREMENT for table `tbl_gym`
@@ -411,13 +595,27 @@ ALTER TABLE `tbl_personal_trainer`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
+<<<<<<< HEAD
   MODIFY `id_product` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+  MODIFY `id_product` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> dat
 
 --
 -- AUTO_INCREMENT for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
+<<<<<<< HEAD
   MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+  MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+>>>>>>> dat
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
@@ -461,10 +659,22 @@ ALTER TABLE `tbl_order_detail_combo`
 --
 ALTER TABLE `tbl_schedule`
   ADD CONSTRAINT `schedule_ibfk1` FOREIGN KEY (`id_gym`) REFERENCES `tbl_gym` (`id_gym`) ON DELETE CASCADE ON UPDATE CASCADE,
+<<<<<<< HEAD
   ADD CONSTRAINT `schedule_ibfk2` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schedule_ibfk3` FOREIGN KEY (`id_users`) REFERENCES `tbl_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+=======
+  ADD CONSTRAINT `schedule_ibfk3` FOREIGN KEY (`id_users`) REFERENCES `tbl_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+>>>>>>> dat
 -- Constraints for table `tbl_users`
 --
 ALTER TABLE `tbl_users`

@@ -115,7 +115,9 @@
                             </div>
 
 
+
                             <img src="<?php echo e(url('public/uploads/product/'.$sp->img)); ?>" class="img-fluid" alt="Image">
+
 
                             <div class="mask-icon">
                                 <ul>

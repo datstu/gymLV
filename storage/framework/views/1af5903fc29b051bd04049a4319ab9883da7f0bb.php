@@ -137,6 +137,7 @@ use App\Cart;
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">                   
                         <li class="nav-item active"><a class="nav-link" href="<?php echo e(route('index')); ?>">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>
+
                         <li class="dropdown">
                             <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
 
@@ -153,8 +154,10 @@ use App\Cart;
                             </ul>
                         </li>
 
+
                         <li class="nav-item"><a class="nav-link" href="<?php echo e(route('phonggym')); ?>">Phòng Gym</a></li>
-                        <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('book')); ?>">Đặt lịch</a></li>
 
                     </ul>
                 </div>

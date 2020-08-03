@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 13, 2020 lúc 04:56 PM
--- Phiên bản máy phục vụ: 10.4.11-MariaDB
--- Phiên bản PHP: 7.4.6
+-- Host: 127.0.0.1
+-- Generation Time: Jul 21, 2020 at 07:14 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `db_gym`
+-- Database: `db_gym`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_admin`
+-- Table structure for table `tbl_admin`
 --
 
 CREATE TABLE `tbl_admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_admin`
+-- Dumping data for table `tbl_admin`
 --
 
 INSERT INTO `tbl_admin` (`id_admin`, `name`, `pass`, `username`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `tbl_admin` (`id_admin`, `name`, `pass`, `username`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_advice`
+-- Table structure for table `tbl_advice`
 --
 
 CREATE TABLE `tbl_advice` (
@@ -55,7 +55,7 @@ CREATE TABLE `tbl_advice` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_advice`
+-- Dumping data for table `tbl_advice`
 --
 
 INSERT INTO `tbl_advice` (`id`, `content`, `sex`, `status`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `tbl_advice` (`id`, `content`, `sex`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_combo_package`
+-- Table structure for table `tbl_combo_package`
 --
 
 CREATE TABLE `tbl_combo_package` (
@@ -84,7 +84,7 @@ CREATE TABLE `tbl_combo_package` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_combo_package`
+-- Dumping data for table `tbl_combo_package`
 --
 
 INSERT INTO `tbl_combo_package` (`id_combo`, `name`, `description`, `price`, `date`, `HLV`) VALUES
@@ -99,7 +99,7 @@ INSERT INTO `tbl_combo_package` (`id_combo`, `name`, `description`, `price`, `da
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_gym`
+-- Table structure for table `tbl_gym`
 --
 
 CREATE TABLE `tbl_gym` (
@@ -111,7 +111,7 @@ CREATE TABLE `tbl_gym` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_gym`
+-- Dumping data for table `tbl_gym`
 --
 
 INSERT INTO `tbl_gym` (`id_gym`, `address`, `name`, `MAX`, `slot_now`) VALUES
@@ -121,7 +121,7 @@ INSERT INTO `tbl_gym` (`id_gym`, `address`, `name`, `MAX`, `slot_now`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_level`
+-- Table structure for table `tbl_level`
 --
 
 CREATE TABLE `tbl_level` (
@@ -131,7 +131,7 @@ CREATE TABLE `tbl_level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_level`
+-- Dumping data for table `tbl_level`
 --
 
 INSERT INTO `tbl_level` (`id_level`, `name_level`, `description`) VALUES
@@ -144,7 +144,7 @@ INSERT INTO `tbl_level` (`id_level`, `name_level`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_order`
+-- Table structure for table `tbl_order`
 --
 
 CREATE TABLE `tbl_order` (
@@ -157,7 +157,7 @@ CREATE TABLE `tbl_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_order`
+-- Dumping data for table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`id_order`, `order_date`, `consignee_name`, `consignee_phone`, `id_status`, `id_user`) VALUES
@@ -167,7 +167,7 @@ INSERT INTO `tbl_order` (`id_order`, `order_date`, `consignee_name`, `consignee_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_order_detail`
+-- Table structure for table `tbl_order_detail`
 --
 
 CREATE TABLE `tbl_order_detail` (
@@ -177,18 +177,10 @@ CREATE TABLE `tbl_order_detail` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_order_detail`
---
-
-INSERT INTO `tbl_order_detail` (`id_order`, `id_product`, `quantity`, `price`) VALUES
-(1, 1, 2, 2000000),
-(1, 2, 1, 300);
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_order_detail_combo`
+-- Table structure for table `tbl_order_detail_combo`
 --
 
 CREATE TABLE `tbl_order_detail_combo` (
@@ -199,7 +191,7 @@ CREATE TABLE `tbl_order_detail_combo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_order_detail_combo`
+-- Dumping data for table `tbl_order_detail_combo`
 --
 
 INSERT INTO `tbl_order_detail_combo` (`id_order`, `id_combo`, `date_begin`, `date_end`) VALUES
@@ -208,7 +200,7 @@ INSERT INTO `tbl_order_detail_combo` (`id_order`, `id_combo`, `date_begin`, `dat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_personal_trainer`
+-- Table structure for table `tbl_personal_trainer`
 --
 
 CREATE TABLE `tbl_personal_trainer` (
@@ -216,21 +208,22 @@ CREATE TABLE `tbl_personal_trainer` (
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
-  `img` varchar(30) DEFAULT NULL
+  `img` varchar(30) DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_personal_trainer`
+-- Dumping data for table `tbl_personal_trainer`
 --
 
-INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`, `img`) VALUES
-(1, 'Huy 6 múi', '180 cao lỗ', '0909012345', NULL),
-(2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613', NULL);
+INSERT INTO `tbl_personal_trainer` (`id_pt`, `name`, `address`, `phone`, `img`, `status`) VALUES
+(1, 'Huy 6 múi', '180 cao lỗ', '0909012345', NULL, 0),
+(2, 'Bé Đạt cute', '43 trần quôc thảo', '0973409613', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_product`
+-- Table structure for table `tbl_product`
 --
 
 CREATE TABLE `tbl_product` (
@@ -244,12 +237,10 @@ CREATE TABLE `tbl_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_product`
+-- Dumping data for table `tbl_product`
 --
 
 INSERT INTO `tbl_product` (`id_product`, `ten`, `description`, `price`, `img`, `hot`, `loaiSP`) VALUES
-(1, 'sp1', 'Đây là mô tả cho sp1', 1000000, NULL, 0, ''),
-(2, 'sp2', 'mô tả sp 2', 300000, NULL, 0, ''),
 (3, 'đai lưng', 'đai lưng giúp bảo vệ phần lưng và tăng cường sức mạnh cho người sử dụng', 135000, 'dailung.jpg', 1, 'phukien'),
 (4, 'Dây kéo lưng tập Gym', 'Dây kéo giúp giữ cho thanh tạ được chắc hơn, bảo vệ cổ tay, tăng cường sức kéo, giảm đau bàn tay', 87000, 'daykeo.png', 1, 'phukien'),
 (5, 'DÂY QUẤN CỔ TAY HARBINGER REDLINE', 'Dây quấn cổ tay giúp giảm chấn thương cổ tay, tăng lực kéo, đẩy khi tập nặng', 142000, 'quancotay.png', 1, 'phukien'),
@@ -260,29 +251,58 @@ INSERT INTO `tbl_product` (`id_product`, `ten`, `description`, `price`, `img`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_schedule`
+-- Table structure for table `tbl_schedule`
 --
 
 CREATE TABLE `tbl_schedule` (
   `id_schedule` int(10) NOT NULL,
   `id_users` int(10) NOT NULL,
   `id_gym` int(10) NOT NULL,
-  `id_pt` int(10) NOT NULL,
-  `date` datetime NOT NULL
+  `thu2` varchar(10) NOT NULL,
+  `thu3` varchar(10) NOT NULL,
+  `thu4` varchar(10) NOT NULL,
+  `thu5` varchar(10) NOT NULL,
+  `thu6` varchar(10) NOT NULL,
+  `thu7` varchar(10) NOT NULL,
+  `chunhat` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_schedule`
+-- Dumping data for table `tbl_schedule`
 --
 
-INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `id_pt`, `date`) VALUES
-(1, 1, 2, 2, '2020-06-10 11:28:30'),
-(2, 1, 2, 1, '2020-06-10 11:28:30');
+INSERT INTO `tbl_schedule` (`id_schedule`, `id_users`, `id_gym`, `thu2`, `thu3`, `thu4`, `thu5`, `thu6`, `thu7`, `chunhat`) VALUES
+(40, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1'),
+(41, 1, 1, 'ca3', 'ca3', 'ca3', 'null', 'null', 'ca1', 'ca1');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_status`
+-- Table structure for table `tbl_schedule_pt`
+--
+
+CREATE TABLE `tbl_schedule_pt` (
+  `id` int(11) NOT NULL,
+  `ca` varchar(11) NOT NULL,
+  `thu` int(11) NOT NULL,
+  `id_pt` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_schedule_pt`
+--
+
+INSERT INTO `tbl_schedule_pt` (`id`, `ca`, `thu`, `id_pt`) VALUES
+(85, 'ca3', 2, 1),
+(86, 'ca3', 3, 1),
+(87, 'ca3', 4, 1),
+(88, 'ca1', 7, 1),
+(89, 'ca1', 8, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
@@ -291,7 +311,7 @@ CREATE TABLE `tbl_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_status`
+-- Dumping data for table `tbl_status`
 --
 
 INSERT INTO `tbl_status` (`id_status`, `name`) VALUES
@@ -304,7 +324,7 @@ INSERT INTO `tbl_status` (`id_status`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tbl_users`
+-- Table structure for table `tbl_users`
 --
 
 CREATE TABLE `tbl_users` (
@@ -319,7 +339,7 @@ CREATE TABLE `tbl_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `tbl_users`
+-- Dumping data for table `tbl_users`
 --
 
 INSERT INTO `tbl_users` (`id_user`, `email`, `pass`, `phone`, `name`, `address`, `id_level`, `BMI`) VALUES
@@ -327,41 +347,41 @@ INSERT INTO `tbl_users` (`id_user`, `email`, `pass`, `phone`, `name`, `address`,
 (2, 'user2@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '0123456789', 'Nguyễn văn tý 2', '181 Cao lỗ p4 q8 hcm', 4, 0);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `tbl_admin`
+-- Indexes for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Chỉ mục cho bảng `tbl_advice`
+-- Indexes for table `tbl_advice`
 --
 ALTER TABLE `tbl_advice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `tbl_combo_package`
+-- Indexes for table `tbl_combo_package`
 --
 ALTER TABLE `tbl_combo_package`
   ADD PRIMARY KEY (`id_combo`);
 
 --
--- Chỉ mục cho bảng `tbl_gym`
+-- Indexes for table `tbl_gym`
 --
 ALTER TABLE `tbl_gym`
   ADD PRIMARY KEY (`id_gym`);
 
 --
--- Chỉ mục cho bảng `tbl_level`
+-- Indexes for table `tbl_level`
 --
 ALTER TABLE `tbl_level`
   ADD PRIMARY KEY (`id_level`);
 
 --
--- Chỉ mục cho bảng `tbl_order`
+-- Indexes for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
   ADD PRIMARY KEY (`id_order`),
@@ -369,158 +389,175 @@ ALTER TABLE `tbl_order`
   ADD KEY `order_ibfk2` (`id_status`);
 
 --
--- Chỉ mục cho bảng `tbl_order_detail`
+-- Indexes for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
   ADD PRIMARY KEY (`id_product`,`id_order`) USING BTREE,
   ADD KEY `order_detail_ibkf1` (`id_order`);
 
 --
--- Chỉ mục cho bảng `tbl_order_detail_combo`
+-- Indexes for table `tbl_order_detail_combo`
 --
 ALTER TABLE `tbl_order_detail_combo`
   ADD PRIMARY KEY (`id_order`,`id_combo`) USING BTREE,
   ADD KEY `order_combo_ibfk2` (`id_combo`);
 
 --
--- Chỉ mục cho bảng `tbl_personal_trainer`
+-- Indexes for table `tbl_personal_trainer`
 --
 ALTER TABLE `tbl_personal_trainer`
   ADD PRIMARY KEY (`id_pt`);
 
 --
--- Chỉ mục cho bảng `tbl_product`
+-- Indexes for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`id_product`);
 
 --
--- Chỉ mục cho bảng `tbl_schedule`
+-- Indexes for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
-  ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`,`id_pt`),
+  ADD PRIMARY KEY (`id_schedule`,`id_users`,`id_gym`) USING BTREE,
   ADD KEY `schedule_ibfk1` (`id_gym`),
-  ADD KEY `schedule_ibfk2` (`id_pt`),
   ADD KEY `schedule_ibfk3` (`id_users`);
 
 --
--- Chỉ mục cho bảng `tbl_status`
+-- Indexes for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk1` (`id_pt`);
+
+--
+-- Indexes for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Chỉ mục cho bảng `tbl_users`
+-- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `users_ibfk1` (`id_level`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `tbl_admin`
+-- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_advice`
+-- AUTO_INCREMENT for table `tbl_advice`
 --
 ALTER TABLE `tbl_advice`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_combo_package`
+-- AUTO_INCREMENT for table `tbl_combo_package`
 --
 ALTER TABLE `tbl_combo_package`
   MODIFY `id_combo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_gym`
+-- AUTO_INCREMENT for table `tbl_gym`
 --
 ALTER TABLE `tbl_gym`
   MODIFY `id_gym` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_level`
+-- AUTO_INCREMENT for table `tbl_level`
 --
 ALTER TABLE `tbl_level`
   MODIFY `id_level` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_order`
+-- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
   MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_personal_trainer`
+-- AUTO_INCREMENT for table `tbl_personal_trainer`
 --
 ALTER TABLE `tbl_personal_trainer`
   MODIFY `id_pt` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_product`
+-- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
   MODIFY `id_product` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_schedule`
+-- AUTO_INCREMENT for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
-  MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_schedule` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_status`
+-- AUTO_INCREMENT for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   MODIFY `id_status` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `tbl_users`
+-- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43241255;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `tbl_order`
+-- Constraints for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
   ADD CONSTRAINT `order_ibfk1` FOREIGN KEY (`id_user`) REFERENCES `tbl_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_ibfk2` FOREIGN KEY (`id_status`) REFERENCES `tbl_status` (`id_status`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `tbl_order_detail`
+-- Constraints for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
   ADD CONSTRAINT `order_detail_ibfk2` FOREIGN KEY (`id_product`) REFERENCES `tbl_product` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_detail_ibkf1` FOREIGN KEY (`id_order`) REFERENCES `tbl_order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `tbl_order_detail_combo`
+-- Constraints for table `tbl_order_detail_combo`
 --
 ALTER TABLE `tbl_order_detail_combo`
   ADD CONSTRAINT `order_combo_ibfk1` FOREIGN KEY (`id_order`) REFERENCES `tbl_order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `order_combo_ibfk2` FOREIGN KEY (`id_combo`) REFERENCES `tbl_combo_package` (`id_combo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `tbl_schedule`
+-- Constraints for table `tbl_schedule`
 --
 ALTER TABLE `tbl_schedule`
   ADD CONSTRAINT `schedule_ibfk1` FOREIGN KEY (`id_gym`) REFERENCES `tbl_gym` (`id_gym`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `schedule_ibfk2` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schedule_ibfk3` FOREIGN KEY (`id_users`) REFERENCES `tbl_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `tbl_users`
+-- Constraints for table `tbl_schedule_pt`
+--
+ALTER TABLE `tbl_schedule_pt`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`id_pt`) REFERENCES `tbl_personal_trainer` (`id_pt`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
   ADD CONSTRAINT `users_ibfk1` FOREIGN KEY (`id_level`) REFERENCES `tbl_level` (`id_level`) ON DELETE CASCADE ON UPDATE CASCADE;
