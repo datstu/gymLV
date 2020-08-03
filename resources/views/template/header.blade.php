@@ -114,12 +114,10 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
 
-                      
-
                         <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="ABOUT">Giới thiệu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ABOUT">About Us</a></li>
                         <li class="dropdown">
-                            <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
+                            <a href="BAI-VIET" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Thư Viện </a>
 
                             <ul class="dropdown-menu">
 								<li><a href="shop.html">Bài Tập</a></li>
@@ -135,10 +133,12 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="PHONG-GYM">Phòng Gym</a></li>
 
+
                       
                       
 
                         <li class="nav-item"><a class="nav-link" href="BOOK">Đặt lịch</a></li>
+
 
                     </ul>
                 </div>
