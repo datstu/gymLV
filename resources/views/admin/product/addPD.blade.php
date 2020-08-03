@@ -51,6 +51,8 @@
                     @endif
 
 
+ 
+
                         <form class="form-horizontal" id="frmAddUser" action="{{url('/them-san-pham')}}" method="post" enctype="multipart/form-data">
                             <fieldset>
                                 <!-- Name input-->
