@@ -266,11 +266,11 @@
                                 <div class="mb-4">
                                     <label for="state">Bạn có muốn phát triển cơ bắp như thế nào: </label>
                                     <div class="custom-control custom-radio">
-                                        <input id="Q10" name="pt_co" class="custom-control-input" type="radio" value="0">
+                                        <input id="Q10" name="tpbs_nam" class="custom-control-input" type="radio" value="san chac">
                                         <label class="custom-control-label" for="Q10">Săn chắc- body chuẩn</label>  </div>
                                     
                                     <div class="custom-control custom-radio">
-                                        <input id="Q11" name="pt_co" class="custom-control-input" type="radio" value="1">
+                                        <input id="Q11" name="tpbs_nam" class="custom-control-input" type="radio" value="hypertrophy">
                                         <label class="custom-control-label" for="Q11">hypertrophy-Phát triển cơ</label>  </div>                                  
                                 </div>
                                
@@ -310,11 +310,11 @@
                                 <div class="mb-4">
                                     <label for="state">Bạn có muốn phát triển thế nào?</label>
                                     <div class="custom-control custom-radio">
-                                        <input id="Q16" name="tangcan_nu" class="custom-control-input" type="radio" value="1">
+                                        <input id="Q16" name="tpbs_nu" class="custom-control-input" type="radio" value="tang can">
                                         <label class="custom-control-label" for="Q16">Tăng cân, body săn chắc.</label>  </div>
                                     
                                     <div class="custom-control custom-radio">
-                                        <input id="Q17" name="tangcan_nu" class="custom-control-input" type="radio" value="0">
+                                        <input id="Q17" name="tpbs_nu" class="custom-control-input" type="radio" value="giam can">
                                         <label class="custom-control-label" for="Q17">Giảm cân, thon gọn, giữ dáng.</label>  </div>
                                     
                                     

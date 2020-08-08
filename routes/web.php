@@ -53,11 +53,7 @@ Route::get('ODER','checkoutController@inhoadon')->name('inhoadon');
 Route::get('/MY-ACCOUNT','UserController@myaccount')->name('my-account');
 Route::get('/MY-ACCOUNT/UPDATE','UserController@update')->name('updateAccount');
 Route::post('/MY-ACCOUNT/UPDATE_PASSWORD','UserController@update_password')->name('updateAccount_pass');
-
-
-Route::get('TU-VAN', function () {
-    return view('index.checkout');
-});
+Route::get('TU-VAN','TuvanController@checkLogin')->name('checklogin');
 
 
 

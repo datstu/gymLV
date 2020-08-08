@@ -15,12 +15,14 @@ session_start();
 class TuvanController extends Controller
 {
 	public function tuvan(Request $request){
-
-        //$advice = DB::table('tbl_advice')->get();  
+		 
 		$Gioitinh = isset($request->Gioitinh) ? $request->Gioitinh : '';
 		$Chieucao = isset($request->cc) ? $request->cc : '0';
 		$Cannang = isset($request->cn) ? $request->cn : '0';
 		$Nghenghiep = isset($request->nn) ? $request->nn : '0';
+
+		$tpbs_nam = isset($request->tpbs_nam) ? $request->tpbs_nam : '';
+		$tpbs_nu = isset($request->tpbs_nu) ? $request->tpbs_nu : '';
 		
 		$dd1 = isset($request->dd1) ? $request->dd1 : '';
 		$dd2 = isset($request->dd2) ? $request->dd2 : '';
@@ -43,8 +45,26 @@ class TuvanController extends Controller
 		$KH['vip'] = isset($request->vip) ? $request->vip : '0';
 		//$KH['hlv'] = isset($request->hlv) ? $request->hlv : '0';
 		$product=$value->suggest($KH);
- 		var_dump($product) ;
-        return view('index.tuvan',compact('Dinhduong','body','advice','Gioitinh','BMI','product'));
-    }
+		if ($tpbs_nam!='') {
+			$tpbs=$value->suggest_tpbs($tpbs_nam);
+		}else {
+			$tpbs=$value->suggest_tpbs($tpbs_nu);
+		}	
+ 		//var_dump($product) ;
+        return view('index.tuvan',compact('Dinhduong','body','advice','Gioitinh','BMI','product','tpbs'));
+    
      
+        }
+      public function checklogin(Request $request){
+		 if (session('User')) {
+            
+              return view('index.checkout');
+        }else{
+            $status=0;
+            Session::put('status',$status);
+            $error = "Đăng nhập trước khi thao tác.";
+            Session::put('mess',$error);
+             return Redirect::to('ACCOUNT/login');
+        }
+    }
 }

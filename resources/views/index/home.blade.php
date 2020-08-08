@@ -56,7 +56,7 @@
             <div class="row">
                     <div class="shop-cat-box">
                         <img class="img-fluid" src="{{ url('public/user/images/tuvan.png')}}" alt="" />
-                        <a class="btn hvr-hover" href="TU-VAN">TƯ VẤN MIỄN PHÍ CHO NGƯỜI MỚI</a>
+                        <a class="btn hvr-hover" href="{{route('checklogin')}}">TƯ VẤN MIỄN PHÍ CHO NGƯỜI MỚI</a>
                     </div>
                 </div>
                 

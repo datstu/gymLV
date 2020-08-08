@@ -63,7 +63,7 @@
                                                         <p class="sale">HOT</p>
                                                         @endif
                                                     </div>
-                                                    <img src="{{url('public/user/images/'.$sp->img)}}" class="img-fluid" alt="Image" >
+                                                    <img src="{{url('public/uploads/product/'.$sp->img)}}" class="img-fluid" alt="Image" >
                                                     <div class="mask-icon">
                                                          <ul class="nav nav-tabs ml-auto">
                                                             <li>
@@ -100,7 +100,7 @@
                                                         <div class="type-lb">
                                                             <p class="new">New</p>
                                                         </div>
-                                                       <img src="{{url('public/user/images/'.$sp->img)}}" class="img-fluid" alt="Image">
+                                                       <img src="{{url('public/uploads/product/'.$sp->img)}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

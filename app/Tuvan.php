@@ -73,7 +73,7 @@ class Tuvan
 		}
 		return $Tinhtrang;
 	}
-		public function BMI($cn,$cc)
+	public function BMI($cn,$cc)
 		{
 			$BMI = round($cn/($cc*$cc), 1);
 			return $BMI;
@@ -83,7 +83,6 @@ class Tuvan
 	{
 		$product= array();
 		foreach ($KH as $key => $value) {
-			
 			if($value=='1')
 			{
 				if($key=='yoga')
@@ -99,9 +98,15 @@ class Tuvan
 				}
 			$product = array_merge($product,$prod);
 			$product=array_unique($product,0);
-			}
-			
+			}else{
+				$product = Combo::where('HLV','=','0')->where('ten','not like','%OLD%')->where('ten','not like','%VIP%')->where('ten','not like','%newbie%')->where('description','not like','%yoga%')->get()->toArray();
+			}	
 		}
 		return $product;
 	}
+	public function suggest_tpbs($value)
+		{
+			$product = Product::where('loaiSP','tpbs')->where('description','like','%'.$value.'%')->get()->toArray();
+			return $product;
+		}
 }
