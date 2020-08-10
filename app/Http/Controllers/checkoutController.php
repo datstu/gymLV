@@ -63,8 +63,9 @@ class checkoutController extends Controller
         $shipping_option = isset($request->shipping_option) ? $request->shipping_option : '';
         $order_date=Carbon::now('Asia/Ho_Chi_Minh');
         $totalPrice=  isset($request->totalPrice) ? $request->totalPrice : '';
+        $id_status=1;
         //echo $oder_date;
-        $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'shipping_method' => $shipping_option,'totalPrice' => $totalPrice,'address' => $address );
+        $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'shipping_method' => $shipping_option,'totalPrice' => $totalPrice,'address' => $address, 'id_status' => $id_status);
         $result = DB::table('tbl_order')->insert($order);
 
          $Cart = Session::has('cart')?Session::get('cart'):null;
@@ -93,8 +94,8 @@ class checkoutController extends Controller
         $totalPrice=  isset($request->totalPrice) ? $request->totalPrice : '';
         $phongtap = isset($request->phongtap) ? $request->phongtap : '';
         $GT = DB::table('tbl_combo_package')->where('id_combo','=',$id_combo)->first(); 
-    
-            $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'totalPrice' => $totalPrice,  );
+        $id_status=6;
+            $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'totalPrice' => $totalPrice, 'id_status' => $id_status   );
             $result = DB::table('tbl_order')->insert($order);
             $idorder2 = DB::table('tbl_order')->max('id_order');
             $date_begin  = date($dateN);

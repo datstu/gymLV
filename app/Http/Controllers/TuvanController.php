@@ -51,6 +51,10 @@ class TuvanController extends Controller
 			$tpbs=$value->suggest_tpbs($tpbs_nu);
 		}	
  		//var_dump($product) ;
+ 		if($Gioitinh==0)
+ 			$Gioitinh="nữ";
+ 		else
+ 			$Gioitinh='nam';
         return view('index.tuvan',compact('Dinhduong','body','advice','Gioitinh','BMI','product','tpbs'));
     
      

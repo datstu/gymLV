@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 Route::get('/index','HomeController@index' )->name('index');
@@ -19,6 +9,7 @@ Route::get('/','HomeController@index' );
 Route::get('user', function () {
     return view('user.user');
 });
+
 Route::get('ABOUT','HomeController@about' )->name('about');
 //shop
 Route::get('PHU-KIEN','ShopController@shop_pk' )->name('phukien');
@@ -26,9 +17,10 @@ Route::get('GOI-TAP','ShopController@shop_gt' )->name('goitap');
 Route::get('SEARCH-GT','ShopController@searchgt' )->name('searchgt');
 Route::get('SEARCH-PK','ShopController@searchpk' )->name('searchpk');
 
-Route::get('/BOOK', function () {
-    return view('index.book');
-});
+
+
+
+
 Route::get('/BAI-VIET', function () {
     return view('index.baiviet');
 });
@@ -36,6 +28,7 @@ Route::get('PHONG-GYM','HomeController@phonggym' )->name('phonggym');
 Route::get('/Bv', function () {
     return view('index.baiviet_detail');
 });
+
 //cart
 Route::get('add-to-cart/{id}','CartController@getAddtoCart')->name('themgiohang');
 Route::get('del-cart/{id}','CartController@getDelItemCart')->name('xoagiohang');
@@ -58,6 +51,9 @@ Route::get('TU-VAN','TuvanController@checkLogin')->name('checklogin');
 
 
 
+
+
+
 Route::get('ACCOUNT/login','UserController@login' )->name('viewlogin');
 Route::get('ACCOUNT/register','UserController@register' )->name('viewregister');
 Route::get('ACCOUNT/add','UserController@adduser' );
@@ -65,6 +61,10 @@ Route::post('ACCOUNT/checklogin','UserController@checklogin')->name('dangnhap');
 Route::get('ACCOUNT/logout','UserController@logout')->name('dangxuat');
 
 Route::post('Thongtin','TuvanController@tuvan' )->name('tuvan');
+
+
+
+
 
 
 
@@ -108,6 +108,15 @@ Route::post('/cap-nhat-san-pham','ProductController@saveEditPD');
 Route::get('/cap-nhat-san-pham/{id}','ProductController@updatePD');
 Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
+
+
+//Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');
+//Route::get('/Schedule','ScheduleController@switch')->name('Schedule');
+Route::get('/dat-lich','ScheduleController@bookSchedule')->name('datlich');
+Route::get('/doi-lich','ScheduleController@updateSchedule')->name('doilich');
+Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('booklich');
+
+
 
 
 

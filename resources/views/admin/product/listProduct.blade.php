@@ -95,8 +95,14 @@
 
                     <!-- <td class="desc">Samsung S8 Black</td> -->
                     
+<<<<<<< HEAD
                    
                     
+=======
+                     OrgChart.templates.ana.img_0 =
+                '<image preserveAspectRatio="xMidYMid slice" 
+                xlink:href="{{asset('public/img_person/'{val})}}" x="20" y="-15" width="80" height="80"></image>';
+>>>>>>> dat
               
                    <td><a href="{{url('/quan-ly-anh/'.$user->id_product)}}">Quản lý ảnh</a></td>
 

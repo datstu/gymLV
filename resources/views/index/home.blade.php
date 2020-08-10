@@ -113,7 +113,12 @@
                             <div class="type-lb">
                                 <p class="sale">HOT</p>
                             </div>
+
+
+
                             <img src="{{url('public/uploads/product/'.$sp->img)}}" class="img-fluid" alt="Image">
+
+
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -137,7 +142,9 @@
                             <div class="type-lb">
                                 <p class="new">HOT</p>
                             </div>
+
                             <img src="{{url('public/uploads/product/'.$sp->img)}}" class="img-fluid" alt="Image">
+
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
