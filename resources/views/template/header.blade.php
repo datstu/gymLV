@@ -138,16 +138,8 @@ use App\Cart;
                         <li class="nav-item active"><a class="nav-link" href="{{route('index')}}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Giới thiệu</a></li>
 
-                        <li class="dropdown">
-                            <a href="BAI-VIET" class="nav-link dropdown-toggle " data-toggle="dropdown">Thư Viện </a>
-
-                            <ul class="dropdown-menu">
-								<li><a href="shop.html">Bài Tập</a></li>
-                                <li><a href="wishlist.html">Dinh Dưỡng</a></li>
-                            </ul>
-                        </li>
                          <li class="dropdown">
-                            <a href="SHOP" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
+                            <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{route('goitap')}}">Gói tập</a></li>
                                 <li><a href="{{route('phukien')}}">Phụ Kiện</a></li>

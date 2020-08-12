@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\User;
+use App\Schedule;
+use App\PhongGym;
 use App\Status;
 use Session;
 use App\Http\Requests;
@@ -14,11 +16,13 @@ class ScheduleController extends Controller
 {
     public function homeSchedule($gt,$gym){
     	$goitap=$gt;
-    	$phonggym=$gym;
+    	$phonggym=PhongGym::where('id_gym',$gym)->first();
     	 $combo= DB::table('tbl_order_detail_combo')
             ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->where('id_order',$goitap)->first();
     	$listcus = DB::table('tbl_schedule')->where('id_order',$goitap)->first();
     	$order=  Status::join('tbl_order','tbl_order.id_status','=','tbl_status.id_status')->where('id_order','=',$goitap)->first();
+    	$Schedule= new Schedule();
+    	$val= $Schedule->checkSlot($gym);
     	
     	if($order->id_status==6)
     	{
@@ -27,19 +31,19 @@ class ScheduleController extends Controller
 	    			$ac='';
 	    			$ac1='show';
 	    			$ac2='';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2'));
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));
 	    		}else{
 	    			$ac='show';
 	    			$ac1='';
 	    			$ac2='';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2'));}
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));}
     		}else{
     			$listcus  = array('thu2' => 'null' ,'thu3' => 'null' ,'thu4' => 'null' ,'thu5' => 'null' ,'thu6' => 'null' ,'thu7' => 'null' ,'chunhat' => 'null' , );
     			$listcus=(object)$listcus ;
 	    			$ac='';
 	    			$ac1='';
 	    			$ac2='show';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2'));
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));
     		}
     	}else{
     		 $mess = "Gói tập đã quá hạn sử dụng.";

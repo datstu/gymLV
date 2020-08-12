@@ -31,8 +31,9 @@
                         <ul class="list-group" style="font-size: 16px;">
                             <li class="list-group-item " style="font-size: 18px;">Ca 1: 6h sáng - 12h trưa.</li>
                           <li class="list-group-item " style="font-size: 18px;">Ca 2: 12h trưa - 18h tối.</li>
-                          <li class="list-group-item " style="font-size: 18px;">Ca 3: 18h tối - 00h</li>
+                          <li class="list-group-item " style="font-size: 18px;">Ca 3: 18h tối - 00h</li> <li class="list-group-item " style="font-size: 18px;">Bạn đang chọn lịch tại phòng gym <strong>{{$phonggym->name}} - {{$phonggym->address_gym}}</strong></li>
                           <li class="list-group-item " style="font-size: 18px;">Bạn muốn bỏ chọn thứ mấy thì chọn vào tên thứ.(vd: hủy chọn 1 trong 3 ca ngày thứ 2 thì chọn tên thứ 2)</li>
+                          
                           @if($ac=='show')
                            <li class="list-group-item " style="font-size: 18px;"><strong>Bạn đã đăng ký lịch trước đó. Nếu bạn muốn đổi lịch thì mời bạn chọn ca tập mới.</strong></li>
                            @endif
@@ -79,7 +80,7 @@
                                 {{route('doilich')}}@else {{route('datlich')}}
                                 @endif" method="get">
                                     {{ csrf_field() }}
-                                <input type="hidden" name="id_gym" value="{{$phonggym}}">
+                                <input type="hidden" name="id_gym" value="{{$phonggym->id_gym}}">
                                 
                                 <input type="hidden" name="id_gt" value="{{$goitap}}">
                         <tr>
@@ -124,93 +125,57 @@
                             <tbody>
                         <tr>
                             <td>Ca 1</td>
-                            <td>
-                                <input type="radio" name="t2" id="ca1_t2"  value="ca1">
-                                <label for="ca1_t2">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t3" id="ca1_t3" value="ca1">
-                                <label for="ca1_t3">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t4" id="ca1_t4" value="ca1">
-                                <label for="ca1_t4">Chọn</label>
-                            </td>
-                            <td><input type="radio" name="t5" id="ca1_t5" value="ca1">
-                                <label for="ca1_t5">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t6" id="ca1_t6" value="ca1">
-                                <label for="ca1_t6">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t7" id="ca1_t7" value="ca1">
-                                <label for="ca1_t7">Chọn</label>
-                            </td>
+                             @for ($i = 2; $i <= 8; $i++)
+                             @if($i==8)
                             <td>
                                 <input type="radio" name="cn" id="ca1_t8" value="ca1">
-                                <label for="ca1_t8">Chọn</label>
+                                <label for="ca1_t8">Chọn ({{$val['chunhat']['ca1']}}/{{$phonggym->MAX}})</label>
                             </td>
+                             @else 
+                             <td>
+                                <input type="radio" name="t{{$i}}" id="ca1_t{{$i}}"  value="ca1">
+                                <label for="ca1_t{{$i}}">Chọn ({{$val['thu'."$i"]['ca1']}}/{{$phonggym->MAX}})</label>
+                            </td>
+                             @endif
+                           
+                            @endfor
+                           
                         </tr>
                         <tr>
                             <td>Ca 2</td>
-                            <td>
-                                <input type="radio" name="t2" id="ca2_t2" value="ca2">
-                                <label for="ca2_t2">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t3" id="ca2_t3" value="ca2">
-                                <label for="ca2_t3">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t4" id="ca2_t4" value="ca2">
-                                <label for="ca2_t4">Chọn</label>
-                            </td>
-                            <td><input type="radio" name="t5" id="ca2_t5" value="ca2">
-                                <label for="ca2_t5">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t6" id="ca2_t6" value="ca2">
-                                <label for="ca2_t6">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t7" id="ca2_t7" value="ca2">
-                                <label for="ca2_t7">Chọn</label>
-                            </td>
+                            @for ($i = 2; $i <= 8; $i++)
+                             @if($i==8)
                             <td>
                                 <input type="radio" name="cn" id="ca2_t8" value="ca2">
-                                <label for="ca2_t8">Chọn</label>
+                                <label for="ca2_t8">Chọn ({{$val['chunhat']['ca2']}}/{{$phonggym->MAX}})</label>
                             </td>
+                             @else 
+                             <td>
+                                <input type="radio" name="t{{$i}}" id="ca2_t{{$i}}"  value="ca2">
+                                <label for="ca2_t{{$i}}">Chọn ({{$val['thu'."$i"]['ca2']}}/{{$phonggym->MAX}})</label>
+                            </td>
+                             @endif
+                           
+                            @endfor
+                            
+                            
                         </tr>
                         <tr>
                             <td>Ca 3</td>
-                            <td>
-                                <input type="radio" name="t2" id="ca3_t2" value="ca3">
-                                <label for="ca3_t2">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t3" id="ca3_t3" value="ca3">
-                                <label for="ca3_t3">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t4" id="ca3_t4" value="ca3">
-                                <label for="ca3_t4">Chọn</label>
-                            </td>
-                            <td><input type="radio" name="t5" id="ca3_t5" value="ca3">
-                                <label for="ca3_t5">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t6" id="ca3_t6" value="ca3">
-                                <label for="ca3_t6">Chọn</label>
-                            </td>
-                            <td>
-                                <input type="radio" name="t7" id="ca3_t7" value="ca3">
-                                <label for="ca3_t7">Chọn</label>
-                            </td>
+                             @for ($i = 2; $i <= 8; $i++)
+                             @if($i==8)
                             <td>
                                 <input type="radio" name="cn" id="ca3_t8" value="ca3">
-                                <label for="ca3_t8">Chọn</label>
+                                <label for="ca3_t8">Chọn ({{$val['chunhat']['ca3']}}/{{$phonggym->MAX}})</label>
                             </td>
+                             @else 
+                             <td>
+                                <input type="radio" name="t{{$i}}" id="ca3_t{{$i}}"  value="ca3">
+                                <label for="ca3_t{{$i}}">Chọn ({{$val['thu'."$i"]['ca3']}}/{{$phonggym->MAX}})</label>
+                            </td>
+                             @endif
+                           
+                            @endfor
                         </tr>
                         
                             </tbody>

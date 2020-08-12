@@ -48,7 +48,7 @@
 								</a>
                                     </td>
                                     <td class="price-pr">
-                                        <p>{{$gym->slot_now}}/{{$gym->MAX}}</p>
+                                        <p>{{$gym->MAX}}</p>
                                     </td>
                                     <td class="quantity-box">{{$gym->address_gym}}</td>
                                    
