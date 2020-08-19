@@ -73,6 +73,12 @@
                                         <input id="address" name="address" type="text" placeholder="Nhập địa chỉ của bạn..." class="form-control">
                                     </div>
                                 </div>
+                                 <div class="form-group">
+                                    <label class="col-md-2 control-label" for="address">Số lượng người</label>
+                                    <div class="col-md-9">
+                                        <input id="address" name="MAX" type="text" placeholder="200" class="form-control">
+                                    </div>
+                                </div>
                                
                                 
                             

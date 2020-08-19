@@ -21,7 +21,8 @@ class GymController extends Controller
             'name' => 'required',
             
            
-            'address' => 'required'
+            'address' => 'required',
+             'MAX' => 'required'
             
         ],[
             'name.required' => 'Bạn chưa nhập tên phòng',
@@ -42,7 +43,8 @@ class GymController extends Controller
     	
       
         $data['name'] = $request->name;
-    	$data['address'] = $request->address;
+    	$data['address_gym'] = $request->address;
+         $data['MAX'] = $request->MAX;
         
 
         $result = DB::table('tbl_gym')->insert($data);
@@ -84,7 +86,8 @@ class GymController extends Controller
     	
         
         $data['name']=$request->name;
-    	$data['address']=$request->address;
+    	$data['address_gym']=$request->address;
+         $data['MAX'] = $request->MAX;
        
 
        // $result = DB::table('tbl_users')->get();

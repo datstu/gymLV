@@ -107,9 +107,9 @@
 			<li><a href="{{url('quan-ly-goi-tap')}}"><em class="fa fa-clone">&nbsp;</em> QL Gói Tập</a></li>
 			<li><a href="{{url('quan-ly-san-pham')}}"><em class="fa fa-clone">&nbsp;</em> QL Sản phẩm</a></li>
 			
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> Hóa Đơn</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> Trạng thái</a></li>
-			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Thời Khóa Biểu</a></li>
+			<li><a href="{{url('quan-ly-hoa-don')}}"><em class="fa fa-clone">&nbsp;</em> Hóa Đơn</a></li>
+			{{-- <li><a href=""><em class="fa fa-clone">&nbsp;</em> Trạng thái</a></li>
+			<li><a href=""><em class="fa fa-clone">&nbsp;</em> QL Thời Khóa Biểu</a></li> --}}
 			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -125,7 +125,7 @@
 					</a></li>
 				</ul>
 			</li> -->
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href=""><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		

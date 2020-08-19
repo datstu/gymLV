@@ -13,6 +13,7 @@ class ProductController extends Controller
     public function listPD(){
     	$listPD = DB::table('tbl_product')->orderby('id_product','asc')
     	->get(); 
+        //print_r($listPD);
 		return view('admin.product.listProduct')->with('listPD',$listPD);
     }
      public function photoManagenment(){
@@ -52,9 +53,11 @@ class ProductController extends Controller
     	
     	
       
-        $data['name'] = $request->name;
+        $data['ten'] = $request->name;
     	$data['description'] = $request->descript;
     	$data['price'] = $request->price;
+        $data['hot'] = $request->Hot;
+        $data['loaiSP'] = $request->loaisp;
     	
         $get_image = $request->file('product_image');
 
@@ -63,7 +66,7 @@ class ProductController extends Controller
             $name_image = current(explode('.',$get_name_image));
             $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/uploads/product',$new_image);
-            $data['image'] = $new_image;
+            $data['img'] = $new_image;
 
           	$result = DB::table('tbl_product')->insert($data);
         }
@@ -93,11 +96,11 @@ class ProductController extends Controller
         //$this->validatePD($request);
     	$id = $request->id_pt;
     	//xóa hình cũ
-    	$getLL = DB::table('tbl_product')->select('image')->where('id_product',$id)->get();
+    	$getLL = DB::table('tbl_product')->select('img')->where('id_product',$id)->get();
 
-        if($getLL[0]->image != '' && file_exists(public_path('uploads/product/'.$getLL[0]->image)))
+        if($getLL[0]->img != '' && file_exists(public_path('uploads/product/'.$getLL[0]->img)))
 		{
-			unlink(public_path('uploads/product/'.$getLL[0]->image));
+			unlink(public_path('uploads/product/'.$getLL[0]->img));
 		}
     	$data= array();
     	
@@ -105,9 +108,11 @@ class ProductController extends Controller
     	
         
         
-        $data['name'] = $request->name;
+        $data['ten'] = $request->name;
     	$data['description'] = $request->descript;
     	$data['price'] = $request->price;
+        $data['hot'] = $request->Hot;
+        $data['loaiSP'] = $request->loaisp;
     	$get_image = $request->file('product_image');
         
         if($get_image){
@@ -115,7 +120,7 @@ class ProductController extends Controller
             $name_image = current(explode('.',$get_name_image));
             $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
             $get_image->move('public/uploads/product',$new_image);
-            $data['image'] = $new_image;
+            $data['img'] = $new_image;
 
             $result = DB::table('tbl_product')
 						->where('id_product',$id)

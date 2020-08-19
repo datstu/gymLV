@@ -14,7 +14,7 @@ class CustomerController extends Controller
 {
     //
     public function listCustomer(){
-    	$users = DB::table('tbl_users')->orderby('id_user','asc')
+    	$users = DB::table('users')->orderby('id_user','asc')
     	
     	->get(); 
     	// echo "<pre>";
@@ -64,7 +64,7 @@ class CustomerController extends Controller
     	$data['address']=$request->address;
         
 
-        $result = DB::table('tbl_users')->insert($data);
+        $result = DB::table('users')->insert($data);
     
 		
         if($result)
@@ -87,7 +87,18 @@ class CustomerController extends Controller
     }
     public function delCustomer($id){
     	
-    	 DB::table('tbl_users')->where('id_user',$id)->delete();
+        //neu khach hang da dat lich thi ko cho xoa
+        $schedule = DB::table('tbl_schedule')->where('id_user',$id);
+        if($schedule){
+            $users = DB::table('users')->orderby('id_user','asc')
+        
+        ->get();
+            $str ='<script>alert(\'Người dùng này đang hoạt động. Không thể xóa.\')</script>';
+            Session::put('str',$str);
+            return Redirect::to('quan-ly-khach-hang');
+        }
+    	else{
+            DB::table('users')->where('id_user',$id)->delete();
     	
 
       
@@ -99,9 +110,10 @@ class CustomerController extends Controller
     	
     	return Redirect::to('quan-ly-khach-hang');
     }
+    }
     public function updateCustomer($id){
 
-    	$users = DB::table('tbl_users')
+    	$users = DB::table('users')
     	
     	->where('id_user',$id)
     	->first(); 
@@ -121,7 +133,7 @@ class CustomerController extends Controller
        
 
        // $result = DB::table('tbl_users')->get();
-        $result = DB::table('tbl_users')
+        $result = DB::table('users')
         ->where('id_user',$id)
         ->update($data);
 		/*$Str = "";

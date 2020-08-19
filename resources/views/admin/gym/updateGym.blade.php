@@ -74,7 +74,7 @@
                                 <div class="form-group">
                                     <label class="col-md-2 control-label" for="address">Địa chỉ</label>
                                     <div class="col-md-9">
-                                        <input id="address" name="address" type="text" value="{{$gym->address}}" class="form-control">
+                                        <input id="address" name="address" type="text" value="{{$gym->address_gym}}" class="form-control">
                                     </div>
                                 </div>
                                 
@@ -82,7 +82,14 @@
                                    
                                         <input id="phone" name="id_pt" type="hidden" value="{{$gym->id_gym }}" class="form-control" >
                                     </div>
+                                    <div class="form-group">
+                                    <label class="col-md-2 control-label" for="address">Số người</label>
+                                    <div class="col-md-9">
+                                        <input id="address" name="MAX" type="text" value="{{$gym->MAX}}" class="form-control">
+                                    </div>
                                 </div>
+                                </div>
+                                 
                                 
                             
                                 <!-- Email input-->
