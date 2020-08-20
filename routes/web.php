@@ -117,6 +117,9 @@ Route::get('/doi-lich','ScheduleController@updateSchedule')->name('doilich');
 Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('booklich');
 
 
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('dangnhapgg');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
 
 
 

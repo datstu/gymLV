@@ -79,8 +79,12 @@
                             <div class="form-group col-md-6">
                                 <label for="InputPassword" class="mb-0">Password</label>
                                 <input type="password" class="form-control" id="InputPassword" name="pass" placeholder="Password" pattern="\S{6,}" required title="Password phải có ít nhất 6 ký tự"> </div>
-                        </div>
-                        <button type="submit" class="btn hvr-hover">Login</button>
+                        </div> 
+
+                        <button type="submit" class="btn hvr-hover">Login</button> <hr>
+                       <a href="{{route('dangnhapgg')}}" class="btn btn-block btn-primary">
+                            <i class="fab fa-google-plus mr-2"></i>Đăng nhập bằng Google
+                        </a>
                     </form>
                 </div>
                 
