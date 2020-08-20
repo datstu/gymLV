@@ -51,11 +51,8 @@
                     @endif
 
 
-<<<<<<< HEAD
-=======
- 
 
->>>>>>> dat
+
                         <form class="form-horizontal" id="frmAddUser" action="{{url('/them-san-pham')}}" method="post" enctype="multipart/form-data">
                             <fieldset>
                                 <!-- Name input-->
@@ -89,8 +86,32 @@
                                     <label class="col-md-2 control-label" for="exampleInputEmail1">Hình ảnh </label>
                                     <div class="col-md-9">
                                     <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
-                                    <div class="col-md-9">
+                                    
+                                    </div>
                                 </div>
+                                 <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Hot</label>
+                                    <div class="col-md-9">
+                                       <select name="Hot" id="name">
+                                          <option value="0">Không có</option>
+                                          <option value="1">Có</option>
+                                         
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-2 control-label" for="loai">Loại sản phẩm</label>
+                                    <div class="col-md-9">
+                                       <select name="loaisp" id="loai">
+                                            <option value="tpbs">Thực phẩm bổ sung</option>
+                                            <option value="phukien">Phụ kiện thiết bị</option>
+                                                                                     
+                                        </select>
+                                    </div>
+                                </div>
+
+                                
+                                 
                                
                                 
                             

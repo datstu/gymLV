@@ -68,7 +68,7 @@
                                  <div class="form-group">
                                     <label class="col-md-2 control-label" for="name">Tên sản phẩm</label>
                                     <div class="col-md-9">
-                                        <input id="name" name="name" type="text" value="{{$PD->name}}"  class="form-control">
+                                        <input id="name" name="name" type="text" value="{{$PD->ten}}"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -89,8 +89,39 @@
 
                                     <label class="col-md-2 control-label" for="exampleInputEmail1">Hình ảnh </label>
                                     <div class="col-md-9">
-                                        <img  src="{{asset('public/uploads/product/'.$PD->image )}}" width="200px">
+                                        <img  src="{{asset('public/uploads/product/'.$PD->img )}}" width="200px">
                                     <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Hot</label>
+                                    <div class="col-md-9">
+                                       <select name="Hot" id="name">
+                                        <?php if($PD->hot == 0){?>
+                                          <option selected="selected" value="0">Không có</option>
+                                          <option value="1">Có</option>
+                                          <?php }else {
+                                            ?>
+                                            <option value="0">Không có</option>
+                                          <option selected="selected" value="1">Có</option>
+                                          <?php } ?>
+                                         
+                                        </select>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-2 control-label" for="loai">Loại sản phẩm</label>
+                                    <div class="col-md-9">
+                                       <select name="loaisp" id="loai">
+                                         <?php if($PD->loaiSP == 'tpbs'){?>
+                                            <option selected="selected" value="tpbs">Thực phẩm bổ sung</option>
+                                            <option value="phukien">Phụ kiện thiết bị</option>
+                                         <?php }else {
+                                        ?>
+                                            <option value="tpbs">Thực phẩm bổ sung</option>
+                                            <option selected="selected" value="phukien">Phụ kiện thiết bị</option>
+                                        <?php } ?>                                          
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -98,6 +129,7 @@
                                     <input id="name" name="id_pt" type="hidden" value="{{$PD->id_product }}" class="form-control">
                                   
                                 </div>
+
                                 <!-- Form actions -->
                                
                                 <div class="form-group">

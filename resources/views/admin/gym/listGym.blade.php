@@ -85,7 +85,7 @@
                     </td> --}}
                     <td>{{$user->id_gym   }}</td>
                     <td>{{$user->name }}</td>
-                    <td>{{$user->address }}</td>
+                    <td>{{$user->address_gym }}</td>
                     <!-- <td class="desc">Samsung S8 Black</td> -->
                     
                    

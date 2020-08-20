@@ -68,7 +68,7 @@
                                  <div class="form-group">
                                     <label class="col-md-2 control-label" for="name">Tên gói</label>
                                     <div class="col-md-9">
-                                        <input id="name" name="name" type="text" value="{{$CB->name}}" class="form-control">
+                                        <input id="name" name="name" type="text" value="{{$CB->ten}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -90,6 +90,23 @@
                                         <input id="name" name="date" type="text" value="{{$CB->date}}" class="form-control"> 
                                     </div>
                                      <label class="col-md-2 " >(Tháng)</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Huấn luận viên</label>
+                                    <div class="col-md-2">
+                                       <select name="HLV" id="cars">
+                                        <?php if($CB->HLV == 0){
+
+                                         ?>
+                                          <option selected value="0">Không có</option>
+                                          <option value="1">Có</option>
+                                          <?php }else { ?>
+                                          <option  value="0">Không có</option>
+                                          <option selected value="1">Có</option>
+                                          <?php } ?>
+                                         
+                                        </select>
+                                    </div>
                                 </div>
 
 

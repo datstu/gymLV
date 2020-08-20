@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class ComboGymController extends Controller
 {
     public function listCB(){
+
     	$listCB = DB::table('tbl_combo_package')->orderby('id_combo','asc')
     	->get(); 
 		return view('admin.comboGym.listCombo')->with('listCB',$listCB);
@@ -46,23 +47,23 @@ class ComboGymController extends Controller
     	
     	
       
-        $data['name'] = $request->name;
+        $data['ten'] = $request->name;
     	$data['description'] = $request->descript;
     	$data['price'] = $request->price;
     	$data['date'] = $request->date;
-        
+        $data['HLV'] = $request->HLV;
 
         $result = DB::table('tbl_combo_package')->insert($data);
     
 		
         if($result)
         	{
-            $success = "Thêm phòng mới thành công.";
+            $success = "Thêm gói mới thành công.";
             Session::put('success',$success);
             return Redirect::to('them-goi-tap');
         }
         else { 
-            $error = "Thêm phòng thất bại.";
+            $error = "Thêm gói thất bại.";
             Session::put('error',$error);
             return Redirect::to('them-goi-tap');
         
@@ -91,11 +92,11 @@ class ComboGymController extends Controller
     	
         
         
-        $data['name'] = $request->name;
+        $data['ten'] = $request->name;
     	$data['description'] = $request->descript;
     	$data['price'] = $request->price;
     	$data['date'] = $request->date;
-        
+          $data['HLV'] = $request->HLV;
        
 
        // $result = DB::table('tbl_users')->get();

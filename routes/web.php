@@ -109,6 +109,8 @@ Route::get('/cap-nhat-san-pham/{id}','ProductController@updatePD');
 Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
 
+Route::get('/quan-ly-hoa-don','OrderController@listOd');
+
 
 //Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');
 //Route::get('/Schedule','ScheduleController@switch')->name('Schedule');

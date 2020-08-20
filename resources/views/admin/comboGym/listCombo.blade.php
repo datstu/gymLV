@@ -69,8 +69,8 @@
                     <th width="10%">Tên gói</th>
                     <th width="40%">Mô tả</th>
                     <th width="10%">Giá</th>
-                    <th width="20%">Thời gian</th>
-                    
+                    <th width="15%">Thời gian</th>
+                    <th width="5%">HLV</th>
                     
                     <th width="5%"></th>
                     <th width="5%"></th>
@@ -86,10 +86,15 @@
                         </label>
                     </td> --}}
                     <td>{{$user->id_combo    }}</td>
-                    <td>{{$user->name    }}</td>
+                    <td>{{$user->ten    }}</td>
                     <td>{{$user->description }}</td>
                     <td>{{number_format($user->price) }}</td>
                     <td>{{$user->date }} tháng</td>
+                    <td><?php
+                        if($user->HLV == 0){
+                            echo "Không";
+                        }else echo "Có";
+                     ?></td>
 
                     <!-- <td class="desc">Samsung S8 Black</td> -->
                     

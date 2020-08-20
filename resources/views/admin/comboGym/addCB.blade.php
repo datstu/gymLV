@@ -87,6 +87,16 @@
                                     </div>
                                      <label class="col-md-2 " >(Tháng)</label>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Huấn luận viên</label>
+                                    <div class="col-md-2">
+                                       <select name="HLV" id="cars">
+                                          <option value="0">Không có</option>
+                                          <option value="1">Có</option>
+                                         
+                                        </select>
+                                    </div>
+                                </div>
                                
                                 
                             
@@ -102,6 +112,7 @@
                                         
                                     </div>
                                 </div>
+
                             </fieldset>
                         </form>
                     </div>
