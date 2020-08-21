@@ -3,27 +3,52 @@
 <script type="text/javascript" >
 function F1(price)
 {
-            $("#priceShipping").html('');
-            var prices = Number(price).toLocaleString('en');
+        if ($("#tinh").val() != 'TP Hồ Chí Minh')  {
+            var prices = Number(price) + Number(price)*(1/2);
+        }else{
+            var prices = Number(price);
+        } 
+                
+        $("#priceShipping").html('');
+        var price_string = prices.toLocaleString('en');
+        $("#priceShipping").html(price_string);
 
-            $("#priceShipping").html(prices);
+        var product_price=$("#totalPriceinput_ex").val();
+        var tax=$("#tax_ex").val()
+        var totalPrice = prices + Number(product_price) + Number(tax)  ;
+        
+        $("#totalPriceinput").val(totalPrice); 
+        var totalPrice='$ '+Number(totalPrice).toLocaleString('en');
+         $("#totalPrice").html('');
+        $("#totalPrice").html(totalPrice);
 
-             $("#totalPrice").html('');
-             var product_price={{$totalPrice+10000}};
-            var totalPrice = price +product_price ; 
-              $("#totalPriceinput").val(totalPrice);
-             var totalPrice='$ '+Number(totalPrice).toLocaleString('en');
-
-            $("#totalPrice").html(totalPrice);
-
-              $("#totalPriceinput").html('');
-           
-
-         
+                //console.log(prices);
+            
             
 
  }       
-    
+ 
+ function F()
+{
+        
+$.ajax({
+    url:"{{route('apiTinh')}}",
+    type:'json',
+    method:'GET',
+    success:function(s)
+    {
+        s= JSON.parse(s);
+        listItem = s.LtsItem;
+        
+        $.each(listItem, function(k,v){
+            tam= "<option value='"+ v.Title +"'>"+ v.Title +"</option>";
+            $("#tinh").append(tam);
+
+        });
+    }
+})
+}   
+window.onload =F;
 </script>
     <!-- Start All Title Box -->
     <div class="all-title-box">
@@ -69,70 +94,24 @@ function F1(price)
                                 <label for="email">Email  *</label>
                                 <input type="email" class="form-control" id="email"name="email" value="{{$thongtin['email']}}" required> 
                             </div>
-                            <div class="mb-3">
+                            <div class="row">
+                            <div class="col-md-5 mb-3">
                                 <label for="address">Địa chỉ giao hàng *</label>
-                                <input type="text" class="form-control" id="address"  name="address" value="{{$thongtin['address']}}" pattern="{1,50}" required> </div>
+                                <input type="text" class="form-control" id="address"  name="address" value="" placeholder="xx Đường Phạm Hùng Quận 8" pattern="{1,50}" required> </div>
+                               <div class="col-md-5 mb-3">
+                                    <label for="state">Tỉnh/Thành phố *</label>
+                                    <select class="wide w-100" id="tinh" name="tinh">
+                                    <option data-display="Select">Choose...</option>  
+                                    </select>
+                                    <div class="invalid-feedback"> Please provide a valid state. </div>
+                                </div>
+                            </div>
                            
                           
                            
                            
-                            <hr class="mb-4">
-                            <div class="title"> <span>Payment</span> </div>
-                            <div class="d-block my-3">
-                                <div class="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                    <label class="custom-control-label" for="credit">Credit card</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="debit">Debit card</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                    <label class="custom-control-label" for="paypal">Paypal</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-name">Name on card</label>
-                                    <input type="text" class="form-control" id="cc-name" placeholder="" > <small class="text-muted">Full name as displayed on card</small>
-                                    <div class="invalid-feedback"> Name on card is required </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-number">Credit card number</label>
-                                    <input type="text" class="form-control" id="cc-number" placeholder="" >
-                                    <div class="invalid-feedback"> Credit card number is required </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <label for="cc-expiration">Expiration</label>
-                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" >
-                                    <div class="invalid-feedback"> Expiration date required </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="cc-expiration">CVV</label>
-                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" >
-                                    <div class="invalid-feedback"> Security code required </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="payment-icon">
-                                        <ul>
-                                            <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
-                                            <li><img class="img-fluid" src="images/payment-icon/2.png" alt=""></li>
-                                            <li><img class="img-fluid" src="images/payment-icon/3.png" alt=""></li>
-                                            <li><img class="img-fluid" src="images/payment-icon/5.png" alt=""></li>
-                                            <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="mb-1"> 
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 mb-3">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
+                          
+                           <div class="col-md-12 col-lg-12">
                             <div class="shipping-method-box">
                                 <div class="title-left">
                                     <h3>Hình thức vận chuyển</h3>
@@ -151,8 +130,16 @@ function F1(price)
                                         <label class="custom-control-label"  for="shippingOption3">Siêu nhanh</label> <span class="float-right font-weight-bold">$ 30.000</span> </div>
                                         <div class="ml-4 mb-2 small">(trong 24h)</div>
                                 </div>
+                                <label><strong>LƯU Ý: Phí trên chỉ áp dụng trong nội thành Tp Hồ Chí Minh, nếu giao ngoại thành phí sẽ tăng 50%</strong></label>
                             </div>
                         </div>
+                            
+                            <hr class="mb-1"> 
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="row">
+                        
                         <div class="col-md-12 col-lg-12">
                             <div class="odr-box">
                                 <div class="title-left">
@@ -184,9 +171,14 @@ function F1(price)
                                     <h4>Sản phẩm</h4>
                                     <div class="ml-auto font-weight-bold"> $  {{number_format($totalPrice)}}</div>
                                 </div>
-                                <div class="d-flex">
+                                 <div class="d-flex" >
                                     <h4>Tax</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 10.000 </div>
+                                    <?php 
+                                    $num = $totalPrice/10;
+                                    $total = $totalPrice+$num;
+
+                                    ?>
+                                    <div class="ml-auto font-weight-bold" id="tax"> $ <?php echo number_format($num) ?> </div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>Shipping Cost</h4>
@@ -195,9 +187,11 @@ function F1(price)
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Grand Total</h5>
-                                    <div class="ml-auto h5" id="totalPrice"> $ {{number_format($totalPrice+10000)}} </div>
+                                    <div class="ml-auto h5" id="totalPrice"> $ <?php echo number_format($total) ?> </div>
                                 </div>
-                                 <input type="hidden" id="totalPriceinput"  name="totalPrice" value="{{$totalPrice+10000}}">
+                                 <input type="hidden" id="totalPriceinput"  name="totalPrice" value="<?php echo $total ?>">
+                                 <input type="hidden" id="totalPriceinput_ex"  value="{{$totalPrice}}">
+                                 <input type="hidden" id="tax_ex"  value="<?php echo $num ?>">
                                 <hr> </div>
                         </div>
                         <div class="col-12 d-flex shopping-box"> <input type="submit" class="ml-auto btn hvr-hover" value="Xác nhận"> </div>

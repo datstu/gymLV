@@ -103,7 +103,7 @@
                                                         <ul>
                                                            @foreach($combo as $value)
                                                            @if($value->id_user == $user->id_user )
-                                                            <li> <a href="{{ route('booklich',[$value->id_order,$value->id_gym]) }}"><strong>Người sử dụng: {{$value->consignee_name}} </strong>&ensp;Ngày đăng ký: {{$value->date_begin}}<br>Dịch vụ: {{$value->ten}}({{$value->date}} tháng)@if($value->HLV==1) Có HLV riêng (Gói có HLV sẽ không được đổi thời khóa biểu. )@else Gói không có HLV @endif &ensp; <br>Địa điểm: {{$value->address_gym}}&ensp;Thời hạn: {{$value->date_end}}<br>
+                                                            <li> <a href="{{ route('booklich',[$value->id_order,$value->id_gym]) }}"><strong>Người sử dụng: {{$value->consignee_name}} </strong>&ensp;Ngày đăng ký: {{$value->date_begin}}<br>Dịch vụ: {{$value->ten}}({{$value->date}} tháng)@if($value->HLV==1) - Có HLV riêng (Gói có HLV sẽ không được đổi thời khóa biểu. )@else - Gói không có HLV @endif &ensp; <br>Địa điểm: {{$value->address_gym}}&ensp;Thời hạn: {{$value->date_end}}<br>
                                                             Trạng thái: 
                                                             @foreach($status as $val)
                                                             @if($val->id_status==$value->id_status)

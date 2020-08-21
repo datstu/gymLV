@@ -72,12 +72,23 @@
                                      <br>
                                     
                                 </div>
+                                 <div class="d-flex">
+                                    <h4>Thanh toán</h4>
+                                    <div class="ml-auto font-weight-bold">
+                                    @if($order['id_status']=='5')
+                                    Chưa thanh toán
+                                    @else
+                                    Đã thanh toán
+                                    @endif </div>
+                                </div>
                                 @endif
+                               
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Thành tiền </h5>
                                     <div class="ml-auto h5" id="totalPrice"> $ {{number_format($order['totalPrice'])}} </div>
                                 </div>
+
                                  
                                 <hr> </div>
                             

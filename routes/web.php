@@ -122,6 +122,7 @@ Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('bookl
 Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('dangnhapgg');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('api', 'checkoutController@apiTinh')->name('apiTinh');
 
 
 
