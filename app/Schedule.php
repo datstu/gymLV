@@ -39,4 +39,9 @@ class Schedule
 
 		return $data;
 	} 
+	public function showSchedule($id_user)//xuất ra toàn bộ lịch tập của 1 khách hàng theo id khách hàng
+	{
+		 $Schedule=DB::table('tbl_schedule')->where('id_users',$id_user)->get();
+		 return $Schedule;
+	}
 }

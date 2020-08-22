@@ -1,6 +1,7 @@
 @extends('template.layout')
 @section('content')
-
+<?php date_default_timezone_set('Asia/Ho_Chi_Minh');
+ ?>
 
     <!-- Start All Title Box -->
     <div class="all-title-box">
@@ -24,7 +25,7 @@
         <div class="container">
             <div class="row">
        
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-lg-5 col-sm-12">
                     <div class="contact-form-right">
                         <h2>Đặt lịch cho tuần sau, chốt lịch vào 0h thứ 7 mỗi tuần</h2>
                        
@@ -43,21 +44,102 @@
                         </ul>
                     </div>
                 </div>
-                 <div class="col-lg-6 col-sm-12">
-                    <div class="contact-form-right collapse {{$ac}}{{$ac1}}">
-                        <h2>Lịch bạn đã đặt trước đó:</h2>
-                       
-                        <ul class="list-group" style="font-size: 16px;">
-                           
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 2 : @if($listcus->thu2!='null'){{$listcus->thu2}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 3 : @if($listcus->thu3!='null'){{$listcus->thu3}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 4 : @if($listcus->thu4!='null'){{$listcus->thu4}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 5 : @if($listcus->thu5!='null'){{$listcus->thu5}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 6 : @if($listcus->thu6!='null'){{$listcus->thu6}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Thứ 7 : @if($listcus->thu7!='null'){{$listcus->thu7}}@else Trống @endif</li>
-                            <li class="list-group-item " style="font-size: 18px;">Chủ nhật : @if($listcus->chunhat!='null'){{$listcus->chunhat}}@else Trống @endif</li>                         
-                        </ul>
-                    </div>
+                 <div class="col-lg-7 col-sm-12">
+                    
+                     <div class="table-responsive table-responsive-data2">
+                         
+        <table class="table table-data2">
+            <thead>
+                <tr>
+                    {{-- <th>
+                        <label class="au-checkbox">
+                            <input type="checkbox">
+                            <span class="au-checkmark"></span>
+                        </label>
+                    </th> --}}
+                    <th>Ngày đặt</th>
+                    <th>Thứ 2</th>
+                    <th>Thứ 3</th>
+                    <th>Thứ 4</th>
+                    <th>Thứ 5</th>
+                    
+                    <th>Thứ 6</th>
+                 
+                    <th>Thứ 7</th>
+                    <th>Chủ nhất</th>
+                    <th></th>
+                  
+                </tr>
+            </thead>
+            
+            <tbody>
+                 <?php
+                    $nowDate = strtotime(date('d-m-Y'));
+
+
+
+                    //output 2014-11-08 14:10
+                   // echo $nowDate;
+                   
+                     $dayOfPre =  '';
+                    if(isset($listScheofOneCus)){
+                        foreach ($listScheofOneCus as $keySch => $valueSch) {
+
+                           if($nowDate == strtotime($valueSch->DateBook))
+                               {
+                                 $flag = true;
+                                 $dayOfPre = strtotime($valueSch->DateBook);
+                                $strCss = 'style="background: antiquewhite;color: brown;"';
+
+                            }
+                            ?>
+                <style type="text/css">
+                    #tblSche:hover {
+                        background-color: #deb37a;
+                        color: #730606;
+                    }
+                </style>
+                <tr class="tr-shadow" id="tblSche" <?php if(isset($strCss)) 
+                {echo $strCss; $strCss = null;} ?>>
+                    
+                    
+                   
+                            
+                    
+                    <td>
+                        <?php $time = strtotime($valueSch->DateBook);
+                    echo  date('d-m-Y',$time);
+                  {{--   echo '<br>'.$nowDate.'-'.$time; --}}
+                     
+                     ?></td>
+                    <td>@if($valueSch->thu2 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu2}} @endif </td>  
+                    <td>@if($valueSch->thu3 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu3}} @endif </td>  
+                    <td>@if($valueSch->thu4 == 'null'){{'Trống'}}
+                         @else {{$valueSch->thu4}} @endif </td>  
+                    <td>@if($valueSch->thu5 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu5}} @endif </td>  
+                    <td>@if($valueSch->thu6 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu6}} @endif </td>  
+                     
+                    <td>@if($valueSch->thu7 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu7}} @endif </td>            
+                    <td>@if($valueSch->chunhat == 'null'){{'Trống'}}
+                        @else {{$valueSch->chunhat}} @endif</td>
+                </tr>
+                <?php
+                        }
+                    }
+                     ?>
+                <tr class="spacer"></tr>
+
+            </tbody>
+           {{-- @endforeach  --}}
+        </table>
+    
+                     </div>
+                
                 </div>
            
     
@@ -73,12 +155,13 @@
     ?>
             <div class="row">
                 <div class="col-lg-12">
+                    <?php if($flagSche){
+                        ?>
                     <div class="table-main table-responsive collapse {{$ac}}{{$ac2}}">
                         <table class="table">
                             <thead>
-                                <form action="@if($ac=='show')
-                                {{route('doilich')}}@else {{route('datlich')}}
-                                @endif" method="get">
+                                <form action=" {{route('datlich')}}
+                                " method="get">
                                     {{ csrf_field() }}
                                 <input type="hidden" name="id_gym" value="{{$phonggym->id_gym}}">
                                 
@@ -184,6 +267,9 @@
                         <input value="Đặt lịch" type="submit">
                     </div>
                     </div>
+                    <?php
+                            }
+                         ?>
                 </div>
             </div>
 
@@ -195,7 +281,13 @@
     
  
 <div class="row">
-       
+        <?php 
+        //kiem tra
+           
+        if($flagSche){
+
+            
+                        ?>
                 <div class="col-lg-12 col-sm-12">
                     <div class="contact-form-right">
                         <h2>CHÚ Ý</h2>
@@ -211,9 +303,15 @@
                     </div>
                 </div>
            
-    
+        <?php } ?>
     </div>
 </div>
+                <?php
+                $messSche = Session::get('msSche');
+                if($messSche){
+                    echo $messSche;
+                    Session::put('msSche',null);
+                }  ?>
     <!-- End Cart -->
 
     @stop
