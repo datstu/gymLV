@@ -23,37 +23,37 @@
 
 
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
 
-					
-					<div class="panel-body">
-						<div class="col-md-9">
-							
-							
-							<a href="{{url('/them-khach-hang')}}"><button type="button" id="btn-add-customer" class="btn btn-md btn-primary">
-							
-              				 <i class="zmdi zmdi-plus"></i>+ Thêm Hội Viên</button></a>
-							
-							<br />
-							
-						</div>
+                    
+                    <div class="panel-body">
+                        <div class="col-md-9">
+                            
+                            
+                            <a href="{{url('/them-khach-hang')}}"><button type="button" id="btn-add-customer" class="btn btn-md btn-primary">
+                            
+                             <i class="zmdi zmdi-plus"></i>+ Thêm Hội Viên</button></a>
+                            
+                            <br />
+                            
+                        </div>
 
-				
-						<div class="col-md-3">	
-									
-									<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
-						</div>		
-				
-					</div>
-				
-				</div>
-			</div>
-		</div>
+                
+                        <div class="col-md-3">  
+                                    
+                                    <form role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+        </form>
+                        </div>      
+                
+                    </div>
+                
+                </div>
+            </div>
+        </div>
 		
 		<div class="col-md-12">
     <!-- DATA TABLE -->

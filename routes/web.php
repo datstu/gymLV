@@ -115,7 +115,8 @@ Route::get('/quan-ly-hoa-don','OrderController@listOd');
 //Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');
 //Route::get('/Schedule','ScheduleController@switch')->name('Schedule');
 Route::get('/dat-lich','ScheduleController@bookSchedule')->name('datlich');
-Route::get('/doi-lich','ScheduleController@updateSchedule')->name('doilich');
+Route::get('/sua-lich','ScheduleController@saveup_bookSchedule')->name('sualich');
+Route::get('/doi-lich/{sch}/{gym}/{gt}','ScheduleController@updateSchedule')->name('doilich');
 Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('booklich');
 
 

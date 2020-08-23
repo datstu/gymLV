@@ -2,7 +2,7 @@
 @section('content')
 <?php date_default_timezone_set('Asia/Ho_Chi_Minh');
  ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
@@ -75,8 +75,8 @@
             <tbody>
                  <?php
                     $nowDate = strtotime(date('d-m-Y'));
-
-
+                    $showdate = date('N',$nowDate);
+                   
 
                     //output 2014-11-08 14:10
                    // echo $nowDate;
@@ -85,7 +85,9 @@
                     if(isset($listScheofOneCus)){
                         foreach ($listScheofOneCus as $keySch => $valueSch) {
 
-                           if($nowDate == strtotime($valueSch->DateBook))
+                           {{-- if($nowDate == strtotime($valueSch->DateBook)) --}}
+                           if(($nowDate -  strtotime($valueSch->DateBook) +1)/ (60 * 60 * 24) <=14  &&
+                           ($nowDate -  strtotime($valueSch->DateBook))/ (60 * 60 * 24) >7 )
                                {
                                  $flag = true;
                                  $dayOfPre = strtotime($valueSch->DateBook);
@@ -100,7 +102,7 @@
                     }
                 </style>
                 <tr class="tr-shadow" id="tblSche" <?php if(isset($strCss)) 
-                {echo $strCss; $strCss = null;} ?>>
+                {echo $strCss; } ?>>
                     
                     
                    
@@ -112,34 +114,188 @@
                   {{--   echo '<br>'.$nowDate.'-'.$time; --}}
                      
                      ?></td>
-                    <td>@if($valueSch->thu2 == 'null'){{'Trống'}}
-                        @else {{$valueSch->thu2}} @endif </td>  
-                    <td>@if($valueSch->thu3 == 'null'){{'Trống'}}
-                        @else {{$valueSch->thu3}} @endif </td>  
-                    <td>@if($valueSch->thu4 == 'null'){{'Trống'}}
-                         @else {{$valueSch->thu4}} @endif </td>  
-                    <td>@if($valueSch->thu5 == 'null'){{'Trống'}}
-                        @else {{$valueSch->thu5}} @endif </td>  
-                    <td>@if($valueSch->thu6 == 'null'){{'Trống'}}
-                        @else {{$valueSch->thu6}} @endif </td>  
+                    <td>
+                         <?php
+
+                         if($showdate == 1 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu2 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu2}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                        } else {
+                        ?>
+                        @if($valueSch->thu2 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu2}} @endif
+
+                        <?php
+
+                     }?>
+                    </td>  
+                    <td>
+                         <?php
+                         if($showdate == 2 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu3 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu3}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                             } else {
+                        ?>
+                        @if($valueSch->thu3 == 'null'){{'Trống'}}
+                                    @else {{$valueSch->thu3}} @endif
+
+                                    <?php
+
+                     }?>
+                    </td>  
+                    <td>
+                         <?php
+                         if($showdate == 3 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu4 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu4}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                     } else {
+                        ?>
+            @if($valueSch->thu4 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu4}} @endif
+
+                        <?php
+
+                     }?>
+                    </td>  
+                    <td>
+                         <?php
+                         if($showdate == 4 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu5 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu5}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                     } else {
+                        ?>
+                         @if($valueSch->thu5 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu5}} @endif
+
+                        <?php
+
+                     }?>
+                    </td>  
+                    <td>
+                         <?php
+                         if($showdate == 5 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu6 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu6}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                     } else {
+                        ?>
+                        @if($valueSch->thu6 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu6}} @endif
+
+                        <?php
+
+                     }?>
+                 </td>  
                      
-                    <td>@if($valueSch->thu7 == 'null'){{'Trống'}}
-                        @else {{$valueSch->thu7}} @endif </td>            
-                    <td>@if($valueSch->chunhat == 'null'){{'Trống'}}
-                        @else {{$valueSch->chunhat}} @endif</td>
+                    <td>
+                      
+                    <?php
+                         if($showdate == 6 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->thu7 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu7}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                     } else {
+                        ?>
+            @if($valueSch->thu7 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu7}} @endif
+
+                        <?php
+
+                     }?>
+                   
+                         </td>            
+                    <td>
+                         <?php
+                         if($showdate == 7 && isset($strCss)){?>
+                         <u style="display: block;">
+                         @if($valueSch->chunhat == 'null'){{'Trống'}}
+                        @else {{$valueSch->chunhat}} @endif
+                        </u>
+                         <?php
+                         echo date('d-m');
+                        $strCss = null;
+                     } else {
+                        ?>
+            @if($valueSch->thu7 == 'null'){{'Trống'}}
+                        @else {{$valueSch->thu7}} @endif
+
+                        <?php
+
+                     }?>
+                    </td>
+                 <td><?php
+                if(($nowDate -  strtotime($valueSch->DateBook))/ (60 * 60 * 24) >=0
+                    && ($nowDate -  strtotime($valueSch->DateBook))/ (60 * 60 * 24) < 6 ){
+                  ?>
+                    <a href="{{url('/doi-lich/'.$valueSch->id_schedule.'/'.$valueSch->id_gym.'/'.$goitap)}}"><i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <?php } ?>
+                    </td> 
                 </tr>
                 <?php
                         }
                     }
                      ?>
+                   
                 <tr class="spacer"></tr>
 
             </tbody>
            {{-- @endforeach  --}}
         </table>
-    
-                     </div>
+        </div>
+       {{--  <?php 
+            if($flagSche){
+        ?>
+                <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-9">
+                            <a href="{{url('/them-khach-hang')}}">
+                                <button type="button" id="btn-add-customer" class="btn btn-md btn-primary" style=" font-size: 20px; background-color: #b0b435;border-color: #b0b435">
+                            
+                             <i class="zmdi zmdi-plus"></i>+ Đặt lịch cho tuần sau nữa </button></a>
+                            
+                            <br />
+                            
+                        </div>
+
+                    
                 
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+        <?php } ?> --}}
                 </div>
            
     
@@ -155,7 +311,8 @@
     ?>
             <div class="row">
                 <div class="col-lg-12">
-                    <?php if($flagSche){
+                    <?php 
+                    if(!$flagSche){
                         ?>
                     <div class="table-main table-responsive collapse {{$ac}}{{$ac2}}">
                         <table class="table">
@@ -165,7 +322,7 @@
                                     {{ csrf_field() }}
                                 <input type="hidden" name="id_gym" value="{{$phonggym->id_gym}}">
                                 
-                                <input type="hidden" name="id_gt" value="{{$goitap}}">
+                                <input type="text" name="id_gt" value="{{$goitap}}">
                         <tr>
                             <th></th>
                             <th>
@@ -284,7 +441,7 @@
         <?php 
         //kiem tra
            
-        if($flagSche){
+        if(!$flagSche){
 
             
                         ?>
