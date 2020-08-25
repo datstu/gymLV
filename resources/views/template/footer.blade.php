@@ -103,7 +103,7 @@
     <script src="{{ url('public/user/js/jquery.superslides.min.js')}}"></script>
     <script src="{{ url('public/user/js/bootstrap-select.js')}}"></script>
     <script src="{{ url('public/user/js/inewsticker.js')}}"></script>
-    <script src="{{ url('public/user/js/bootsnav.js.')}}"></script>
+    <script src="{{ url('public/user/js/bootsnav.js')}}"></script>
     <script src="{{ url('public/user/js/images-loded.min.js')}}"></script>
     <script src="{{ url('public/user/js/isotope.min.js')}}"></script>
     <script src="{{ url('public/user/js/owl.carousel.min.js')}}"></script>
