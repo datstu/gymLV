@@ -56,14 +56,7 @@
                                      @endforeach
                                 </div>
                                 @else
-                                <div class="d-flex">
-                                    <h4>Ngày bắt đầu dịch vụ</h4>
-                                    <div class="ml-auto font-weight-bold">{{$order_detail['date_begin']}} </div>
-                                </div>
-                                <div class="d-flex">
-                                    <h4>Hạn sử dụng dịch vụ</h4>
-                                    <div class="ml-auto font-weight-bold">{{$order_detail['date_end']}} </div>
-                                </div>
+                               
                                 
                                 <div class="d-flex">
                                     <h4>Sản phẩm:</h4>

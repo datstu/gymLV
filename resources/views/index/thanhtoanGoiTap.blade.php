@@ -1,6 +1,6 @@
 @extends('template.layout')
 @section('content')
-    <!-- Start All Title Box -->
+     Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
             <div class="row">
@@ -44,7 +44,7 @@
                                 <label for="email">Email  *</label>
                                 <input type="email" class="form-control" id="email"name="email" value="{{$thongtin['email']}}" required> 
                             </div>
-                             <div class="mb-3">
+                             <!-- <div class="mb-3">
                                 <label for="email">Ngày bắt đầu dịch vụ  *</label>
                                 <input type="date" class="form-control" id="date"name="date"  required> 
                             </div>
@@ -57,7 +57,7 @@
 									@endforeach
 								</select>
                                     <div class="invalid-feedback"> Please select a valid country. </div>
-                            </div>
+                            </div> -->
                           
                            
                            

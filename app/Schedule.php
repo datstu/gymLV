@@ -38,5 +38,13 @@ class Schedule
 		 }
 
 		return $data;
+	}
+	public function date_calculation($dateN,$date)
+	{
+		$date_begin  = date($dateN);
+        $rate = '+'.$date.' month';
+        $newdate = strtotime ( $rate , strtotime ( $date_begin ) ) ;
+        $newdate = date ( 'Y-m-j' , $newdate ); 
+        return $newdate;
 	} 
 }

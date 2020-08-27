@@ -14,8 +14,9 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 class ScheduleController extends Controller
 {
-    public function homeSchedule($gt,$gym){
+    public function homeSchedule($gt){
     	$goitap=$gt;
+    	$gym=1;
     	$phonggym=PhongGym::where('id_gym',$gym)->first();
     	 $combo= DB::table('tbl_order_detail_combo')
             ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->where('id_order',$goitap)->first();
@@ -37,15 +38,18 @@ class ScheduleController extends Controller
 	    			$ac1='';
 	    			$ac2='';
 	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));}
-    		}else{
-    			$listcus  = array('thu2' => 'null' ,'thu3' => 'null' ,'thu4' => 'null' ,'thu5' => 'null' ,'thu6' => 'null' ,'thu7' => 'null' ,'chunhat' => 'null' , );
-    			$listcus=(object)$listcus ;
-	    			$ac='';
-	    			$ac1='';
-	    			$ac2='show';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));
     		}
-    	}else{
+    	}elseif ($order->id_status==8) {
+    		//thường hợp đặt lịch lần đầu tiên
+	    	$phonggym=PhongGym::where('id_gym',$gym)->first();
+		    $gym=PhongGym::all();
+	    	return view('index.fisrtBooking',compact('goitap','phonggym','gym'));
+    	}
+    	elseif ($order->id_status==5) {
+    		 $mess = "Gói tập chưa được thanh toán.";
+            Session::put('mess',$mess);
+            return redirect()->back();
+    	}elseif ($order->id_status==7){
     		 $mess = "Gói tập đã quá hạn sử dụng.";
             Session::put('mess',$mess);
             return redirect()->back();
@@ -75,6 +79,166 @@ class ScheduleController extends Controller
         return redirect()->route('my-account');
     	
     }
+    public function fisrt_bookSchedule(Request $request){
+    	$cus  =  Session::has('User')?Session::get('User'):null;
+    	// echo $cus->id_user; 
+    	$pt = DB::table('tbl_personal_trainer')->first();
+    	 //echo $pt->id_pt ; 
+    	 //$gym = DB::table('tbl_gym')->first();
+    	 //echo $pt->id_gym  ;
+    	$data = array();   	
+        $data['id_users'] = $cus->id_user;
+        //lấy ra ds pt có lịch trống
+       // $data['id_pt'] = $pt->id_pt;
+        
+        $data['id_gym'] = isset($request->phongtap) ? $request->phongtap : '';
+        $data['id_order'] = isset($request->id_gt) ? $request->id_gt : '';
+        $data['thu2'] = isset($request->t2) ? $request->t2 : '';
+        $data['thu3'] = isset($request->t3) ? $request->t3 : '';
+        $data['thu4'] = isset($request->t4) ? $request->t4 : '';
+        $data['thu5'] = isset($request->t5) ? $request->t5 : '';
+        $data['thu6'] = isset($request->t6) ? $request->t6 : '';
+        $data['thu7'] = isset($request->t7) ? $request->t7 : '';
+        $data['chunhat'] = isset($request->cn) ? $request->cn : '';
+		$combo= DB::table('tbl_order_detail_combo')
+		            ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->where('id_order',$data['id_order'])->first();
+		$data_order =  array();
+		$data_order['date_begin']= isset($request->date) ? $request->date : '';
+		$Schedule= new Schedule();
+    	$data_order['date_end']= $Schedule->date_calculation($data_order['date_begin'],$combo->date);
+		$data_order['id_gym']=	$data['id_gym'];
+
+        
+       	
+        DB::table('tbl_schedule')->insert($data);
+        DB::table('tbl_order_detail_combo')->where('id_order',$data['id_order'])->update($data_order);
+        $status = array();   	
+        $status['id_status'] = 6;
+        DB::table('tbl_order')->where('id_order',$data['id_order'])->update($status);
+        ///////////////////////////////////
+        if($combo->HLV==1){
+        $listpt = DB::table('tbl_personal_trainer')->get();
+        $listSche = DB::table('tbl_schedule_pt')->get();
+        $listcus = DB::table('tbl_schedule')->where('id_order',$request->id_gt)
+        				->orderBy('id_schedule','desc')->first();
+  
+    	$arr = []; 
+        $temp = 0;
+        
+		foreach ($listcus as $key => $value) {
+        	if(is_string($value) )
+    		{
+	        		if($value != 'null'){
+	        			if($key == 'thu2'){
+	        				$temp = 2;
+	        			}else if($key == 'thu3'){
+	        				$temp = 3;
+	        			}else if($key == 'thu4'){
+	        				$temp = 4;
+	        			}else if($key == 'thu5'){
+	        				$temp = 5;
+	        			}else if($key == 'thu6'){
+	        				$temp = 6;
+	        			}else if($key == 'thu7'){
+	        				$temp = 7;
+	        			}else if($key == 'chunhat'){
+	        				$temp = 8;
+	        			}
+	        			
+	        			$arr[$temp] = $value;
+        		}
+        	}
+
+        }//gom hết lịch tập của 1 khách hàng vào một mảng key là thứ, value là ca
+         //dd($arr);
+        	foreach ($listpt as $v) {
+        		if($v->status == 0){//kiểm tra xem đủ số ca quy đinh của pt chưa
+        			$data_pt['id_pt'] = $v->id_pt;
+        			$listptSche = DB::table('tbl_schedule_pt')->where('id_pt',$v->id_pt)->get();
+        			/*$s = count($listcus);
+        			echo $s;*/
+        			//dd($listptSche);
+			        $flag = false; 
+	        	foreach ($arr as $key => $value) {//duyệt lịch tập của khách hàng.
+	        		if(count($listptSche) == 0){//nếu pt chưa có lịch nào thì thêm vào lịch pt ngày mà khách đặt luôn
+
+	        			$data_pt['ca'] = $value;
+			  			$data_pt['thu'] = $key;
+			  			DB::table('tbl_schedule_pt')->insert($data_pt);
+
+	        			unset($arr[$key]);//đã thêm đc 1 ngày/lịch của pt tương ứng thì xóa mảng tạm đó
+	        							
+	        		
+
+			        }else if(count($listptSche) <= 14){
+	
+			        	foreach ($listptSche as $ptSche) {
+			        		if($ptSche->thu > $key){
+			        			break;
+
+				        		}else if( $ptSche->thu == $key )
+				        		{
+					        		if( $ptSche->ca != $value)//cùng 1 thứ nhưng khác ca
+					        			{ 
+					        				$data_pt['ca'] = $value;
+							  				$data_pt['thu'] = $key;
+							  				DB::table('tbl_schedule_pt')->insert($data_pt);
+
+					        				unset($arr[$key]);
+					        			$listptSche = DB::table('tbl_schedule_pt')->where('id_pt',$v->id_pt)->get();	
+					        			if(count($listptSche) == 14){
+					        				//echo count($listptSche);
+			        						DB::table('tbl_personal_trainer')
+								            ->where('id_pt', $v->id_pt)
+								            ->update(['status' => 1]);
+								            		
+	        							}
+					        		$flag = false;
+					        		
+					        					break;
+					        				
+					        				
+					        		} else{
+					        			$flag = false;
+					        					break;
+					        		}
+				        		}else{
+				        			$flag = true;
+				        		}
+			        	
+			        	}		       		
+			        	if($flag == true){
+			        		
+			        		$flag = false;
+
+			        		$data_pt['ca'] = $value;
+			  				$data_pt['thu'] = $key;
+			  				DB::table('tbl_schedule_pt')->insert($data_pt);
+			        		unset($arr[$key]);
+			        			$listptSche = DB::table('tbl_schedule_pt')->where('id_pt',$v->id_pt)->get();
+			        		if(count($listptSche) == 14){
+	        						DB::table('tbl_personal_trainer')
+						            ->where('id_pt', $v->id_pt)
+						            ->update(['status' => 1]);
+						            		
+	        					}
+	        							
+			        	}
+
+        		}
+        	}
+        		 
+
+				
+        	}
+        
+        }
+			        
+		}
+		 return redirect()->route('my-account');
+    }
+
+
     public function bookSchedule(Request $request){
     	$cus  =  Session::has('User')?Session::get('User'):null;
     	// echo $cus->id_user; 

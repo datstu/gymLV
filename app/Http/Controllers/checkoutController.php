@@ -91,11 +91,11 @@ class checkoutController extends Controller
         $phone = isset($request->phone) ? $request->phone : '';
         $email = isset($request->email) ? $request->email : '';
         $paymentMethod = isset($request->paymentMethod) ? $request->paymentMethod : '';
-        $dateN = isset($request->date) ? $request->date : '';
+        //$dateN = isset($request->date) ? $request->date : '';
         $id_combo = isset($request->product) ? $request->product : '';
         $order_date=Carbon::now('Asia/Ho_Chi_Minh');
         $totalPrice=  isset($request->totalPrice) ? $request->totalPrice : '';
-        $phongtap = isset($request->phongtap) ? $request->phongtap : '';
+        //$phongtap = isset($request->phongtap) ? $request->phongtap : '';
         $GT = DB::table('tbl_combo_package')->where('id_combo','=',$id_combo)->first();
         if($paymentMethod=='trasau')
         {
@@ -106,11 +106,11 @@ class checkoutController extends Controller
             $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'totalPrice' => $totalPrice, 'id_status' => $id_status   );
             $result = DB::table('tbl_order')->insert($order);
             $idorder2 = DB::table('tbl_order')->max('id_order');
-            $date_begin  = date($dateN);
-            $rate = '+'.$GT->date.' month';
-            $newdate = strtotime ( $rate , strtotime ( $date_begin ) ) ;
-            $newdate = date ( 'Y-m-j' , $newdate );            
-            $order_detail = array('id_order' => $idorder2,'id_combo' =>$id_combo ,'date_begin' =>$date_begin ,'date_end' =>$newdate , 'id_gym' => $phongtap );
+            //$date_begin  = date($dateN);
+            //$rate = '+'.$GT->date.' month';
+            //$newdate = strtotime ( $rate , strtotime ( $date_begin ) ) ;
+            //$newdate = date ( 'Y-m-j' , $newdate );            
+            $order_detail = array('id_order' => $idorder2,'id_combo' =>$id_combo );
             $order = array('order_date' => $order_date,'consignee_name' => $name,'consignee_phone' => $phone,'id_user' => $id,'totalPrice' => $totalPrice,'shipping_method' =>'','address' => '','id_status' => $id_status );
             $product_cart  = ['soluong'=>'', 'price' => '', 'product' => $GT];
                  $result2 = DB::table('tbl_order_detail_combo')->insert($order_detail);

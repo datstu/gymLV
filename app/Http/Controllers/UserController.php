@@ -7,6 +7,7 @@ use DB;
 use Hash;
 use App\Status;
 use App\Cart;
+use App\PhongGym;
 use App\User;
 use Session;
 use App\Http\Requests;
@@ -107,9 +108,10 @@ class UserController extends Controller
              $user = Session('User')?Session::get('User'):null;
             $order=   Status::join('tbl_order','tbl_order.id_status','=','tbl_status.id_status')->where('id_user','=',$user->id_user)->whereNotNull('shipping_method')->get();
             $combo= DB::table('tbl_order_detail_combo')
-            ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->join('tbl_gym', 'tbl_order_detail_combo.id_gym', '=', 'tbl_gym.id_gym')->join('tbl_order', 'tbl_order_detail_combo.id_order', '=', 'tbl_order.id_order')->get();
+            ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->join('tbl_order', 'tbl_order_detail_combo.id_order', '=', 'tbl_order.id_order')->get();
+            $PGym= PhongGym::all();
             $status= Status::all();
-             return view('index.my-account',compact('order','combo','user','status'));
+             return view('index.my-account',compact('order','combo','user','status','PGym'));
         }
         public function update(Request $request){
             $id = $request->id;

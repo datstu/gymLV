@@ -114,9 +114,10 @@ Route::get('/quan-ly-hoa-don','OrderController@listOd');
 
 //Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');
 //Route::get('/Schedule','ScheduleController@switch')->name('Schedule');
+Route::get('/dat-phong','ScheduleController@fisrt_bookSchedule')->name('datlich_landau');
 Route::get('/dat-lich','ScheduleController@bookSchedule')->name('datlich');
 Route::get('/doi-lich','ScheduleController@updateSchedule')->name('doilich');
-Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('booklich');
+Route::get('SCHEDULE/{gt}','ScheduleController@homeSchedule')->name('booklich');
 
 
 Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('dangnhapgg');
