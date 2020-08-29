@@ -28,9 +28,9 @@ class ScheduleController extends Controller
     	$val= $Schedule->checkSlot($gym);
 
     	$cus  =  Session::has('User')?Session::get('User'):null;
-    	$listScheofOneCus = $Schedule->showSchedule($cus->id_user);
+    	$listScheofOneCus = $Schedule->showSchedule($cus->id_user,$goitap );
 
-    
+        
     /*
 		 nếu ngày hiện tại trừ 1 ngày nào đó trong lịch của hội viên(ngày từ DB)
 		 mà = 7 thì bật cờ lên ngược lại cờ = false;

@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Auth::routes();
+
+Route::get('/login-admin','AdminController@getLoginAdmin' );
+Route::post('/login-admin','AdminController@postLoginAdmin' )->name('loginAdmin');
+
+
 Route::get('/index','HomeController@index' )->name('index');
 Route::get('/','HomeController@index' );
 Route::get('user', function () {
@@ -68,7 +74,7 @@ Route::post('Thongtin','TuvanController@tuvan' )->name('tuvan');
 
 
 
-Route::get('/admin','AdminController@index');
+Route::get('/admin','AdminController@index')->name('admin');
 
 Route::get('/tat-thong-bao/{mess}','CustomerController@hiddenMessage');
 
