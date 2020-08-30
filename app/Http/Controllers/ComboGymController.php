@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
-// use App\Http\Requests;
+use App\Combo;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 class ComboGymController extends Controller
 {
     public function listCB(){
-
-    	$listCB = DB::table('tbl_combo_package')->orderby('id_combo','asc')
-    	->get(); 
+        $this->CheckLoginAdmin();
+    	$listCB = Combo::paginate(5);
 		return view('admin.comboGym.listCombo')->with('listCB',$listCB);
     }
     public function validateCB(Request $request){
@@ -38,6 +37,7 @@ class ComboGymController extends Controller
         ]);
     }
     public function addCB(){
+        $this->CheckLoginAdmin();
 		return view('admin.comboGym.addCB');
 	}
     public function saveAddCB(Request $request){
@@ -76,13 +76,17 @@ class ComboGymController extends Controller
     	print_r($data);
     }
     public function updateCB($id){
-
+        $this->CheckLoginAdmin();
     	$CB = DB::table('tbl_combo_package')
     	
     	->where('id_combo',$id)
     	->first(); 
     
-    	return view('admin.comboGym.updateCB')->with('CB',$CB);
+    	
+
+         if(!empty($CB))
+          return view('admin.comboGym.updateCB')->with('CB',$CB);
+        else return Redirect::to('quan-ly-goi-tap');
     }
      public function saveEditCB(Request $request){
         $this->validateCB($request);
@@ -120,7 +124,12 @@ class ComboGymController extends Controller
 
     }
     public function delCB($id){
-    	DB::table('tbl_combo_package')->where('id_combo',$id)->delete();
-    	return Redirect::to('quan-ly-goi-tap');
-    }
+        $this->CheckLoginAdmin();
+    	
+        $CB = DB::table('tbl_combo_package')->where('id_combo',$id)
+        ->first(); 
+        if(!empty($CB))
+             DB::table('tbl_combo_package')->where('id_combo',$id)->delete();
+           return Redirect::to('quan-ly-goi-tap');
+        }
 }

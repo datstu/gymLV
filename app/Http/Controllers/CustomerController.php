@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+use App\Customer;
 use DB;
 // use App\Http\Requests;
 use Session;
@@ -14,17 +14,15 @@ class CustomerController extends Controller
 {
     //
     public function listCustomer(){
-    	$users = DB::table('users')->orderby('id_user','asc')
+
+        $this->CheckLoginAdmin();
+        $users = Customer::paginate(5);
     	
-    	->get(); 
-    	// echo "<pre>";
-    	// print_r($users);
-    	// echo "</pre>";
     	return view('admin.customer.listCustomer')->with('users',$users);
     	
     }
     public function addCustomer(){
-    		
+    	$this->CheckLoginAdmin();
 		return view('admin.customer.addCustomer');
     }
     public function validateUser(Request $request){
@@ -86,10 +84,12 @@ class CustomerController extends Controller
 
     }
     public function delCustomer($id){
-    	
+    	 $this->CheckLoginAdmin();
         //neu khach hang da dat lich thi ko cho xoa
-        $schedule = DB::table('tbl_schedule')->where('id_user',$id);
-        if($schedule){
+        // echo $id;
+        $schedule = DB::table('tbl_schedule')->where('id_users',$id)->get();
+        //dd($schedule);
+        if(empty($schedule)){
             $users = DB::table('users')->orderby('id_user','asc')
         
         ->get();
@@ -102,23 +102,20 @@ class CustomerController extends Controller
     	
 
       
-       /* $result = DB::table('tbl_users')->insert($data);
-		$Str = "";
-         if($result)
-        	$Str = "Thêm hội viên mới thành công.";
-        else $Str = "Thêm hội viên mới thất bại.";*/
+     
     	
     	return Redirect::to('quan-ly-khach-hang');
-    }
+      }
     }
     public function updateCustomer($id){
-
+         $this->CheckLoginAdmin();
     	$users = DB::table('users')
     	
     	->where('id_user',$id)
     	->first(); 
-    
-    	return view('admin.customer.updateCustomer')->with('users',$users);
+        if(!empty($users))
+    	   return view('admin.customer.updateCustomer')->with('users',$users);
+        else return Redirect::to('quan-ly-khach-hang');
     }
     public function saveEditCustomer(Request $request){
         $this->validateUser($request);
@@ -159,6 +156,7 @@ class CustomerController extends Controller
 
     }
     public function hiddenMessage(Request $request,$mess){
+         $this->CheckLoginAdmin();
         Session::put($mess,null);
         $id = Session::get('id');
         if($id){

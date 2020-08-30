@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
 
 Route::get('/login-admin','AdminController@getLoginAdmin' );
 Route::post('/login-admin','AdminController@postLoginAdmin' )->name('loginAdmin');
+Route::get('/logout-admin','AdminController@logoutAdmin' )->name('logout_admin');
 
 
 Route::get('/index','HomeController@index' )->name('index');
@@ -116,6 +116,9 @@ Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
 
 Route::get('/quan-ly-hoa-don','OrderController@listOd');
+Route::get('/delOrder/{gt}','OrderController@delOrd');
+Route::get('/xu-ly-don-hang/{gt}','OrderController@updateOrd');
+Route::post('/xu-ly-don-hang','OrderController@save_updateOrd')->name('xu-ly-don-hang');
 
 
 //Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');

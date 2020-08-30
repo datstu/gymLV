@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
-// use App\Http\Requests;
+use App\Product;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 class ProductController extends Controller
 {
     public function listPD(){
-    	$listPD = DB::table('tbl_product')->orderby('id_product','asc')
-    	->get(); 
+        $this->CheckLoginAdmin();
+    	$listPD = Product::paginate(4);
         //print_r($listPD);
 		return view('admin.product.listProduct')->with('listPD',$listPD);
     }
      public function photoManagenment(){
+        $this->CheckLoginAdmin();
         return view('admin.product.photoManagement');
     }
     
@@ -44,6 +45,7 @@ class ProductController extends Controller
         ]);
     }
     public function addPD(){
+        $this->CheckLoginAdmin();
 		return view('admin.product.addPD');
 	}
     public function saveAddPD(Request $request){
@@ -84,13 +86,17 @@ class ProductController extends Controller
         }
     }
     public function updatePD($id){
-
+        $this->CheckLoginAdmin();
     	$PD = DB::table('tbl_product')
     	
     	->where('id_product',$id)
     	->first(); 
     
-    	return view('admin.product.updatePD')->with('PD',$PD);
+    	
+
+        if(!empty($PD))
+          return view('admin.product.updatePD')->with('PD',$PD);
+        else return Redirect::to('quan-ly-san-pham');
     }
     public function saveEditPD(Request $request){
         //$this->validatePD($request);

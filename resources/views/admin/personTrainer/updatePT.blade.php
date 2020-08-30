@@ -68,7 +68,7 @@
                                  <div class="form-group">
                                     <label class="col-md-2 control-label" for="name">Họ và tên</label>
                                     <div class="col-md-9">
-                                        <input id="name" name="name" type="text" value="{{$PT->name_pt}}" class="form-control">
+                                        <input id="name" name="name" type="text" value="{{$PT->name}}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">

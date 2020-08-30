@@ -118,6 +118,7 @@
            @endforeach 
         </table>
     </div>
+     {!! $listPT->links() !!}
     <!-- END DATA TABLE -->
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

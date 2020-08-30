@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
-// use App\Http\Requests;
+use App\PersonTrainer;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 class PersonTrainerController extends Controller
 {
 	public function listPT(){
-		$listPT = DB::table('tbl_personal_trainer')->orderby('id_pt','asc')
-    	->get(); 
+        $this->CheckLoginAdmin();
+		  $listPT = PersonTrainer::paginate(5);
 		return view('admin.personTrainer.listPT')->with('listPT',$listPT);
 	}
 	
 	public function addPT(){
+        $this->CheckLoginAdmin();
 		return view('admin.personTrainer.addPT');
 	}
 	public function validatePT(Request $request){
@@ -44,8 +45,9 @@ class PersonTrainerController extends Controller
     	
     	
         $data['phone'] = $request->phone;
-        $data['name_pt'] = $request->name;
+        $data['name'] = $request->name;
     	$data['address'] = $request->address;
+        $data['status'] = 0;
         
 
         $result = DB::table('tbl_personal_trainer')->insert($data);
@@ -64,20 +66,21 @@ class PersonTrainerController extends Controller
         
         }
 
-    	//return json_encode($data);
-    	//$Str = "Thêm hội viên mới thành công.";
-    	//return Redirect::to('quan-ly-khach-hang');
+    	
 
     	
     }
     public function updatePT($id){
+        $this->CheckLoginAdmin();
 
     	$PT = DB::table('tbl_personal_trainer')
     	
     	->where('id_pt',$id)
     	->first(); 
-    
-    	return view('admin.personTrainer.updatePT')->with('PT',$PT);
+        if(!empty($PT))
+           return view('admin.personTrainer.updatePT')->with('PT',$PT);
+        else return Redirect::to('quan-ly-huan-luan-vien');
+    	
     }
     public function saveEditPT(Request $request){
         $this->validatePT($request);
@@ -86,7 +89,7 @@ class PersonTrainerController extends Controller
     	
     	
         $data['phone']=$request->phone;
-        $data['name_pt']=$request->name;
+        $data['name']=$request->name;
     	$data['address']=$request->address;
        
 
@@ -111,7 +114,21 @@ class PersonTrainerController extends Controller
 
     }
     public function delPT($id){
+        $this->CheckLoginAdmin();
+        $schedule = DB::table('tbl_schedule_pt')->where('id_pt',$id)->get();
+        if(empty($schedule)){
+           
+            $str ='<script>alert(\'HLV này đang hoạt động. Không thể xóa.\')</script>';
+            Session::put('str',$str);
+            return Redirect::to('quan-ly-huan-luan-vien');
+        }
+        else{
+           
+
+
+
     	DB::table('tbl_personal_trainer')->where('id_pt',$id)->delete();
     	return Redirect::to('quan-ly-huan-luan-vien');
+        }
     }
 }

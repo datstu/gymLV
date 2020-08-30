@@ -88,7 +88,10 @@
 			</div>
 			<div class="profile-usertitle">
 				<div class="profile-usertitle-name">
-					{{$userAdmin->username}}
+					<?php
+					$name = Session::get('admin_name');
+					if(isset($name)) echo $name;
+					 ?>
 				</div>
 				<!-- <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div> -->
 			</div>
@@ -127,7 +130,7 @@
 					</a></li>
 				</ul>
 			</li> -->
-			<li><a href=""><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="{{route('logout_admin')}}"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
