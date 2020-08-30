@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 // use Auth;
 use Validator;
 use DB;
-// use App\Http\Requests;
+use App\Product;
+use App\Customer;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -27,7 +28,52 @@ class AdminController extends Controller
     public function index(){
     	
     	$this->CheckLoginAdmin();
-    	 return view('admin.dashboard');
+       
+        $date = date('Y-m-j');
+        $newdate = strtotime ( '-7 day' , strtotime ( $date ) ) ;
+        $newdate = date ( 'Y-m-j' , $newdate );
+        //hóa đơn trong 1 tuần và trạng thái KHÁC hoàn tất giao dịch
+        $newOrder = DB::table('tbl_order')
+        ->where('tbl_order.id_status','!=',3)
+        ->where('tbl_order.order_date','>',$newdate)
+        ->get();
+
+        $countOrder = count($newOrder);
+        $countUser = Customer::count();
+        $member = DB::table('tbl_order')
+        ->join('tbl_order_detail_combo','tbl_order_detail_combo.id_order','=','tbl_order.id_order')->where('tbl_order_detail_combo.date_end','>',$date)->get();
+        $countMember = count($member);
+       // dd($countMember);
+
+        $totalPrice = DB::table('tbl_order')->sum('totalPrice');
+       // session_destroy();
+        $id_session = Session::get('id_session');
+        //dd(session_id ());
+        $listVisit = DB::table('tbl_visitor')->get();
+        if(isset($id_session)){
+
+            foreach ($listVisit as $key => $value) {
+                if($date == $value->date && $id_session != $value->id_session ){
+                     DB::table('tbl_visitor')
+                    ->where('id_visit',$value->id_visit)
+                    ->update(['viewNumber' => $value->viewNumber +1]);
+                }
+            }
+                        
+        }else {
+            Session::put('id_session',session_id());
+            $id_session = Session::get('id_session');
+            $data =  array();
+            $data['id_session'] = $id_session;
+            $data['date'] = $date;
+            $data['viewNumber'] = 1;
+            
+            DB::table('tbl_visitor')->insert($data);
+            
+        }
+        $countVisitor = DB::table('tbl_visitor')->sum('viewNumber');
+
+    	return view('admin.dashboard')->with('countOrder',$countOrder)->with('countMember',$countMember)->with('totalPrice',$totalPrice)->with('countVisitor',$countVisitor);;
     	
     	
     		
