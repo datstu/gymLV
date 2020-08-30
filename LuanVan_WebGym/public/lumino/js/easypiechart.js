@@ -288,7 +288,7 @@ var EasyPieChart = function(el, opts) {
 
 		if (typeof(options.animate) === 'boolean' && !options.animate) {
 			options.animate = {
-				duration: 1000,
+				duration: 100,
 				enabled: options.animate
 			};
 		}

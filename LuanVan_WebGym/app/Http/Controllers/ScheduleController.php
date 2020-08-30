@@ -12,8 +12,11 @@ use App\Status;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+
+
 class ScheduleController extends Controller
 {
+
     public function homeSchedule($gt,$gym){
     	$goitap=$gt;
     	$phonggym=PhongGym::where('id_gym',$gym)->first();
@@ -23,7 +26,61 @@ class ScheduleController extends Controller
     	$order=  Status::join('tbl_order','tbl_order.id_status','=','tbl_status.id_status')->where('id_order','=',$goitap)->first();
     	$Schedule= new Schedule();
     	$val= $Schedule->checkSlot($gym);
-    	
+
+    	$cus  =  Session::has('User')?Session::get('User'):null;
+    	$listScheofOneCus = $Schedule->showSchedule($cus->id_user,$goitap );
+
+        
+    /*
+		 nếu ngày hiện tại trừ 1 ngày nào đó trong lịch của hội viên(ngày từ DB)
+		 mà = 7 thì bật cờ lên ngược lại cờ = false;
+		 nếu chưa có bản ghi nào từ lịch của hội viên thì mặc nhiên cờ được bật
+		 cờ được bật sẽ cho phép hội viên đặt lịch và lưu ngày đặt vào db
+		 */
+
+		/*$day_1 = date("2020-08-08") ;
+		$day_2 = date("2020-08-11") ;
+		$days = (strtotime($day_2) - strtotime($day_1)) / (60 * 60 * 24);
+		*/
+		$flagSche = false;
+
+		/*echo $days."<br>" ;
+		echo date('N', strtotime($day_2)).",".  date('N', strtotime($day_1))."<br>";*/
+
+		/*if($days < 7 && date('N', strtotime($day_2)) >= date('N', strtotime($day_1)))
+			echo "2 thằng này chung 1 tuần cmnr.";
+		else echo "chúc bạn may mắn.";
+*/
+
+		 
+		$nowDate = date('Y-m-d');
+		///kiem tra 2 ngay co chung 1 tuan hay ko nếu có flag = true
+		if( count($listScheofOneCus)>0){
+    		foreach ($listScheofOneCus as $key => $value) {
+    			$day2 = strtotime($nowDate);
+    			$day1 = strtotime($value->DateBook);
+    			$days = ($day2 - $day1) / (60 * 60 * 24);
+
+	    		/*if( $days >= 7){
+			 		$flagSche = true;
+				}else
+					if($days == 0){
+						$flagSche = false;
+					}
+    	 	}*/
+    	 	if($days < 7 && date('N', $day2) >= date('N', $day1)){
+    	 		$flagSche = true; 
+    	 	}
+
+    	}
+    }
+    	///////
+    	 
+
+    	/* if($flagSche) echo "Không cho đặt lịch";
+    	 else echo "Hiển thị form đặt lịch ngay và luôn";*/
+
+
     	if($order->id_status==6)
     	{
     		if($listcus){// đã đặt lịch rồi
@@ -31,19 +88,19 @@ class ScheduleController extends Controller
 	    			$ac='';
 	    			$ac1='show';
 	    			$ac2='';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val','listScheofOneCus','flagSche'));
 	    		}else{
 	    			$ac='show';
 	    			$ac1='';
 	    			$ac2='';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));}
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val','listScheofOneCus','flagSche'));}
     		}else{
     			$listcus  = array('thu2' => 'null' ,'thu3' => 'null' ,'thu4' => 'null' ,'thu5' => 'null' ,'thu6' => 'null' ,'thu7' => 'null' ,'chunhat' => 'null' , );
     			$listcus=(object)$listcus ;
 	    			$ac='';
 	    			$ac1='';
 	    			$ac2='show';
-	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val'));
+	    			return view('index.book',compact('goitap','phonggym','listcus','ac1','ac','ac2','val','listScheofOneCus','flagSche'));
     		}
     	}else{
     		 $mess = "Gói tập đã quá hạn sử dụng.";
@@ -54,14 +111,29 @@ class ScheduleController extends Controller
 
     	
     }
-    
-    public function updateSchedule(Request $request){
+    public function updateSchedule($id,$gym,$gt){
+    	//$scheById = DB::table('tbl_schedule')->where('id_schedule',$id)->first();
+    	$phonggym = DB::table('tbl_schedule') ->join('tbl_gym', 'tbl_schedule.id_gym', '=', 'tbl_schedule.id_gym')
+    	->where('tbl_schedule.id_schedule',$id)
+    	->where('tbl_gym.id_gym',$gym)->first();
+
+    	/*$combo= DB::table('tbl_order_detail_combo')
+            ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->where('id_order',$gt)->first();
+    */
+    	$Schedule= new Schedule();
+    	$val= $Schedule->checkSlot($gym);
     	
-		$cus  =  Session::has('User')?Session::get('User'):null;
-    	$data = array(); 	
-        $data['id_users'] = $cus->id_user;
-        $data['id_gym'] = isset($request->id_gym) ? $request->id_gym : '';
-        $data['id_order'] = isset($request->id_gt) ? $request->id_gt : '';
+    	
+    	return view('index.update_book')->with('val',$val)->with('phonggym',$phonggym)->with('gt',$gt);
+    }
+    public function saveup_bookSchedule(Request $request){
+    	
+		//$cus  =  Session::has('User')?Session::get('User'):null;
+    	$data = array();
+    	$data['id_schedule'] = $request->id_schedule;
+      //  $data['id_users'] = $cus->id_user;
+        //$data['id_gym'] = isset($request->id_gym) ? $request->id_gym : '';
+       // $data['id_order'] = isset($request->id_gt) ? $request->id_gt : '';
         $data['thu2'] = isset($request->t2) ? $request->t2 : '';
         $data['thu3'] = isset($request->t3) ? $request->t3 : '';
         $data['thu4'] = isset($request->t4) ? $request->t4 : '';
@@ -70,12 +142,16 @@ class ScheduleController extends Controller
         $data['thu7'] = isset($request->t7) ? $request->t7 : '';
         $data['chunhat'] = isset($request->cn) ? $request->cn : '';
 
-       
-        DB::table('tbl_schedule')->where('id_order',$data['id_order'])->update($data);
-        return redirect()->route('my-account');
+        
+         DB::table('tbl_schedule')->where('id_schedule',$data['id_schedule'])->update($data);
+        // return redirect()->route('my-account');
+       //echo $data['id_schedule'];
+        return redirect()->route('booklich',[$request->id_gt,$request->id_gym]);
+    
     	
     }
     public function bookSchedule(Request $request){
+		date_default_timezone_set('Asia/Ho_Chi_Minh');
     	$cus  =  Session::has('User')?Session::get('User'):null;
     	// echo $cus->id_user; 
     	$pt = DB::table('tbl_personal_trainer')->first();
@@ -87,6 +163,10 @@ class ScheduleController extends Controller
         $data['id_users'] = $cus->id_user;
         //lấy ra ds pt có lịch trống
        // $data['id_pt'] = $pt->id_pt;
+
+       $dateSche =  date('Y/m/d');
+       if(is_string($dateSche)) echo "string";
+        $data['DateBook'] = $dateSche;
         $data['id_gym'] = isset($request->id_gym) ? $request->id_gym : '';
         $data['id_order'] = isset($request->id_gt) ? $request->id_gt : '';
         $data['thu2'] = isset($request->t2) ? $request->t2 : '';
@@ -99,8 +179,12 @@ class ScheduleController extends Controller
         $combo= DB::table('tbl_order_detail_combo')
             ->join('tbl_combo_package', 'tbl_order_detail_combo.id_combo', '=', 'tbl_combo_package.id_combo')->where('id_order',$data['id_order'])->first();
        
-        DB::table('tbl_schedule')->insert($data);
+        $rsSch = DB::table('tbl_schedule')->insert($data);
+        if($rsSch){
 
+        	$strSche = '<script>alert("Hệ thống đã xác nhận lịch đăng ký của bạn. Hãy đến đúng giờ và luyện tập chăm chỉ nhé.");</script>';
+        	Session::put('msSche',$strSche);
+        }
         ///////////////////////////////////
         if($combo->HLV==1){
         $listpt = DB::table('tbl_personal_trainer')->get();
@@ -227,110 +311,10 @@ class ScheduleController extends Controller
 
 
 
-	        /*}else{
-	        	
-				foreach ($listpt as $key => $value) {
-					if($value->status == 0){
-			  			$data_pt['id_pt'] = $value->id_pt;
-			  			
-			  			$count = 1;
-			  		
-			  			/*while ($count <= 7) {
-
-
-
-			  				echo $count;
-			  				$count++;
-			  				
-			  			}*/
-			  			/*foreach ($listcus as $key => $value) {
-			  				echo $key;
-			  			}*/
-
-			  		/*	if($listcus->thu2){
-			  				$data_pt['ca'] = $request->t2;
-			  				$data_pt['thu'] = 2;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->thu3 != 'null'){
-			  				$data_pt['ca'] = $request->t3;
-			  				$data_pt['thu'] = 3;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->thu4 != 'null'){
-			  				$data_pt['ca'] = $request->t4;
-			  				$data_pt['thu'] = 4;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->thu5 != 'null'){
-			  				$data_pt['ca'] = $request->t5;
-			  				$data_pt['thu'] = 5;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->thu6 != 'null'){
-			  				$data_pt['ca'] = $request->t6;
-			  				$data_pt['thu'] = 6;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->thu7 != 'null'){
-			  				$data_pt['ca'] = $request->t7;
-			  				$data_pt['thu'] = 7;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-			  			if($listcus->chunhat != 'null'){
-			  				$data_pt['ca'] = $request->cn;
-			  				$data_pt['thu'] = 8;
-			  				DB::table('tbl_schedule_pt')->insert($data_pt);
-			  				echo "<pre>";
-				        print_r($data_pt);
-				        echo "</pre>";
-
-			  			}
-
-		    		  	//echo "string";
-			  			break;
-	        			}
-        			}	
-        		}*/
-        		 // echo "<pre>";
-				       //  print_r($data_pt);
-				       //  echo "</pre>";
-    	
-        
-
-        
-        
-/*
-        Session::put('message','<script type="text/javascript">alert("Đặt lịch cho tuần này thành công")   </script>');
-		//return view('admin.gym.listGym')->with('listGym',$listGym);
-		 return Redirect::to('/BOOK');*/
+	        
 		}
-		 return redirect()->route('my-account');
-    }
+		 return redirect()->route('booklich',[$request->id_gt,$request->id_gym]);
+    
+     }
 }
 

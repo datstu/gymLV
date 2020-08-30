@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+Route::get('/login-admin','AdminController@getLoginAdmin' );
+Route::post('/login-admin','AdminController@postLoginAdmin' )->name('loginAdmin');
+Route::get('/logout-admin','AdminController@logoutAdmin' )->name('logout_admin');
+
+
 Route::get('/index','HomeController@index' )->name('index');
 Route::get('/','HomeController@index' );
 Route::get('user', function () {
@@ -68,7 +74,7 @@ Route::post('Thongtin','TuvanController@tuvan' )->name('tuvan');
 
 
 
-Route::get('/admin','AdminController@index');
+Route::get('/admin','AdminController@index')->name('admin');
 
 Route::get('/tat-thong-bao/{mess}','CustomerController@hiddenMessage');
 
@@ -110,12 +116,16 @@ Route::get('/delPD/{id}','ProductController@delPD');
 Route::get('/quan-ly-anh/{id}','ProductController@photoManagenment');
 
 Route::get('/quan-ly-hoa-don','OrderController@listOd');
+Route::get('/delOrder/{gt}','OrderController@delOrd');
+Route::get('/xu-ly-don-hang/{gt}','OrderController@updateOrd');
+Route::post('/xu-ly-don-hang','OrderController@save_updateOrd')->name('xu-ly-don-hang');
 
 
 //Route::get('/BOOK', 'ScheduleController@homeSchedule')->name('book');
 //Route::get('/Schedule','ScheduleController@switch')->name('Schedule');
 Route::get('/dat-lich','ScheduleController@bookSchedule')->name('datlich');
-Route::get('/doi-lich','ScheduleController@updateSchedule')->name('doilich');
+Route::get('/sua-lich','ScheduleController@saveup_bookSchedule')->name('sualich');
+Route::get('/doi-lich/{sch}/{gym}/{gt}','ScheduleController@updateSchedule')->name('doilich');
 Route::get('SCHEDULE/{gt}/{gym}','ScheduleController@homeSchedule')->name('booklich');
 
 

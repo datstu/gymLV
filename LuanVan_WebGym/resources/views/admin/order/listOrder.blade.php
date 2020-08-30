@@ -75,7 +75,7 @@
                     <td>{{$user->order_date    }}</td>
                     <td>{{$user->consignee_name }}</td>
                     <td>{{$user->address}}</td>
-                    <td>{{$user->totalPrice }}</td>
+                    <td>{{number_format($user->totalPrice )}}</td>
                     <td>
                         <?php
                         foreach ($stt as $key => $value) {
@@ -94,7 +94,7 @@
                    
                     <td>
                         
-                            <a href="{{url('/cap-nhat-goi-tap/'.$user->id_order)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="{{url('/xu-ly-don-hang/'.$user->id_order)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </td>            
                           
                             {{-- <button class="item " data-toggle="tooltip" data-placement="top"  title="Delete" onclick="return confirm('Bạn có chắc muốn XOÁ sản phẩm này?')" >
@@ -105,7 +105,7 @@
                             
                           
                     <div class ="delUser"> 
-                            <a href="{{url('/delCB/'.$user->id_order )}}" onclick="return confirm('Bạn có chắc muốn XOÁ gói này?')">
+                            <a href="{{url('/delOrder/'.$user->id_order )}}" onclick="return confirm('Bạn có chắc muốn XOÁ hóa đơn này?')">
                                 <i class="fa fa-trash" aria-hidden="true" style="border: none;"></i>
                                 </a>
                     </div>
@@ -118,6 +118,7 @@
            @endforeach 
         </table>
     </div>
+    {!! $listPD->links() !!}
     <!-- END DATA TABLE -->
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

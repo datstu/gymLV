@@ -67,7 +67,7 @@
                     </th> --}}
                     <th width="5%">ID</th>
                     <th width="10%">Tên sản phẩm</th>
-                    <th width="10%">Hình ảnh chính</th>
+                    <th width="10%">Hình ảnh </th>
                     <th >Mô tả</th>
                     <th width="10%">Giá</th>
                     
@@ -126,6 +126,7 @@
            @endforeach 
         </table>
     </div>
+    {!! $listPD->links() !!}
     <!-- END DATA TABLE -->
 </div>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>

@@ -51,7 +51,8 @@
                     @endif
 
 
-                        <form class="form-horizontal" id="frmAddUser" action="{{url('/them-goi-tap')}}" method="post" >
+                        <form class="form-horizontal" id="frmAddUser"
+                         action="{{url('/them-goi-tap')}}" method="post" >
                             <fieldset>
                                 <!-- Name input-->
                                 {{-- <div class="form-group">

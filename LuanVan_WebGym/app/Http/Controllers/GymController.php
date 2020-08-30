@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
-// use App\Http\Requests;
+ use App\PhongGym;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
 class GymController extends Controller
 {
     public function listGym(){
-    	$listGym = DB::table('tbl_gym')->orderby('id_gym','asc')
-    	->get(); 
+        $this->CheckLoginAdmin();
+    	$listGym = PhongGym::paginate(5);
 		return view('admin.gym.listGym')->with('listGym',$listGym);
     }
     public function validateGym(Request $request){
@@ -33,6 +33,7 @@ class GymController extends Controller
         ]);
     }
     public function addGym(){
+        $this->CheckLoginAdmin();
 		return view('admin.gym.addGym');
 	}
     public function saveAddGym(Request $request){
@@ -70,13 +71,17 @@ class GymController extends Controller
     	print_r($data);
     }
     public function updateGym($id){
+        $this->CheckLoginAdmin();
 
     	$gym = DB::table('tbl_gym')
     	
     	->where('id_gym',$id)
     	->first(); 
+         if(!empty($gym))
+          return view('admin.gym.updateGym')->with('gym',$gym);
+        else return Redirect::to('quan-ly-phong-tap');
     
-    	return view('admin.gym.updateGym')->with('gym',$gym);
+    	
     }
      public function saveEditGym(Request $request){
         $this->validateGym($request);
@@ -111,7 +116,23 @@ class GymController extends Controller
 
     }
     public function delGym($id){
-    	DB::table('tbl_gym')->where('id_gym',$id)->delete();
-    	return Redirect::to('quan-ly-phong-tap');
+    	
+    	
+         $this->CheckLoginAdmin();
+        //neu khach hang da dat lich thi ko cho xoa
+        // echo $id;
+        $schedule = DB::table('tbl_schedule')->where('id_gym',$id)->get();
+        //dd($schedule);
+
+        if(empty($schedule)){
+            
+            $str ='<script>alert(\'Người dùng này đang hoạt động. Không thể xóa.\')</script>';
+            Session::put('str',$str);
+            
+        }
+        else{
+            DB::table('tbl_gym')->where('id_gym',$id)->delete();
+        }      
+            return Redirect::to('quan-ly-phong-tap');
     }
 }
