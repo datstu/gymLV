@@ -1,4 +1,6 @@
 -Login admin:
+id: admin
+pass: admin
 
 -Login user:
 id: ha@gmail.com
